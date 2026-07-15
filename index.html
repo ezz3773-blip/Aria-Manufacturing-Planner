@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://aria-ap2p.vercel.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria Technologies — Manufacturing Planner</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#eef1f7;color:#1a1a2e;font-size:13px}
+.page{max-width:1500px;margin:0 auto;padding:16px}
+
+.header{background:#0d1b4b;color:#fff;padding:0;border-radius:10px;margin-bottom:10px;display:flex;flex-direction:column;overflow:hidden}
+.header-top{padding:6px 22px;background:#07102e;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+.header-top .doc-type-label{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#378ADD}
+.header-top .doc-type-label span{color:#7a9cc8;font-weight:400;margin-left:10px;letter-spacing:.06em}
+.header-main{padding:12px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.hl .ht-input{font-size:19px;font-weight:700;color:#fff;background:transparent;border:none;border-bottom:1.5px solid rgba(255,255,255,.25);outline:none;padding:2px 4px;min-width:220px;width:auto}
+.hl .ht-input:focus{border-bottom-color:rgba(255,255,255,.8)}
+.hl .ht-input::placeholder{color:rgba(255,255,255,.35)}
+.hbtn{display:inline-flex;align-items:center;gap:6px;padding:7px 15px;font-size:12px;font-weight:600;border:none;border-radius:7px;cursor:pointer}
+.btn-print{background:#378ADD;color:#fff}.btn-print:hover{background:#185FA5}
+.btn-save{background:#059669;color:#fff}.btn-save:hover{background:#047857}
+.btn-save.saved{background:#34d399;color:#065f46}
+.btn-save.unsaved{background:#d97706;color:#fff}
+.save-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#fde68a;margin-right:5px;vertical-align:middle;box-shadow:0 0 0 0 rgba(253,230,138,.6);animation:pulse-dot 1.5s infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(253,230,138,.6)}50%{box-shadow:0 0 0 5px rgba(253,230,138,0)}}
+.btn-save.saved .save-dot{background:#a7f3d0;animation:none;box-shadow:none}
+.tab-btn.view-all{background:linear-gradient(135deg,#0d1b4b,#185FA5);color:#fff;border-color:#185FA5}
+.tab-btn.view-all.active{background:linear-gradient(135deg,#185FA5,#378ADD);border-color:#378ADD}
+.plan-tab.view-all-plans{background:linear-gradient(135deg,#185FA5,#378ADD);color:#fff;border-color:#378ADD}
+
+.proj-tabs-wrap{background:#fff;border-radius:10px;padding:10px 16px;margin-bottom:10px;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tab-btn{padding:5px 14px;font-size:12px;font-weight:600;border:1.5px solid #cbd5e1;border-radius:20px;background:#f8fafc;color:#475569;cursor:pointer;transition:all .15s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.tab-btn.active{background:#0d1b4b;color:#fff;border-color:#0d1b4b}
+.tab-btn:hover:not(.active){background:#e8ecf5}
+.tab-add{padding:5px 12px;font-size:12px;font-weight:700;border:1.5px dashed #94a3b8;border-radius:20px;background:transparent;color:#64748b;cursor:pointer}
+.tab-add:hover{border-color:#378ADD;color:#185FA5}
+.tab-x{font-size:12px;color:inherit;opacity:.6;line-height:1;padding:0;background:none;border:none;cursor:pointer;margin-left:2px}
+.tab-x:hover{opacity:1}
+
+.plan-tabs-wrap{background:#f8fafc;border-radius:8px;padding:8px 14px;margin-bottom:10px;border:1px solid #e2e8f0;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.plan-tab{padding:4px 12px;font-size:11px;font-weight:600;border:1px solid #cbd5e1;border-radius:14px;background:#fff;color:#475569;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.plan-tab.active{background:#185FA5;color:#fff;border-color:#185FA5}
+.plan-tab:hover:not(.active){background:#dbeafe}
+.plan-add{padding:4px 10px;font-size:11px;border:1px dashed #94a3b8;border-radius:14px;background:transparent;color:#64748b;cursor:pointer}
+.plan-add:hover{border-color:#378ADD;color:#185FA5}
+.plan-x{font-size:11px;color:inherit;opacity:.6;padding:0;background:none;border:none;cursor:pointer}
+.plan-x:hover{opacity:1}
+
+.controls{background:#fff;border-radius:10px;padding:11px 16px;margin-bottom:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.lbl{font-size:11px;color:#64748b;font-weight:600;white-space:nowrap}
+.proj-input{font-size:13px;font-weight:600;padding:5px 10px;border-radius:7px;border:1px solid #cbd5e1;background:#f8fafc;color:#1a1a2e;width:220px}
+.proj-input:focus{outline:none;border-color:#378ADD;background:#fff}
+input[type=date]{font-size:12px;padding:5px 9px;border-radius:7px;border:1px solid #cbd5e1;background:#f8fafc;color:#1a1a2e}
+input[type=date]:focus{outline:none;border-color:#378ADD}
+.btn-add{padding:5px 13px;font-size:12px;font-weight:600;border:1.5px solid #378ADD;border-radius:7px;background:#fff;color:#185FA5;cursor:pointer}
+.btn-add:hover{background:#E6F1FB}
+.view-toggle{display:flex;gap:4px;margin-left:auto}
+.vt-btn{padding:5px 11px;font-size:11px;font-weight:600;border:1px solid #cbd5e1;border-radius:6px;background:#f8fafc;color:#475569;cursor:pointer}
+.vt-btn.active{background:#0d1b4b;color:#fff;border-color:#0d1b4b}
+
+.prio-toggle{display:flex;align-items:center;gap:6px}
+.toggle-sw{position:relative;width:34px;height:18px;cursor:pointer;display:inline-block}
+.toggle-sw input{opacity:0;width:0;height:0;position:absolute}
+.toggle-track{position:absolute;inset:0;background:#cbd5e1;border-radius:18px;transition:.2s}
+.toggle-sw input:checked+.toggle-track{background:#378ADD}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;background:#fff;border-radius:50%;transition:.2s;pointer-events:none}
+.toggle-sw input:checked~.toggle-thumb{left:18px}
+
+.scards{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.sc{background:#fff;border-radius:9px;padding:10px 14px;border:1px solid #e2e8f0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.sc .sl{font-size:10px;color:#64748b;margin-bottom:3px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.sc .sv{font-size:18px;font-weight:700;color:#0d1b4b}
+
+/* MACHINE VIEW */
+.machine-view{display:none;margin-bottom:18px}
+.machine-view.show{display:block}
+.mv-card{background:#fff;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:12px;overflow:visible;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.mv-header{padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;border-radius:10px 10px 0 0;border-bottom:1px solid #e2e8f0}
+.mh-left{display:flex;align-items:center;gap:12px}
+.mh-name{font-size:14px;font-weight:700}
+.mh-stats{font-size:11px;color:#64748b;display:flex;gap:14px;flex-wrap:wrap}
+.mh-start{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#475569}
+.mh-start input[type=date]{font-size:11px;padding:3px 7px;border-radius:5px;border:1px solid #cbd5e1;background:#f8fafc}
+.mv-body{overflow-x:auto}
+.mv-table{width:100%;border-collapse:collapse;font-size:12px}
+.mv-table th{background:#f1f5f9;font-size:11px;font-weight:700;color:#475569;padding:7px 9px;border-bottom:1px solid #e2e8f0;white-space:nowrap;text-align:left}
+.mv-table td{padding:6px 8px;border-bottom:1px solid #f4f6f8;vertical-align:middle}
+.mv-table tr:last-child td{border-bottom:none}
+.mv-table tr:hover td{background:#f8fafc}
+.mv-table tr.mv-drag-over td{background:#dbeafe!important;border-top:2px solid #378ADD}
+.mv-table tr.mv-dragging{opacity:.4}
+
+.sec{font-size:11px;font-weight:700;color:#64748b;letter-spacing:.06em;text-transform:uppercase;margin-bottom:7px;display:flex;align-items:center;gap:8px}
+.sec-line{flex:1;height:1px;background:#e2e8f0}
+
+.tbl-wrap{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:auto;max-height:440px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+table.main-tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+table.main-tbl th{background:#0d1b4b;font-weight:700;font-size:11px;color:#c8d8f0;text-align:left;padding:8px 8px;border-bottom:2px solid #1a3060;position:sticky;top:0;z-index:3;white-space:nowrap;overflow:hidden}
+table.main-tbl td{padding:5px 7px;border-bottom:1px solid #f0f3f8;vertical-align:middle;overflow:visible}
+table.main-tbl tr:last-child td{border-bottom:none}
+table.main-tbl tr.drag-over td{background:#dbeafe!important;border-top:2px solid #378ADD}
+table.main-tbl tr:hover td{background:#f8fafc}
+
+.drag-handle{cursor:grab;color:#94a3b8;font-size:14px;padding:0 4px;user-select:none;display:flex;align-items:center;justify-content:center}
+.drag-handle:active{cursor:grabbing}
+tr.dragging{opacity:.4}
+
+/* inputs */
+.ei{border:1px solid #e2e8f0;border-radius:5px;padding:4px 6px;font-size:11px;background:#fff;color:#1a1a2e;width:100%;font-family:inherit}
+.ei:focus{outline:none;border-color:#378ADD;background:#f0f7ff}
+.ei-mono{font-family:'Courier New',monospace;font-size:10px}
+.ei-c{text-align:center}
+select.ei{cursor:pointer}
+
+/* STATUS SELECT — manual only */
+.status-sel{font-size:10px;padding:2px 6px;border-radius:20px;font-weight:600;border:none;cursor:pointer;width:100%}
+.st-ns{background:#dbeafe;color:#1e40af}
+.st-ip{background:#fef3c7;color:#92400e}
+.st-dn{background:#dcfce7;color:#166534}
+.st-oh{background:#f1f5f9;color:#64748b}
+
+.prio{display:inline-block;font-size:9px;padding:2px 7px;border-radius:12px;font-weight:700;white-space:nowrap}
+.p1{background:#fee2e2;color:#991b1b}
+.p2{background:#fef3c7;color:#92400e}
+.p3{background:#dbeafe;color:#1e40af}
+.p4{background:#f1f5f9;color:#475569}
+
+.del-btn{background:transparent;border:none;cursor:pointer;color:#94a3b8;font-size:15px;padding:1px 5px;border-radius:4px;line-height:1}
+.del-btn:hover{color:#dc2626;background:#fee2e2}
+
+/* MACHINE COMBO — fixed z-index and overflow */
+.combo-wrap{position:relative;width:100%}
+.combo-input{width:100%;padding:4px 22px 4px 6px;font-size:11px;border:1px solid #e2e8f0;border-radius:5px;background:#fff;color:#1a1a2e;font-family:inherit}
+.combo-input:focus{outline:none;border-color:#378ADD;background:#f0f7ff}
+.combo-arrow{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:9px;color:#94a3b8;pointer-events:none;user-select:none}
+.combo-list{position:fixed;background:#fff;border:1.5px solid #378ADD;border-radius:8px;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.16);min-width:140px;display:none;overflow:hidden}
+.combo-list.open{display:block}
+.combo-opt{padding:7px 12px;font-size:12px;cursor:pointer;color:#1a1a2e;border-bottom:1px solid #f0f3f8}
+.combo-opt:last-child{border-bottom:none}
+.combo-opt:hover{background:#dbeafe;color:#1e40af}
+
+/* GANTT */
+.gantt-section{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04);margin-bottom:14px}
+.gantt-scroll{overflow-x:auto}
+.gh-month-row{display:flex;background:#132254}
+.gh-month-lbl{width:230px;min-width:230px;padding:4px 10px;font-size:9px;font-weight:700;color:#8fa8d0;border-right:1px solid #1a3060;flex-shrink:0}
+.gh-month-cell{font-size:9px;font-weight:700;color:#8fa8d0;text-align:center;padding:3px 0;border-right:1px solid #1a3060;flex-shrink:0;overflow:hidden}
+.gh-row{display:flex;background:#0d1b4b;border-bottom:2px solid #1a3060}
+.gh-lbl{width:230px;min-width:230px;padding:6px 10px;font-size:10px;font-weight:700;color:#c8d8f0;border-right:1px solid #1a3060;flex-shrink:0}
+.gh-day{width:20px;min-width:20px;font-size:8px;color:#8fa8d0;text-align:center;padding:4px 0;border-right:1px solid #1a3060;flex-shrink:0;overflow:hidden}
+.gh-day.we{color:#f87171;background:#1a0a0a}
+.gh-day.tod{border-right:2px solid #f59e0b!important}
+.gr-row{display:flex;border-bottom:1px solid #f0f3f8}
+.gr-row:last-child{border-bottom:none}
+.gr-lbl{width:230px;min-width:230px;padding:5px 10px;font-size:10px;color:#475569;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-right:1px solid #e2e8f0;flex-shrink:0}
+.gc{width:20px;min-width:20px;height:26px;border-right:1px solid #f5f7fa;flex-shrink:0}
+.gc.we{background:#fff5f5}
+.gc.tod{border-right:2px solid #f59e0b!important}
+.gc.m0{background:#378ADD}.gc.m0-s{background:#378ADD;border-radius:4px 0 0 4px}.gc.m0-e{background:#378ADD;border-radius:0 4px 4px 0}.gc.m0-se{background:#378ADD;border-radius:4px}
+.gc.m1{background:#7c3aed}.gc.m1-s{background:#7c3aed;border-radius:4px 0 0 4px}.gc.m1-e{background:#7c3aed;border-radius:0 4px 4px 0}.gc.m1-se{background:#7c3aed;border-radius:4px}
+.gc.m2{background:#059669}.gc.m2-s{background:#059669;border-radius:4px 0 0 4px}.gc.m2-e{background:#059669;border-radius:0 4px 4px 0}.gc.m2-se{background:#059669;border-radius:4px}
+.gc.m3{background:#d97706}.gc.m3-s{background:#d97706;border-radius:4px 0 0 4px}.gc.m3-e{background:#d97706;border-radius:0 4px 4px 0}.gc.m3-se{background:#d97706;border-radius:4px}
+.gc.m4{background:#dc2626}.gc.m4-s{background:#dc2626;border-radius:4px 0 0 4px}.gc.m4-e{background:#dc2626;border-radius:0 4px 4px 0}.gc.m4-se{background:#dc2626;border-radius:4px}
+.gc.m5{background:#0891b2}.gc.m5-s{background:#0891b2;border-radius:4px 0 0 4px}.gc.m5-e{background:#0891b2;border-radius:0 4px 4px 0}.gc.m5-se{background:#0891b2;border-radius:4px}
+.gc.m6{background:#be185d}.gc.m6-s{background:#be185d;border-radius:4px 0 0 4px}.gc.m6-e{background:#be185d;border-radius:0 4px 4px 0}.gc.m6-se{background:#be185d;border-radius:4px}
+.legend{display:flex;gap:12px;align-items:center;padding:8px 12px;background:#f8fafc;border-top:1px solid #e2e8f0;font-size:10px;color:#64748b;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px}
+.leg-dot{width:11px;height:11px;border-radius:2px;flex-shrink:0}
+
+@media (max-width:640px){
+  .page{padding:8px}
+  .header-main{flex-direction:column;align-items:flex-start}
+  .hl .ht-input{min-width:0;width:100%;font-size:16px}
+  .header-main>div{width:100%}
+  .header-main .hbtn{flex:1;justify-content:center}
+  .controls{gap:8px}
+  .scards{grid-template-columns:repeat(2,1fr)}
+  table.main-tbl{font-size:11px}
+  .auth-card{width:88vw!important;padding:26px 20px!important}
+}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  body{background:#fff!important}
+  .page{padding:6px;max-width:none}
+  .no-print{display:none!important}
+  .proj-tabs-wrap,.plan-tabs-wrap{display:none!important}
+  .header{background:#0d1b4b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:10px 14px;margin-bottom:8px}
+  .tbl-wrap{max-height:none!important;overflow:visible!important;box-shadow:none;border:1px solid #ccc}
+  table.main-tbl{font-size:8px!important}
+  table.main-tbl th,table.main-tbl td{padding:3px 5px!important;font-size:8px!important}
+  .ei,.combo-input{border:none!important;background:transparent!important;font-size:8px!important;padding:0!important;pointer-events:none}
+  select.ei,.status-sel{-webkit-appearance:none;appearance:none;border:none!important;background:transparent!important}
+  .del-btn,.drag-handle,.combo-arrow{display:none!important}
+  .gantt-section{box-shadow:none;border:1px solid #ccc;page-break-inside:avoid;break-inside:avoid;margin-top:10px}
+  .gantt-scroll{overflow:hidden!important}
+  #gantt>div{transform-origin:top left}
+  .gh-row,.gh-month-row,.gr-row{display:flex!important}
+  .gh-row{background:#0d1b4b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .gc.we,.gh-day.we{background:#fff5f5!important}
+  .mv-card{overflow:visible!important;box-shadow:none;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<!-- AUTH OVERLAY -->
+<div id="authOverlay" style="position:fixed;inset:0;background:linear-gradient(135deg,#0d1b4b,#07102e);display:flex;align-items:center;justify-content:center;z-index:9999;font-family:Arial,sans-serif">
+  <div class="auth-card" style="background:#fff;border-radius:14px;padding:34px 32px;width:340px;box-shadow:0 10px 40px rgba(0,0,0,.35)">
+    <div style="text-align:center;margin-bottom:22px">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#378ADD">Aria Technologies</div>
+      <div style="font-size:19px;font-weight:700;color:#0d1b4b;margin-top:5px">Manufacturing Planner</div>
+      <div style="font-size:11px;color:#94a3b8;margin-top:3px">Sign in to continue</div>
+    </div>
+    <div style="margin-bottom:12px">
+      <label style="font-size:11px;color:#64748b;font-weight:600;display:block;margin-bottom:4px">Email</label>
+      <input id="authEmail" type="email" placeholder="you@example.com" style="width:100%;font-size:13px;padding:9px 11px;border-radius:7px;border:1px solid #cbd5e1;background:#f8fafc;color:#1a1a2e" autocomplete="username">
+    </div>
+    <div style="margin-bottom:6px">
+      <label style="font-size:11px;color:#64748b;font-weight:600;display:block;margin-bottom:4px">Password</label>
+      <input id="authPass" type="password" placeholder="••••••••" style="width:100%;font-size:13px;padding:9px 11px;border-radius:7px;border:1px solid #cbd5e1;background:#f8fafc;color:#1a1a2e" autocomplete="current-password">
+    </div>
+    <div id="authError" style="color:#dc2626;font-size:11.5px;min-height:16px;margin:8px 0 4px"></div>
+    <button id="authLoginBtn" onclick="doLogin()" style="width:100%;padding:10px;font-size:13px;font-weight:700;border:none;border-radius:7px;background:#378ADD;color:#fff;cursor:pointer;margin-top:6px">Sign In</button>
+    <div id="authLoading" style="display:none;text-align:center;margin-top:12px;font-size:12px;color:#64748b">Please wait…</div>
+  </div>
+</div>
+
+<div class="page" id="appPage" style="display:none">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div class="doc-type-label">Manufacturing Planner <span>· Production Scheduling &amp; Machine Planning</span></div>
+    <div class="hl co" style="color:#7a9cc8;font-size:9px;letter-spacing:.1em;text-transform:uppercase">Aria Technologies</div>
+  </div>
+  <div class="header-main">
+    <div class="hl">
+      <input class="ht-input" id="mainTitle" value="Manufacturing Planner" oninput="syncTitle()" placeholder="Project name...">
+    </div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <span id="userEmailLabel" class="no-print" style="font-size:10.5px;color:#9db3d9;margin-right:2px"></span>
+      <button class="hbtn btn-save no-print unsaved" id="saveBtn" onclick="saveData()"><span class="save-dot" id="saveDot"></span><span id="saveBtnText">Save</span></button>
+      <button class="hbtn btn-print no-print" onclick="doPrint()">Print / Export PDF</button>
+      <button class="hbtn no-print" onclick="doLogout()" style="background:#3a4a7a;color:#fff">Logout</button>
+    </div>
+  </div>
+</div>
+
+<div class="proj-tabs-wrap no-print" id="projTabs"><button class="tab-btn view-all" onclick="switchProject('all')">🌐 All Projects</button><button class="tab-btn active" onclick="switchProject(1)">LR-340</button><button class="tab-x" onclick="delProject(1,event)">×</button><button class="tab-add" onclick="addProject()">+ Project</button></div>
+<div class="plan-tabs-wrap no-print" id="planTabs"><button class="plan-tab view-all-plans" onclick="switchPlan('all')">📋 All Plans</button><button class="plan-tab active" onclick="switchPlan(1)">C-Axis Machining</button><button class="plan-x" onclick="delPlan(1,event)">×</button><button class="plan-tab" onclick="switchPlan(2)">EOA Machining</button><button class="plan-x" onclick="delPlan(2,event)">×</button><button class="plan-add" onclick="addPlan()">+ Plan</button></div>
+
+<div class="controls">
+  <span class="lbl">Plan name</span>
+  <input class="proj-input" id="planName" placeholder="Plan name...">
+  <span class="lbl">Start date</span>
+  <input type="date" id="startDate">
+  <button class="btn-add no-print" onclick="addItem()">+ Add item</button>
+  <div class="prio-toggle no-print">
+    <label class="toggle-sw">
+      <input type="checkbox" id="prioToggle" onchange="render()">
+      <span class="toggle-track"></span>
+      <span class="toggle-thumb"></span>
+    </label>
+    <span class="lbl">Priority</span>
+  </div>
+  <div class="view-toggle no-print">
+    <button class="vt-btn active" id="vt-table" onclick="setView(&#39;table&#39;)">Table</button>
+    <button class="vt-btn" id="vt-machine" onclick="setView(&#39;machine&#39;)">By Machine</button>
+  </div>
+</div>
+
+<div class="scards" id="scards">
+    <div class="sc"><div class="sl">Items</div><div class="sv">11</div></div>
+    <div class="sc"><div class="sl">Total hrs</div><div class="sv">44.8</div></div>
+    <div class="sc"><div class="sl">Working days</div><div class="sv">3</div></div>
+    <div class="sc"><div class="sl">Machines</div><div class="sv">4</div></div>
+    <div class="sc"><div class="sl">Project end</div><div class="sv" style="font-size:12px">29 Apr 2026</div></div>
+  </div>
+
+<div id="tableView" style="display: block;">
+  <div class="sec">Items <span class="sec-line"></span></div>
+  <div class="tbl-wrap">
+    <table class="main-tbl">
+      <thead id="thead"><tr>
+    <th style="width:22px" class="no-print"></th>
+    <th style="width:30px">#</th>
+    <th style="width:85px">ERP code</th>
+    <th style="width:148px">Description</th>
+    <th style="width:96px">Part number</th>
+    <th style="width:52px">Qty</th>
+    <th style="width:54px">Hrs</th>
+    <th style="width:118px">Machine</th>
+    
+    <th style="width:82px">Start</th>
+    <th style="width:82px">End</th>
+    <th style="width:46px">W.days</th>
+    <th style="width:96px">Status</th>
+    <th style="width:26px" class="no-print"></th>
+  </tr></thead>
+      <tbody id="tbody">
+    <tr draggable="true" data-idx="0" ondragstart="dragStart(event,0)" ondragover="dragOver(event,0)" ondrop="drop(event,0)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">1</td>
+      <td><input class="ei ei-mono" value="RM-02782" onchange="upd(1,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="LR 340 C Axis V3" onchange="upd(1,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="" onchange="upd(1,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(1,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="8" onchange="upd(1,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_1" value="M1000" autocomplete="off" oninput="comboFilter(1,this.value)" onfocus="comboOpen(1)" onblur="comboClose(1)" onkeydown="comboKey(event,1)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_1"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(1,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(1)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="1" ondragstart="dragStart(event,1)" ondragover="dragOver(event,1)" ondrop="drop(event,1)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">2</td>
+      <td><input class="ei ei-mono" value="RM-02698" onchange="upd(2,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Motor Mount Plate" onchange="upd(2,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="P60-00-04-0P-00001-R00-01" onchange="upd(2,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(2,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="4" onchange="upd(2,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_2" value="M1000" autocomplete="off" oninput="comboFilter(2,this.value)" onfocus="comboOpen(2)" onblur="comboClose(2)" onkeydown="comboKey(event,2)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_2"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(2,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(2)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="2" ondragstart="dragStart(event,2)" ondragover="dragOver(event,2)" ondrop="drop(event,2)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">3</td>
+      <td><input class="ei ei-mono" value="RM-02759" onchange="upd(3,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Fixation Arm" onchange="upd(3,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/03-C0-007" onchange="upd(3,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="8" onchange="upd(3,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="3.2" onchange="upd(3,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_3" value="M2500" autocomplete="off" oninput="comboFilter(3,this.value)" onfocus="comboOpen(3)" onblur="comboClose(3)" onkeydown="comboKey(event,3)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_3"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(3,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(3)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="3" ondragstart="dragStart(event,3)" ondragover="dragOver(event,3)" ondrop="drop(event,3)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">4</td>
+      <td><input class="ei ei-mono" value="RM-02758" onchange="upd(4,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Rotation Plate V2" onchange="upd(4,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/03-C0-006" onchange="upd(4,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(4,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="3.2" onchange="upd(4,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_4" value="M2500" autocomplete="off" oninput="comboFilter(4,this.value)" onfocus="comboOpen(4)" onblur="comboClose(4)" onkeydown="comboKey(event,4)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_4"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(4,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(4)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="4" ondragstart="dragStart(event,4)" ondragover="dragOver(event,4)" ondrop="drop(event,4)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">5</td>
+      <td><input class="ei ei-mono" value="RM-02639" onchange="upd(5,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="C-Axis GearBox Mount Plate" onchange="upd(5,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/01-A0-003" onchange="upd(5,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(5,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="4" onchange="upd(5,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_5" value="M1000" autocomplete="off" oninput="comboFilter(5,this.value)" onfocus="comboOpen(5)" onblur="comboClose(5)" onkeydown="comboKey(event,5)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_5"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(5,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(5)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="5" ondragstart="dragStart(event,5)" ondragover="dragOver(event,5)" ondrop="drop(event,5)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">6</td>
+      <td><input class="ei ei-mono" value="RM-02719" onchange="upd(6,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="C-Axis Cross Bearing Mount Plate" onchange="upd(6,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/01-A0-006" onchange="upd(6,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(6,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="2.4" onchange="upd(6,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_6" value="M1000" autocomplete="off" oninput="comboFilter(6,this.value)" onfocus="comboOpen(6)" onblur="comboClose(6)" onkeydown="comboKey(event,6)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_6"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(6,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(6)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="6" ondragstart="dragStart(event,6)" ondragover="dragOver(event,6)" ondrop="drop(event,6)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">7</td>
+      <td><input class="ei ei-mono" value="RM-02630" onchange="upd(7,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Rotation Shaft Female" onchange="upd(7,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGNO/03-C0-003" onchange="upd(7,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(7,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="8" onchange="upd(7,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_7" value="T0001" autocomplete="off" oninput="comboFilter(7,this.value)" onfocus="comboOpen(7)" onblur="comboClose(7)" onkeydown="comboKey(event,7)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_7"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(7,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(7)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="7" ondragstart="dragStart(event,7)" ondragover="dragOver(event,7)" ondrop="drop(event,7)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">8</td>
+      <td><input class="ei ei-mono" value="RM-02631" onchange="upd(8,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Rotation Shaft Male" onchange="upd(8,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGNO/02-C0-002" onchange="upd(8,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="4" onchange="upd(8,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="8" onchange="upd(8,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_8" value="T0001" autocomplete="off" oninput="comboFilter(8,this.value)" onfocus="comboOpen(8)" onblur="comboClose(8)" onkeydown="comboKey(event,8)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_8"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">28 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(8,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(8)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="8" ondragstart="dragStart(event,8)" ondragover="dragOver(event,8)" ondrop="drop(event,8)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">9</td>
+      <td><input class="ei ei-mono" value="RM-02761" onchange="upd(9,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Cross Bearing Mount Spacer" onchange="upd(9,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/03-C0-005" onchange="upd(9,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="16" onchange="upd(9,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="1.6" onchange="upd(9,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_9" value="T0001" autocomplete="off" oninput="comboFilter(9,this.value)" onfocus="comboOpen(9)" onblur="comboClose(9)" onkeydown="comboKey(event,9)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_9"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(9,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(9)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="9" ondragstart="dragStart(event,9)" ondragover="dragOver(event,9)" ondrop="drop(event,9)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">10</td>
+      <td><input class="ei ei-mono" value="RM-02760" onchange="upd(10,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="C Axis Motor Mount Spacer" onchange="upd(10,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="LRGN0/03-C0-004" onchange="upd(10,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="16" onchange="upd(10,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="1.6" onchange="upd(10,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_10" value="T0001" autocomplete="off" oninput="comboFilter(10,this.value)" onfocus="comboOpen(10)" onblur="comboClose(10)" onkeydown="comboKey(event,10)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_10"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">29 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(10,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(10)">×</button></td>
+    </tr>
+    <tr draggable="true" data-idx="10" ondragstart="dragStart(event,10)" ondragover="dragOver(event,10)" ondrop="drop(event,10)" ondragleave="dragLeave(event)">
+      <td class="no-print"><div class="drag-handle">⠿</div></td>
+      <td style="text-align:center;color:#94a3b8;font-size:11px">11</td>
+      <td><input class="ei ei-mono" value="RM-02777" onchange="upd(11,&#39;erp&#39;,this.value)"></td>
+      <td><input class="ei" value="Steel PIN D5x28x1.2mm" onchange="upd(11,&#39;desc&#39;,this.value)"></td>
+      <td><input class="ei ei-mono" value="DIN EN 22340-B-5x28x1.2" onchange="upd(11,&#39;pn&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="0" onchange="upd(11,&#39;qty&#39;,this.value)"></td>
+      <td><input class="ei ei-c" type="number" min="0" step="0.5" value="0.8" onchange="upd(11,&#39;hrs&#39;,this.value)"></td>
+      <td><div class="combo-wrap ">
+    <input class="combo-input" id="ci_11" value="WireCut0001" autocomplete="off" oninput="comboFilter(11,this.value)" onfocus="comboOpen(11)" onblur="comboClose(11)" onkeydown="comboKey(event,11)">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_11"></div>
+  </div></td>
+      
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">27 Apr</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">1</td>
+      <td><select class="status-sel st-ns" onchange="upd(11,&#39;status&#39;,this.value);this.className=&#39;status-sel &#39;+({&#39;Not Started&#39;:&#39;st-ns&#39;,&#39;In Progress&#39;:&#39;st-ip&#39;,&#39;Done&#39;:&#39;st-dn&#39;,&#39;On Hold&#39;:&#39;st-oh&#39;}[this.value]||&#39;st-ns&#39;)"><option value="Not Started" selected="">Not Started</option><option value="In Progress">In Progress</option><option value="Done">Done</option><option value="On Hold">On Hold</option></select></td>
+      <td class="no-print"><button class="del-btn" onclick="delItem(11)">×</button></td>
+    </tr></tbody>
+    </table>
+  </div>
+  <div class="sec">Gantt chart <span class="sec-line"></span></div>
+  <div class="gantt-section">
+    <div class="gantt-scroll"><div id="gantt"><div style="display:inline-block;min-width:max-content"><div class="gh-month-row"><div class="gh-month-lbl">Item</div><div class="gh-month-cell" style="width:80px;min-width:80px">Apr 2026</div><div class="gh-month-cell" style="width:60px;min-width:60px">May 2026</div></div><div class="gh-row"><div class="gh-lbl">ERP — Description</div><div class="gh-day tod">27</div><div class="gh-day">28</div><div class="gh-day">29</div><div class="gh-day">30</div><div class="gh-day we">1</div><div class="gh-day we">2</div><div class="gh-day">3</div></div><div class="gr-row"><div class="gr-lbl" title="RM-02782 — LR 340 C Axis V3">RM-02782 — LR 340 C Axis V3</div><div class="gc tod m0-se"></div><div class="gc"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02698 — Motor Mount Plate">RM-02698 — Motor Mount Plate</div><div class="gc tod"></div><div class="gc m0-se"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02759 — Fixation Arm">RM-02759 — Fixation Arm</div><div class="gc tod m1-se"></div><div class="gc"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02758 — Rotation Plate V2">RM-02758 — Rotation Plate V2</div><div class="gc tod m1-se"></div><div class="gc"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02639 — C-Axis GearBox Mount Plate">RM-02639 — C-Axis GearBox Mount Plate</div><div class="gc tod"></div><div class="gc m0-se"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02719 — C-Axis Cross Bearing Mount Plate">RM-02719 — C-Axis Cross Bearing Mount Plate</div><div class="gc tod"></div><div class="gc"></div><div class="gc m0-se"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02630 — Rotation Shaft Female">RM-02630 — Rotation Shaft Female</div><div class="gc tod m5-se"></div><div class="gc"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02631 — Rotation Shaft Male">RM-02631 — Rotation Shaft Male</div><div class="gc tod"></div><div class="gc m5-se"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02761 — Cross Bearing Mount Spacer">RM-02761 — Cross Bearing Mount Spacer</div><div class="gc tod"></div><div class="gc"></div><div class="gc m5-se"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02760 — C Axis Motor Mount Spacer">RM-02760 — C Axis Motor Mount Spacer</div><div class="gc tod"></div><div class="gc"></div><div class="gc m5-se"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div><div class="gr-row"><div class="gr-lbl" title="RM-02777 — Steel PIN D5x28x1.2mm">RM-02777 — Steel PIN D5x28x1.2mm</div><div class="gc tod m4-se"></div><div class="gc"></div><div class="gc"></div><div class="gc"></div><div class="gc we"></div><div class="gc we"></div><div class="gc"></div></div></div></div></div>
+    <div class="legend" id="ganttLegend"><span class="leg-item"><span class="leg-dot" style="background:#fff5f5;border:1px solid #fca5a5"></span>Weekend</span><span class="leg-item"><span style="width:2px;height:11px;background:#f59e0b;display:inline-block"></span>Today</span><span class="leg-item"><span class="leg-dot" style="background:#378ADD"></span>M1000</span><span class="leg-item"><span class="leg-dot" style="background:#7c3aed"></span>M2500</span><span class="leg-item"><span class="leg-dot" style="background:#0891b2"></span>T0001</span><span class="leg-item"><span class="leg-dot" style="background:#dc2626"></span>WireCut0001</span></div>
+  </div>
+</div>
+
+<div id="machineView" class="machine-view">
+  <div class="sec">By machine <span class="sec-line"></span></div>
+  <div id="machineCards"></div>
+</div>
+
+</div><!-- /page -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   CONSTANTS
+══════════════════════════════════════════ */
+const MACHINES=['M1000','M2500','MRouter','Drilling','WireCut0001','T0001','Assembly'];
+const BAR_COLORS=['#378ADD','#7c3aed','#059669','#d97706','#dc2626','#0891b2','#be185d'];
+const MCOLOR_IDX={};
+MACHINES.forEach((m,i)=>MCOLOR_IDX[m]=i);
+
+const PRIO_LABELS={1:'P1 Critical',2:'P2 High',3:'P3 Normal',4:'P4 Low'};
+const PRIO_CLS={1:'p1',2:'p2',3:'p3',4:'p4'};
+
+const STATUS_OPTS=['Not Started','In Progress','Done','On Hold'];
+const STATUS_CLS={'Not Started':'st-ns','In Progress':'st-ip','Done':'st-dn','On Hold':'st-oh'};
+
+/* ══════════════════════════════════════════
+   DATA
+══════════════════════════════════════════ */
+let projects=[
+  {id:1,name:'MAFI - S00060',plans:[
+    {id:1,name:'LR 340',startDate:'2025-12-21',machineStarts:{},items:[
+      {id:1,erp:'RM-02456',desc:'X-BEAM',pn:'LR340/01-X1-001',qty:2,hrs:190,machine:'M2500',priority:3,status:'Done',actualStart:'2025-12-21',actualEnd:'2026-01-21'},
+      {id:2,erp:'RM-02424',desc:'X stopper',pn:'LRGN0/01-X1-001',qty:16,hrs:51,machine:'M1000',priority:3,status:'Done',actualStart:'2025-12-21',actualEnd:'2025-12-29'},
+      {id:3,erp:'Rm-01314',desc:'X-guide wedge',pn:'LRGN0/01-X1-002',qty:20,hrs:51,machine:'M1000',priority:3,status:'In Progress',actualStart:'2025-12-29'},
+      {id:4,erp:'RM-01220',desc:'HOMING CAM',pn:'LRGN0/01-X1-004',qty:16,hrs:32,machine:'M1000',priority:3,status:'Done',actualStart:'2026-01-06',actualEnd:'2026-01-12'},
+      {id:5,erp:'RM-02296',desc:'Y Beam',pn:'LR340/01-Y1-001',qty:4,hrs:160,machine:'M2500',priority:3,status:'Done',actualStart:'2026-01-21',actualEnd:'2026-02-18'},
+      {id:6,erp:'RM-02593',desc:'Y Stopper',pn:'LRGN0/01-Y1-001',qty:4,hrs:32,machine:'M1000',priority:3,status:'Done',actualStart:'2026-01-12',actualEnd:'2026-01-18'},
+      {id:7,erp:'RM-02790',desc:'XY Carriage',pn:'',qty:4,hrs:64,machine:'M1000',priority:3,status:'Done',actualStart:'2026-01-18',actualEnd:'2026-01-28'},
+      {id:8,erp:'RM-02127',desc:'Z Outer Beam',pn:'LR340/01-Z1-003',qty:4,hrs:64,machine:'M1000',priority:3,status:'Done',actualStart:'2026-01-28',actualEnd:'2026-02-09'},
+      {id:9,erp:'RM-02223',desc:'Z Inner Beam',pn:'LR340/01-Z1-002',qty:4,hrs:64,machine:'M1000',priority:3,status:'Done',actualStart:'2026-02-09',actualEnd:'2026-02-19'},
+      {id:10,erp:'RM-02208',desc:'Z Carriage',pn:'LRGN0/01-Z1-004',qty:4,hrs:64,machine:'M1000',priority:3,status:'Done',actualStart:'2026-02-19',actualEnd:'2026-03-03'},
+      {id:11,erp:'RM-02218',desc:'Z-S2 stopper',pn:'LRGN0/01-Z1-008',qty:8,hrs:20,machine:'M1000',priority:3,status:'Done',actualStart:'2026-03-03',actualEnd:'2026-03-08'},
+      {id:12,erp:'RM-02217',desc:'Z-S1 stopper',pn:'LRGN0/01-Z1-009',qty:8,hrs:20,machine:'M1000',priority:3,status:'Done',actualStart:'2026-03-08',actualEnd:'2026-03-10'},
+      {id:13,erp:'RM-02138',desc:'Z guide tight plate',pn:'LRGN0/01-Z1-011',qty:32,hrs:51,machine:'M1000',priority:3,status:'Done',actualStart:'2026-03-10',actualEnd:'2026-03-19'},
+      {id:14,erp:'RM-02594',desc:'Pulley Axe',pn:'LRGN0/01-Z1-003',qty:8,hrs:32,machine:'T0001',priority:3,status:'Done',actualStart:'2025-12-21',actualEnd:'2025-12-24'},
+      {id:15,erp:'RM-01159',desc:'Pully Axe Spacer',pn:'LRGN0/01-Z1-002',qty:16,hrs:20,machine:'T0001',priority:3,status:'Done',actualStart:'2025-12-25',actualEnd:'2025-12-29'},
+      {id:16,erp:'RM-02228',desc:'Inner Belt Holder Plate',pn:'LRGN0/01-Z1-001',qty:8,hrs:30,machine:'M1000',priority:3,status:'Done',actualStart:'2026-03-19',actualEnd:'2026-03-24'},
+      {id:17,erp:'RM-02229',desc:'Belt holder plate',pn:'LRGN0/01-00-007',qty:8,hrs:30,machine:'M1000',priority:3,status:'Done',actualStart:'2026-03-24',actualEnd:'2026-03-30'},
+    ]},
+    {id:2,name:'C Axis',startDate:'2026-05-12',machineStarts:{},items:[
+      {id:18,erp:'RM-02759',desc:'Fixation Arm',pn:'LRGN0/03-C0-007',qty:8,hrs:25,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-12',actualEnd:'2026-05-17'},
+      {id:19,erp:'RM-02758',desc:'Rotation Plate V2',pn:'LRGN0/03-C0-006',qty:4,hrs:12,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-17',actualEnd:'2026-05-18'},
+      {id:20,erp:'RM-02639',desc:'C-Axis GearBox Mount Plate',pn:'LRGN0/01-A0-003',qty:4,hrs:10,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-18',actualEnd:'2026-05-19'},
+      {id:21,erp:'RM-02719',desc:'C-Axis Cross Bearing Mount Plate',pn:'LRGN0/01-A0-006',qty:4,hrs:10,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-19',actualEnd:'2026-05-21'},
+      {id:22,erp:'RM-02631',desc:'Rotation Shaft Male',pn:'LRGNO/02-C0-002',qty:4,hrs:32,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-21',actualEnd:'2026-05-27'},
+      {id:23,erp:'RM-02630',desc:'Rotation Shaft Female',pn:'LRGNO/03-C0-003',qty:2,hrs:16,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-27',actualEnd:'2026-05-31'},
+    ]},
+    {id:3,name:'EOA',startDate:'2026-05-12',machineStarts:{},items:[
+      {id:24,erp:'RM-03011',desc:'Pallet Gripper EOA Rib Support',pn:'PDEOA-01-0P-S60-00001-01',qty:28,hrs:85,machine:'M2500',priority:3,status:'Done',actualStart:'2026-05-12',actualEnd:'2026-05-26'},
+      {id:25,erp:'RM-03012',desc:'Pallet Gripper EOA Adaptor',pn:'PDEOA-01-0P-S60-00002-01',qty:4,hrs:12,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-12',actualEnd:'2026-05-13'},
+      {id:26,erp:'RM-03013',desc:'Pallet Gripper EOA Main Supports',pn:'PDEOA-01-0P-S60-00003-01',qty:8,hrs:128,machine:'M2500',priority:3,status:'Done',actualStart:'2026-05-26',actualEnd:'2026-06-17'},
+      {id:27,erp:'RM-03014',desc:'Pallet Gripper EOA Rotation Shaft',pn:'PDEOA-01-0P-S60-00004-01',qty:8,hrs:112,machine:'M2500',priority:3,status:'Done',actualStart:'2026-06-17',actualEnd:'2026-07-07'},
+      {id:28,erp:'RM-03015',desc:'Pallet Gripper EOA Came',pn:'PDEOA-01-0P-S60-00005-01',qty:8,hrs:64,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-13',actualEnd:'2026-05-25'},
+      {id:29,erp:'RM-03016',desc:'Pallet Gripper EOA Gripper',pn:'PDEOA-01-0P-S60-00006-01',qty:16,hrs:48,machine:'M1000',priority:3,status:'Done',actualStart:'2026-05-25',actualEnd:'2026-06-02'},
+    ]},
+    {id:4,name:'Laser Gate',startDate:'2026-07-12',machineStarts:{},items:[
+      {id:30,erp:'RM-03119',desc:'Pallets Size gate checker Side Profile',pn:'PACHK-01-0P-00001-S60-01',qty:8,hrs:32,machine:'M2500',priority:3,status:'In Progress',actualStart:'2026-07-12'},
+      {id:31,erp:'RM-',desc:'Pallets Size gate checker Middle Profile',pn:'PACHK-01-0P-00003-S60-01',qty:4,hrs:16,machine:'M2500',priority:3,status:'Not Started'},
+      {id:32,erp:'RM-03121',desc:'Gate Corner Bracket',pn:'PACHK-01-0P-00004-S60-01',qty:8,hrs:24,machine:'M1000',priority:3,status:'Not Started'},
+    ]},
+    {id:5,name:'Delayed Items',startDate:'2026-07-12',machineStarts:{},items:[
+      {id:33,erp:'RM-02630',desc:'Rotation Shaft Female',pn:'LRGNO/03-C0-003',qty:2,hrs:16,machine:'M1000',priority:3,status:'Done',actualStart:'2026-07-12',actualEnd:'2026-07-13'},
+      {id:34,erp:'RM-NEW',desc:'New item',pn:'',qty:1,hrs:8,machine:'M1000',priority:3,status:'Not Started'},
+    ]}
+  ]}
+];
+let activeProjId=1,activePlanId=1,nid=100;
+let currentView='table';
+let dragSrc=null; // {type:'table'|'machine', fromIdx, machine?}
+let _unsavedChanges=false;
+
+/* ══════════════════════════════════════════
+   FIREBASE — AUTH + CLOUD SAVE/LOAD (Firestore)
+══════════════════════════════════════════ */
+const firebaseConfig={
+  apiKey:"AIzaSyAlMxl_yNrCI-oQ6GaTlnBcKLC6nO49Who",
+  authDomain:"manufacturing-planner.firebaseapp.com",
+  projectId:"manufacturing-planner",
+  storageBucket:"manufacturing-planner.firebasestorage.app",
+  messagingSenderId:"128863218484",
+  appId:"1:128863218484:web:044538d18515a09d5c5361",
+  measurementId:"G-N8PXJQH0R5"
+};
+firebase.initializeApp(firebaseConfig);
+const auth=firebase.auth();
+const db=firebase.firestore();
+let currentUser=null;
+
+auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(()=>{});
+
+function authErrMsg(e){
+  const m={
+    'auth/invalid-email':'Please enter a valid email address.',
+    'auth/user-not-found':'No account found with this email.',
+    'auth/wrong-password':'Incorrect password.',
+    'auth/invalid-credential':'Incorrect email or password.',
+    'auth/user-disabled':'This account has been disabled.',
+    'auth/too-many-requests':'Too many attempts. Please try again later.',
+    'auth/network-request-failed':'Network error. Check your connection.'
+  };
+  return m[e.code]||('Sign in failed: '+e.message);
+}
+
+function doLogin(){
+  const email=document.getElementById('authEmail').value.trim();
+  const pass=document.getElementById('authPass').value;
+  const errEl=document.getElementById('authError');
+  const loadEl=document.getElementById('authLoading');
+  const btn=document.getElementById('authLoginBtn');
+  errEl.textContent='';
+  if(!email||!pass){errEl.textContent='Please enter both email and password.';return;}
+  btn.disabled=true;
+  loadEl.style.display='block';
+  auth.signInWithEmailAndPassword(email,pass)
+    .catch(e=>{
+      errEl.textContent=authErrMsg(e);
+    })
+    .finally(()=>{
+      btn.disabled=false;
+      loadEl.style.display='none';
+    });
+}
+
+function doLogout(){
+  if(_unsavedChanges&&!confirm('You have unsaved changes. Logout anyway?'))return;
+  auth.signOut();
+}
+
+// Enter key submits login form
+['authEmail','authPass'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el)el.addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+});
+
+auth.onAuthStateChanged(function(user){
+  const overlay=document.getElementById('authOverlay');
+  const appPage=document.getElementById('appPage');
+  if(user){
+    currentUser=user;
+    overlay.style.display='none';
+    appPage.style.display='';
+    const ue=document.getElementById('userEmailLabel');
+    if(ue)ue.textContent=user.email;
+    initAppData();
+  }else{
+    currentUser=null;
+    overlay.style.display='flex';
+    appPage.style.display='none';
+    const ee=document.getElementById('authEmail'),ep=document.getElementById('authPass');
+    if(ep)ep.value='';
+  }
+});
+
+async function initAppData(){
+  const hadSaved=await loadDataCloud();
+  setView('table');
+  render();
+  if(!hadSaved)markUnsaved();
+}
+
+function userDocRef(){
+  return db.collection('plannerData').doc(currentUser.uid);
+}
+
+async function saveData(){
+  if(!currentUser)return;
+  const btn=document.getElementById('saveBtn');
+  const dot=document.getElementById('saveDot');
+  const txt=document.getElementById('saveBtnText');
+  const payload=JSON.parse(JSON.stringify({
+    projects,activeProjId,activePlanId,nid,
+    mainTitle:document.getElementById('mainTitle').value,
+    ownerEmail:currentUser.email,
+    updatedAt:new Date().toISOString()
+  }));
+  try{
+    await userDocRef().set(payload);
+    _unsavedChanges=false;
+    btn.className='hbtn btn-save no-print saved';
+    dot.style.animation='none';
+    dot.style.background='#a7f3d0';
+    txt.textContent='Saved ✓';
+    setTimeout(()=>{
+      btn.className='hbtn btn-save no-print';
+      dot.style.animation='';
+      dot.style.background='#fde68a';
+      txt.textContent='Save';
+    },2000);
+  }catch(e){
+    if(e.code==='permission-denied'){
+      alert('Save failed: Firestore permissions are blocking this.\n\nIn the Firebase Console → Firestore Database → Rules, set:\n\nrules_version = "2";\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /plannerData/{uid} {\n      allow read, write: if request.auth != null && request.auth.uid == uid;\n    }\n  }\n}\n\nThen click Publish.');
+    }else{
+      alert('Save failed: '+e.message);
+    }
+  }
+}
+
+async function loadDataCloud(){
+  if(!currentUser)return false;
+  try{
+    const doc=await userDocRef().get();
+    if(!doc.exists)return false;
+    const p=doc.data();
+    if(p.projects)projects=p.projects;
+    if(p.activeProjId)activeProjId=p.activeProjId;
+    if(p.activePlanId)activePlanId=p.activePlanId;
+    if(p.nid)nid=p.nid;
+    if(p.mainTitle){const el=document.getElementById('mainTitle');if(el)el.value=p.mainTitle;}
+    return true;
+  }catch(e){console.error('Load failed:',e);return false;}
+}
+
+function markUnsaved(){
+  if(_unsavedChanges)return;
+  _unsavedChanges=true;
+  const btn=document.getElementById('saveBtn');
+  if(btn)btn.className='hbtn btn-save no-print unsaved';
+}
+
+
+/* ══════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════ */
+function todayStr(){return new Date().toISOString().split('T')[0];}
+function getProj(){return activeProjId==='all'?null:projects.find(p=>p.id===activeProjId);}
+function getPlan(){
+  if(activeProjId==='all'||activePlanId==='all')return null;
+  const pr=getProj();return pr?pr.plans.find(p=>p.id===activePlanId):null;
+}
+function getItems(){
+  if(activeProjId==='all'){
+    // All items across all projects + all plans
+    return projects.flatMap(pr=>pr.plans.flatMap(pl=>pl.items));
+  }
+  if(activePlanId==='all'){
+    // All items across all plans of current project
+    const pr=getProj();return pr?pr.plans.flatMap(pl=>pl.items):[];
+  }
+  const pl=getPlan();return pl?pl.items:[];
+}
+// Get all scheduled items for all-plan / all-project views (shared global machine schedule)
+function getAllSched(){
+  const map=computeGlobalSchedule();
+  let allItems=[];
+  if(activeProjId==='all'){
+    projects.forEach(pr=>{
+      pr.plans.forEach(pl=>{
+        allItems=allItems.concat(pl.items.map(it=>map[it.id]||{...it,start:null,end:null,wdays:0,_planName:pl.name}));
+      });
+    });
+  } else {
+    const pr=getProj();
+    if(pr) pr.plans.forEach(pl=>{
+      allItems=allItems.concat(pl.items.map(it=>map[it.id]||{...it,start:null,end:null,wdays:0,_planName:pl.name}));
+    });
+  }
+  return allItems;
+}
+function isAllMode(){return activeProjId==='all'||activePlanId==='all';}
+function isWE(d){const w=d.getDay();return w===5||w===6;}
+function cloneDay(d){return new Date(d.getFullYear(),d.getMonth(),d.getDate());}
+function skipWE(d){const r=cloneDay(d);while(isWE(r))r.setDate(r.getDate()+1);return r;}
+function countWD(a,b){let c=0,d=cloneDay(a);const e=cloneDay(b);while(d<=e){if(!isWE(d))c++;d.setDate(d.getDate()+1);}return c;}
+function fmtD(d){if(!d)return'—';return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});}
+function fmtShort(d){if(!d)return'—';return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function parseDate(s){if(!s)return null;const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
+function mColorIdx(m){return MCOLOR_IDX[m]!==undefined?MCOLOR_IDX[m]:0;}
+
+function getBase(){
+  const pl=getPlan();
+  return pl?parseDate(pl.startDate):null;
+}
+function getMachineBase(m){
+  const pl=getPlan();if(!pl)return getBase();
+  const ms=pl.machineStarts||{};
+  return ms[m]?parseDate(ms[m]):getBase();
+}
+
+/* ══════════════════════════════════════════
+   SCHEDULER — GLOBAL, shared machine capacity,
+   hybrid rolling schedule:
+   - Done items: FROZEN to their actual start/end
+     (real history — never recomputed).
+   - In Progress items: start is FROZEN to the
+     actual start date; end is still projected
+     from remaining hours (dynamic until Done).
+   - Not Started / On Hold: fully dynamic —
+     queued after whatever the machine's real
+     position ends up being.
+══════════════════════════════════════════ */
+function computeGlobalSchedule(){
+  const byMachine={};
+  projects.forEach(pr=>{
+    pr.plans.forEach(pl=>{
+      const ms=pl.machineStarts||{};
+      pl.items.forEach((it,idx)=>{
+        const m=it.machine||'M1000';
+        const base=ms[m]?parseDate(ms[m]):(pl.startDate?parseDate(pl.startDate):new Date());
+        (byMachine[m]=byMachine[m]||[]).push({it,pl,base,idx});
+      });
+    });
+  });
+  const map={};
+  Object.keys(byMachine).forEach(m=>{
+    const all=byMachine[m];
+    const frozen=[],pending=[];
+    all.forEach(x=>{
+      const st=x.it.status;
+      if(st==='Done'&&x.it.actualEnd){
+        const end=cloneDay(parseDate(x.it.actualEnd));
+        const start=x.it.actualStart?cloneDay(parseDate(x.it.actualStart)):end;
+        frozen.push({...x,start,end});
+      }else if(st==='In Progress'&&x.it.actualStart){
+        const start=skipWE(cloneDay(parseDate(x.it.actualStart)));
+        const hrs=Number(x.it.hrs)||0;
+        let end=cloneDay(start);
+        if(hrs>0){
+          let cursor=cloneDay(start),hoursLeft=8,rem=hrs;
+          while(rem>0){
+            const consume=Math.min(rem,hoursLeft);
+            rem-=consume;hoursLeft-=consume;
+            if(rem>0){cursor.setDate(cursor.getDate()+1);while(isWE(cursor))cursor.setDate(cursor.getDate()+1);hoursLeft=8;}
+          }
+          end=cloneDay(cursor);
+        }
+        frozen.push({...x,start,end});
+      }else{
+        pending.push(x);
+      }
+    });
+    frozen.forEach(x=>{
+      const wd=countWD(x.start,x.end);
+      map[x.it.id]={...x.it,start:x.start,end:x.end,wdays:wd,_planName:x.pl.name};
+    });
+    // The machine is free for pending work starting the working day AFTER
+    // the latest frozen (real) commitment on it — or its earliest plan base if none.
+    let cursor=null,hoursLeft=8;
+    if(frozen.length){
+      const latest=frozen.reduce((a,b)=>b.end>a.end?b:a);
+      cursor=cloneDay(latest.end);
+      cursor.setDate(cursor.getDate()+1);
+      while(isWE(cursor))cursor.setDate(cursor.getDate()+1);
+      hoursLeft=8;
+    }
+    const q=pending.sort((a,b)=>{
+      const bd=a.base-b.base; if(bd)return bd;
+      const pa=Number(a.it.priority)||3, pb=Number(b.it.priority)||3;
+      if(pa!==pb)return pa-pb;
+      if(a.pl.id!==b.pl.id)return a.pl.id-b.pl.id;
+      return a.idx-b.idx;
+    });
+    q.forEach(x=>{
+      if(cursor===null){cursor=skipWE(cloneDay(x.base));hoursLeft=8;}
+      else if(x.base>cursor){cursor=skipWE(cloneDay(x.base));hoursLeft=8;}
+      if(hoursLeft<=0){
+        cursor.setDate(cursor.getDate()+1);
+        while(isWE(cursor))cursor.setDate(cursor.getDate()+1);
+        hoursLeft=8;
+      }
+      const hrs=Number(x.it.hrs)||0;
+      if(hrs===0){
+        const d=cloneDay(cursor);
+        map[x.it.id]={...x.it,start:d,end:d,wdays:0,_planName:x.pl.name};
+        return;
+      }
+      const startDay=cloneDay(cursor);
+      let rem=hrs;
+      while(rem>0){
+        const consume=Math.min(rem,hoursLeft);
+        rem-=consume;hoursLeft-=consume;
+        if(rem>0){
+          cursor.setDate(cursor.getDate()+1);
+          while(isWE(cursor))cursor.setDate(cursor.getDate()+1);
+          hoursLeft=8;
+        }
+      }
+      const endDay=cloneDay(cursor);
+      const wd=countWD(startDay,endDay);
+      map[x.it.id]={...x.it,start:startDay,end:endDay,wdays:wd,_planName:x.pl.name};
+    });
+  });
+  return map;
+}
+
+function computeSchedForPlan(pl){
+  if(!pl)return[];
+  const map=computeGlobalSchedule();
+  return pl.items.map(it=>map[it.id]||{...it,start:null,end:null,wdays:0,_planName:pl.name});
+}
+
+function computeSched(){
+  if(isAllMode())return getAllSched();
+  const pl=getPlan();
+  return computeSchedForPlan(pl);
+}
+
+/* ══════════════════════════════════════════
+   STATUS CHANGE — captures ACTUAL dates
+   Done / In Progress freeze real dates so future
+   scheduling on that machine is anchored to what
+   really happened, not the original estimate.
+══════════════════════════════════════════ */
+function statusSelect(id,val){
+  const opts=STATUS_OPTS.map(s=>`<option value="${s}"${s===val?' selected':''}>${s}</option>`).join('');
+  const cls=STATUS_CLS[val]||'st-ns';
+  return`<select class="status-sel ${cls}" onchange="handleStatusChange(${id},this)">${opts}</select>`;
+}
+
+function findItemLoc(id){
+  for(const pr of projects){
+    for(const pl of pr.plans){
+      const idx=pl.items.findIndex(it=>it.id===id);
+      if(idx>=0)return{pr,pl,idx};
+    }
+  }
+  return null;
+}
+
+function updMulti(id,fields){
+  const loc=findItemLoc(id);if(!loc)return;
+  const it=loc.pl.items[loc.idx];
+  const next={...it};
+  Object.keys(fields).forEach(f=>{
+    next[f]=(f==='hrs'||f==='qty'||f==='priority')?+fields[f]:fields[f];
+  });
+  loc.pl.items[loc.idx]=next;
+  markUnsaved();render();
+}
+
+function askDateModal(title,defVal){
+  return new Promise(resolve=>{
+    const ov=document.createElement('div');
+    ov.style.cssText='position:fixed;inset:0;background:rgba(13,27,75,.55);display:flex;align-items:center;justify-content:center;z-index:10000;font-family:Arial,sans-serif';
+    ov.innerHTML=`<div style="background:#fff;border-radius:10px;padding:22px 24px;width:290px;box-shadow:0 10px 30px rgba(0,0,0,.3)">
+      <div style="font-size:13px;font-weight:700;color:#0d1b4b;margin-bottom:12px;line-height:1.4">${esc(title)}</div>
+      <input type="date" id="__dm_input" value="${defVal||todayStr()}" style="width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:6px;font-size:13px;margin-bottom:14px;box-sizing:border-box">
+      <div style="display:flex;gap:8px;justify-content:flex-end">
+        <button id="__dm_cancel" style="padding:7px 14px;border:none;border-radius:6px;background:#e2e8f0;color:#334155;font-size:12px;cursor:pointer">Cancel</button>
+        <button id="__dm_ok" style="padding:7px 14px;border:none;border-radius:6px;background:#378ADD;color:#fff;font-size:12px;font-weight:600;cursor:pointer">Confirm</button>
+      </div>
+    </div>`;
+    document.body.appendChild(ov);
+    const input=ov.querySelector('#__dm_input');
+    input.focus();
+    function close(val){document.body.removeChild(ov);resolve(val);}
+    ov.querySelector('#__dm_ok').onclick=()=>{
+      if(!input.value){input.style.borderColor='#dc2626';return;}
+      close(input.value);
+    };
+    ov.querySelector('#__dm_cancel').onclick=()=>close(null);
+    input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(input.value)close(input.value);}});
+  });
+}
+
+async function handleStatusChange(id,selectEl){
+  const newVal=selectEl.value;
+  const loc=findItemLoc(id);
+  const it=loc?loc.pl.items[loc.idx]:null;
+  const oldVal=it?(it.status||'Not Started'):'Not Started';
+  if(!it||newVal===oldVal)return;
+
+  if(newVal==='Done'){
+    const defStart=(it.actualStart||it.actualEnd)||todayStr();
+    const s=await askDateModal('Actual start date — when did work actually begin?',defStart);
+    if(s===null){selectEl.value=oldVal;return;}
+    const e=await askDateModal('Actual finish date — when was it actually completed?',s);
+    if(e===null){selectEl.value=oldVal;return;}
+    updMulti(id,{status:newVal,actualStart:s,actualEnd:e});
+  }else if(newVal==='In Progress'){
+    if(it.actualStart){
+      // Re-opening a job that already has a recorded start; clear any stale finish date.
+      updMulti(id,{status:newVal,actualEnd:''});
+    }else{
+      const s=await askDateModal('Actual start date — when did work actually begin?',todayStr());
+      if(s===null){selectEl.value=oldVal;return;}
+      updMulti(id,{status:newVal,actualStart:s,actualEnd:''});
+    }
+  }else{
+    // Not Started / On Hold — release the frozen actual dates, item goes back to fully projected.
+    updMulti(id,{status:newVal,actualStart:'',actualEnd:''});
+  }
+}
+
+/* ══════════════════════════════════════════
+   MACHINE COMBOBOX — fixed position, no re-render on input
+══════════════════════════════════════════ */
+let activeCombo=null;
+
+function buildCombo(itemId,val,extraClass){
+  const ec=extraClass||'';
+  return`<div class="combo-wrap ${ec}">
+    <input class="combo-input" id="ci_${itemId}" value="${esc(val)}"
+      autocomplete="off"
+      oninput="comboFilter(${itemId},this.value)"
+      onfocus="comboOpen(${itemId})"
+      onblur="comboClose(${itemId})"
+      onkeydown="comboKey(event,${itemId})">
+    <span class="combo-arrow">▼</span>
+    <div class="combo-list" id="cl_${itemId}"></div>
+  </div>`;
+}
+
+function comboFilter(itemId,q){
+  // update item machine value WITHOUT full re-render
+  const pl=getPlan();if(!pl)return;
+  pl.items=pl.items.map(it=>it.id===itemId?{...it,machine:q}:it);
+  // refresh dropdown options only
+  populateComboList(itemId,q);
+  // re-render gantt only (not table — keeps focus)
+  const sched=computeSched();
+  if(currentView==='table')renderGantt(sched);
+  else renderMachineView(sched);
+  renderSummary(sched);
+}
+
+function populateComboList(itemId,q){
+  const list=document.getElementById('cl_'+itemId);
+  if(!list)return;
+  const filtered=MACHINES.filter(m=>m.toLowerCase().includes((q||'').toLowerCase()));
+  list.innerHTML=filtered.map(m=>`<div class="combo-opt" onmousedown="comboPickOpt(${itemId},'${m}')">${m}</div>`).join('');
+}
+
+function comboOpen(itemId){
+  if(activeCombo&&activeCombo!==itemId)comboClose(activeCombo);
+  activeCombo=itemId;
+  const inp=document.getElementById('ci_'+itemId);
+  const list=document.getElementById('cl_'+itemId);
+  if(!inp||!list)return;
+  populateComboList(itemId,inp.value);
+  // position list using fixed coords
+  const rect=inp.getBoundingClientRect();
+  list.style.top=(rect.bottom+window.scrollY)+'px';
+  list.style.left=(rect.left+window.scrollX)+'px';
+  list.style.width=Math.max(rect.width,140)+'px';
+  list.classList.add('open');
+}
+
+function comboClose(itemId){
+  const list=document.getElementById('cl_'+itemId);
+  if(list)list.classList.remove('open');
+  if(activeCombo===itemId)activeCombo=null;
+}
+
+function comboPickOpt(itemId,m){
+  // mousedown fires before blur — update model and input
+  const pl=getPlan();if(!pl)return;
+  pl.items=pl.items.map(it=>it.id===itemId?{...it,machine:m}:it);
+  const inp=document.getElementById('ci_'+itemId);
+  if(inp)inp.value=m;
+  comboClose(itemId);
+  render();
+}
+
+function comboKey(e,itemId){
+  if(e.key==='Escape')comboClose(itemId);
+  if(e.key==='Enter'){comboClose(itemId);render();}
+}
+
+/* ══════════════════════════════════════════
+   MUTATIONS
+══════════════════════════════════════════ */
+function upd(id,f,v){
+  const pl=getPlan();if(!pl)return;
+  pl.items=pl.items.map(it=>it.id===id?{...it,[f]:(f==='hrs'||f==='qty'||f==='priority')?+v:v}:it);
+  markUnsaved();render();
+}
+function delItem(id){const pl=getPlan();if(!pl)return;pl.items=pl.items.filter(it=>it.id!==id);markUnsaved();render();}
+function addItem(){
+  const pl=getPlan();if(!pl)return;
+  pl.items.push({id:nid++,erp:'RM-NEW',desc:'New item',pn:'',qty:1,hrs:8,machine:'M1000',priority:3,status:'Not Started'});
+  markUnsaved();render();
+}
+function moveItem(fromIdx,toIdx){
+  const pl=getPlan();if(!pl)return;
+  const arr=[...pl.items];
+  const[moved]=arr.splice(fromIdx,1);
+  arr.splice(toIdx,0,moved);
+  pl.items=arr;markUnsaved();render();
+}
+function moveMachineItem(m,fromIdx,toIdx){
+  const pl=getPlan();if(!pl)return;
+  const mIdxs=pl.items.map((it,gi)=>it.machine===m?gi:-1).filter(gi=>gi>=0);
+  if(!mIdxs[fromIdx]===undefined||mIdxs[toIdx]===undefined)return;
+  const arr=[...pl.items];
+  const fromGlobal=mIdxs[fromIdx];
+  const toGlobal=mIdxs[toIdx];
+  const[moved]=arr.splice(fromGlobal,1);
+  arr.splice(toGlobal,0,moved);
+  pl.items=arr;markUnsaved();render();
+}
+function setMachineStart(m,val){
+  const pl=getPlan();if(!pl)return;
+  if(!pl.machineStarts)pl.machineStarts={};
+  pl.machineStarts[m]=val;
+  markUnsaved();render();
+}
+
+/* PROJECT / PLAN MANAGEMENT */
+function addProject(){
+  const name=prompt('Project name:','New Project');if(!name)return;
+  const id=Date.now(),planId=id+1;
+  projects.push({id,name,plans:[{id:planId,name:'Plan 1',startDate:todayStr(),machineStarts:{},items:[]}]});
+  activeProjId=id;activePlanId=planId;markUnsaved();render();
+}
+function delProject(id,e){
+  e.stopPropagation();
+  if(projects.length<=1){alert('At least one project required.');return;}
+  if(!confirm('Delete project?'))return;
+  projects=projects.filter(p=>p.id!==id);
+  activeProjId=projects[0].id;activePlanId=projects[0].plans[0].id;markUnsaved();render();
+}
+function switchProject(id){
+  activeProjId=id;
+  if(id==='all'){activePlanId='all';}
+  else{activePlanId=getProj().plans[0].id;}
+  render();
+}
+
+function addPlan(){
+  const pr=getProj();if(!pr)return;
+  const name=prompt('Plan name:','New Plan');if(!name)return;
+  const id=Date.now();
+  pr.plans.push({id,name,startDate:todayStr(),machineStarts:{},items:[]});
+  activePlanId=id;markUnsaved();render();
+}
+function delPlan(id,e){
+  e.stopPropagation();
+  const pr=getProj();if(!pr)return;
+  if(pr.plans.length<=1){alert('At least one plan required.');return;}
+  if(!confirm('Delete plan?'))return;
+  pr.plans=pr.plans.filter(p=>p.id!==id);
+  activePlanId=pr.plans[0].id;markUnsaved();render();
+}
+function switchPlan(id){activePlanId=id;render();}
+function syncTitle(){
+  // header title edit
+}
+function setView(v){
+  currentView=v;
+  document.getElementById('tableView').style.display=v==='table'?'block':'none';
+  document.getElementById('machineView').className='machine-view'+(v==='machine'?' show':'');
+  document.getElementById('vt-table').className='vt-btn'+(v==='table'?' active':'');
+  document.getElementById('vt-machine').className='vt-btn'+(v==='machine'?' active':'');
+  render();
+}
+
+/* ══════════════════════════════════════════
+   DRAG & DROP — TABLE VIEW
+══════════════════════════════════════════ */
+function dragStart(e,idx){
+  dragSrc={type:'table',fromIdx:idx};
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed='move';
+  e.dataTransfer.setData('text/plain',idx);
+}
+function dragOver(e,idx){
+  e.preventDefault();e.dataTransfer.dropEffect='move';
+  document.querySelectorAll('#tbody tr').forEach(r=>r.classList.remove('drag-over'));
+  if(dragSrc&&dragSrc.fromIdx!==idx)e.currentTarget.classList.add('drag-over');
+}
+function dragLeave(e){e.currentTarget.classList.remove('drag-over');}
+function drop(e,toIdx){
+  e.preventDefault();
+  document.querySelectorAll('#tbody tr').forEach(r=>{r.classList.remove('drag-over');r.classList.remove('dragging');});
+  if(dragSrc&&dragSrc.type==='table'&&dragSrc.fromIdx!==toIdx)moveItem(dragSrc.fromIdx,toIdx);
+  dragSrc=null;
+}
+
+/* ══════════════════════════════════════════
+   DRAG & DROP — MACHINE VIEW
+══════════════════════════════════════════ */
+function mvDragStart(e,machine,idx){
+  dragSrc={type:'machine',machine,fromIdx:idx};
+  e.currentTarget.classList.add('mv-dragging');
+  e.dataTransfer.effectAllowed='move';
+}
+function mvDragOver(e,machine,idx){
+  e.preventDefault();
+  document.querySelectorAll('.mv-table tr').forEach(r=>r.classList.remove('mv-drag-over'));
+  if(dragSrc&&dragSrc.machine===machine&&dragSrc.fromIdx!==idx)e.currentTarget.classList.add('mv-drag-over');
+}
+function mvDragLeave(e){e.currentTarget.classList.remove('mv-drag-over');}
+function mvDrop(e,machine,toIdx){
+  e.preventDefault();
+  document.querySelectorAll('.mv-table tr').forEach(r=>{r.classList.remove('mv-drag-over');r.classList.remove('mv-dragging');});
+  if(dragSrc&&dragSrc.type==='machine'&&dragSrc.machine===machine&&dragSrc.fromIdx!==toIdx)
+    moveMachineItem(machine,dragSrc.fromIdx,toIdx);
+  dragSrc=null;
+}
+
+/* ══════════════════════════════════════════
+   RENDER
+══════════════════════════════════════════ */
+function render(){
+  renderProjTabs();
+  renderPlanTabs();
+  renderControls();
+  const sched=computeSched();
+  renderSummary(sched);
+  if(currentView==='table'){renderTable(sched);renderGantt(sched);}
+  else renderMachineView(sched);
+  const pl=getPlan();
+  const pr=getProj();
+  const titleEl=document.getElementById('mainTitle');
+  if(titleEl&&!titleEl.matches(':focus')){
+    if(activeProjId==='all') titleEl.value='All Projects — Overview';
+    else if(activePlanId==='all') titleEl.value=(pr?pr.name:'')+' — All Plans';
+    else titleEl.value=(pr?pr.name:'')+(pl?' — '+pl.name:'');
+  }
+}
+
+function renderProjTabs(){
+  const el=document.getElementById('projTabs');
+  let h=`<button class="tab-btn view-all${activeProjId==='all'?' active':''}" onclick="switchProject('all')">🌐 All Projects</button>`;
+  projects.forEach(p=>{
+    const a=p.id===activeProjId;
+    h+=`<button class="tab-btn${a?' active':''}" onclick="switchProject(${p.id})">${esc(p.name)}<button class="tab-x" onclick="delProject(${p.id},event)">×</button></button>`;
+  });
+  h+=`<button class="tab-add" onclick="addProject()">+ Project</button>`;
+  el.innerHTML=h;
+}
+function renderPlanTabs(){
+  const pr=getProj();const el=document.getElementById('planTabs');
+  if(activeProjId==='all'){
+    el.innerHTML='<span style="font-size:11px;color:#64748b;padding:4px 8px">Showing all plans across all projects</span>';
+    return;
+  }
+  if(!pr){el.innerHTML='';return;}
+  let h=`<button class="plan-tab view-all-plans${activePlanId==='all'?' active':''}" onclick="switchPlan('all')">📋 All Plans</button>`;
+  pr.plans.forEach(p=>{
+    const a=p.id===activePlanId;
+    h+=`<button class="plan-tab${a?' active':''}" onclick="switchPlan(${p.id})">${esc(p.name)}<button class="plan-x" onclick="delPlan(${p.id},event)">×</button></button>`;
+  });
+  h+=`<button class="plan-add" onclick="addPlan()">+ Plan</button>`;
+  el.innerHTML=h;
+}
+function renderControls(){
+  const pl=getPlan();
+  const pn=document.getElementById('planName');
+  const sd=document.getElementById('startDate');
+  const addBtn=document.querySelector('.btn-add');
+  if(isAllMode()){
+    if(!pn.matches(':focus'))pn.value='';
+    pn.placeholder='— view only —';
+    pn.disabled=true;
+    if(sd)sd.disabled=true;
+    if(addBtn)addBtn.style.display='none';
+  } else {
+    pn.disabled=false;pn.placeholder='Plan name...';
+    if(sd)sd.disabled=false;
+    if(addBtn)addBtn.style.display='';
+    if(pl){
+      if(!pn.matches(':focus'))pn.value=pl.name||'';
+      if(!sd.matches(':focus'))sd.value=pl.startDate||'';
+    }
+  }
+}
+function renderSummary(sched){
+  const items=sched.length?sched:getItems().map(it=>({...it,start:null,end:null,wdays:0}));
+  const totHrs=items.reduce((a,b)=>a+(b.hrs||0),0);
+  const ends=sched.filter(x=>x.end).map(x=>x.end.getTime());
+  const starts=sched.filter(x=>x.start).map(x=>x.start.getTime());
+  const pEnd=ends.length?new Date(Math.max(...ends)):null;
+  const pStart=starts.length?new Date(Math.min(...starts)):null;
+  const wd=pStart&&pEnd?countWD(pStart,pEnd):0;
+  const machines=[...new Set(items.map(it=>it.machine))].filter(Boolean);
+  let extra='';
+  if(activeProjId==='all') extra=`<div class="sc"><div class="sl">Projects</div><div class="sv">${projects.length}</div></div>`;
+  else if(activePlanId==='all'){const pr=getProj();extra=`<div class="sc"><div class="sl">Plans</div><div class="sv">${pr?pr.plans.length:0}</div></div>`;}
+  document.getElementById('scards').innerHTML=`
+    ${extra}
+    <div class="sc"><div class="sl">Items</div><div class="sv">${items.length}</div></div>
+    <div class="sc"><div class="sl">Total hrs</div><div class="sv">${totHrs.toFixed(1)}</div></div>
+    <div class="sc"><div class="sl">Working days</div><div class="sv">${wd||'—'}</div></div>
+    <div class="sc"><div class="sl">Machines</div><div class="sv">${machines.length}</div></div>
+    <div class="sc"><div class="sl">Project end</div><div class="sv" style="font-size:12px">${fmtD(pEnd)||'—'}</div></div>
+  `;
+}
+
+/* ══════════════════════════════════════════
+   TABLE RENDER
+══════════════════════════════════════════ */
+function renderTable(sched){
+  const showPrio=document.getElementById('prioToggle').checked;
+  const allMode=isAllMode();
+  const groupCol=activeProjId==='all'?'Project / Plan':activePlanId==='all'?'Plan':'';
+  document.getElementById('thead').innerHTML=`<tr>
+    ${allMode?'':`<th style="width:22px" class="no-print"></th>`}
+    <th style="width:30px">#</th>
+    ${groupCol?`<th style="min-width:110px">${groupCol}</th>`:''}
+    <th style="width:85px">ERP code</th>
+    <th style="width:148px">Description</th>
+    <th style="width:96px">Part number</th>
+    <th style="width:52px">Qty</th>
+    <th style="width:54px">Hrs</th>
+    <th style="width:118px">Machine</th>
+    ${showPrio?'<th style="width:96px">Priority</th>':''}
+    <th style="width:82px">Start</th>
+    <th style="width:82px">End</th>
+    <th style="width:46px">W.days</th>
+    <th style="width:96px">Status</th>
+    ${allMode?'':`<th style="width:26px" class="no-print"></th>`}
+  </tr>`;
+  const tb=document.getElementById('tbody');
+  if(!sched.length){tb.innerHTML=`<tr><td colspan="14" style="text-align:center;padding:2rem;color:#94a3b8">No items</td></tr>`;return;}
+
+  // Group label per item
+  function groupLabel(it){
+    if(activeProjId==='all'){
+      // find project + plan
+      for(const pr of projects){
+        for(const pl of pr.plans){
+          if(pl.items.find(x=>x.id===it.id))
+            return`<span style="font-size:10px;line-height:1.3;display:block"><b style="color:#0d1b4b">${esc(pr.name)}</b><br><span style="color:#64748b">${esc(pl.name)}</span></span>`;
+        }
+      }
+      return'—';
+    } else {
+      return`<span style="font-size:10px;color:#475569">${esc(it._planName||'')}</span>`;
+    }
+  }
+
+  tb.innerHTML=sched.map((it,i)=>{
+    const rowDrag=allMode?'':` draggable="true" data-idx="${i}" ondragstart="dragStart(event,${i})" ondragover="dragOver(event,${i})" ondrop="drop(event,${i})" ondragleave="dragLeave(event)"`;
+    const statusCls=STATUS_CLS[it.status||'Not Started']||'st-ns';
+    // read-only cell helper (used in all-mode)
+    const ro=(val,cls)=>`<span class="${cls||'ei'}" style="display:block;padding:4px 6px;background:#f8fafc;border:1px solid #f0f3f8;border-radius:5px;font-size:${cls&&cls.includes('mono')?'10px':'11px'};${cls&&cls.includes('mono')?'font-family:monospace;':''}">${esc(String(val??''))}</span>`;
+    return`
+    <tr${rowDrag}>
+      ${allMode?'':`<td class="no-print"><div class="drag-handle">⠿</div></td>`}
+      <td style="text-align:center;color:#94a3b8;font-size:11px">${i+1}</td>
+      ${groupCol?`<td>${groupLabel(it)}</td>`:''}
+      <td>${allMode?ro(it.erp,'ei ei-mono'):`<input class="ei ei-mono" value="${esc(it.erp)}" onchange="upd(${it.id},'erp',this.value)">`}</td>
+      <td>${allMode?ro(it.desc,'ei'):`<input class="ei" value="${esc(it.desc)}" onchange="upd(${it.id},'desc',this.value)">`}</td>
+      <td>${allMode?ro(it.pn,'ei ei-mono'):`<input class="ei ei-mono" value="${esc(it.pn)}" onchange="upd(${it.id},'pn',this.value)">`}</td>
+      <td>${allMode?ro(it.qty):`<input class="ei ei-c" type="number" min="0" style="width:100%;min-width:44px" value="${it.qty}" onchange="upd(${it.id},'qty',this.value)">`}</td>
+      <td>${allMode?ro(it.hrs):`<input class="ei ei-c" type="number" min="0" step="0.5" value="${it.hrs}" onchange="upd(${it.id},'hrs',this.value)">`}</td>
+      <td>${allMode?`<span style="font-size:11px;font-weight:600;color:#185FA5;display:block;padding:2px 4px">${esc(it.machine||'—')}</span>`:buildCombo(it.id,it.machine||'M1000')}</td>
+      ${showPrio?(allMode?`<td><span class="prio ${PRIO_CLS[it.priority]||'p3'}">${PRIO_LABELS[it.priority]||'—'}</span></td>`:`<td><select class="ei" onchange="upd(${it.id},'priority',this.value)">${[1,2,3,4].map(p=>`<option value="${p}"${it.priority==p?' selected':''}>${PRIO_LABELS[p]}</option>`).join('')}</select></td>`):''}
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">${fmtShort(it.start)}</td>
+      <td style="white-space:nowrap;font-size:11px;color:#475569;text-align:center">${fmtShort(it.end)}</td>
+      <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">${it.wdays||'—'}</td>
+      <td>${allMode?`<span class="status-sel ${statusCls}" style="display:block;text-align:center;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:600">${esc(it.status||'Not Started')}</span>`:statusSelect(it.id,it.status||'Not Started')}</td>
+      ${allMode?'':`<td class="no-print"><button class="del-btn" onclick="delItem(${it.id})">×</button></td>`}
+    </tr>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════
+   GANTT RENDER
+══════════════════════════════════════════ */
+function renderGantt(sched){
+  const g=document.getElementById('gantt');
+  const valid=sched.filter(x=>x.start&&x.end);
+  // Determine base: in all-mode use earliest start; otherwise use plan start
+  let base=isAllMode()?null:getBase();
+  if(!base&&valid.length) base=new Date(Math.min(...valid.map(x=>x.start.getTime())));
+  if(!base||!valid.length){
+    g.innerHTML=`<div style="padding:2rem;text-align:center;font-size:12px;color:#94a3b8">Set a start date to see the Gantt chart</div>`;
+    document.getElementById('ganttLegend').innerHTML='';return;
+  }
+  const projEnd=new Date(Math.max(...valid.map(x=>x.end.getTime())));
+  const totalDays=Math.ceil((projEnd.getTime()-base.getTime())/864e5)+5;
+  const tod=cloneDay(new Date());
+
+  let months=[],mCur=null,mCnt=0;
+  for(let i=0;i<totalDays;i++){
+    const d=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i);
+    const mk=d.getFullYear()+'-'+d.getMonth();
+    if(mk!==mCur){if(mCur)months.push({label:mCur,count:mCnt});mCur=mk;mCnt=1;}else mCnt++;
+  }
+  if(mCur)months.push({label:mCur,count:mCnt});
+
+  const DW=20;
+  let html='<div style="display:inline-block;min-width:max-content">';
+  html+='<div class="gh-month-row"><div class="gh-month-lbl">Item</div>';
+  months.forEach(m=>{
+    const[y,mo]=m.label.split('-').map(Number);
+    const lbl=new Date(y,mo,1).toLocaleDateString('en-GB',{month:'short',year:'numeric'});
+    html+=`<div class="gh-month-cell" style="width:${m.count*DW}px;min-width:${m.count*DW}px">${lbl}</div>`;
+  });
+  html+='</div>';
+  html+='<div class="gh-row"><div class="gh-lbl">ERP — Description</div>';
+  for(let i=0;i<totalDays;i++){
+    const d=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i);
+    const we=isWE(d),isT=d.getTime()===tod.getTime();
+    html+=`<div class="gh-day${we?' we':''}${isT?' tod':''}">${d.getDate()}</div>`;
+  }
+  html+='</div>';
+  sched.forEach(it=>{
+    const mc=mColorIdx(it.machine);
+    html+=`<div class="gr-row"><div class="gr-lbl" title="${esc(it.erp)} — ${esc(it.desc)}">${esc(it.erp)} — ${esc(it.desc)}</div>`;
+    for(let i=0;i<totalDays;i++){
+      const d=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i);
+      const we=isWE(d),isT=d.getTime()===tod.getTime();
+      let cls='gc';
+      if(we)cls+=' we';
+      if(isT)cls+=' tod';
+      if(it.start&&it.end&&!we){
+        const dT=d.getTime(),sT=it.start.getTime(),eT=it.end.getTime();
+        if(dT>=sT&&dT<=eT){
+          const isS=dT===sT,isE=dT===eT;
+          const p=`m${mc}`;
+          cls+=isS&&isE?` ${p}-se`:isS?` ${p}-s`:isE?` ${p}-e`:` ${p}`;
+        }
+      }
+      html+=`<div class="${cls}"></div>`;
+    }
+    html+='</div>';
+  });
+  html+='</div>';
+  g.innerHTML=html;
+
+  const usedM=[...new Set(getItems().map(it=>it.machine).filter(Boolean))];
+  let leg=`<span class="leg-item"><span class="leg-dot" style="background:#fff5f5;border:1px solid #fca5a5"></span>Weekend</span>`;
+  leg+=`<span class="leg-item"><span style="width:2px;height:11px;background:#f59e0b;display:inline-block"></span>Today</span>`;
+  usedM.forEach(m=>{
+    const ci=mColorIdx(m);
+    leg+=`<span class="leg-item"><span class="leg-dot" style="background:${BAR_COLORS[ci]}"></span>${esc(m)}</span>`;
+  });
+  document.getElementById('ganttLegend').innerHTML=leg;
+}
+
+/* ══════════════════════════════════════════
+   MACHINE VIEW RENDER
+══════════════════════════════════════════ */
+function renderMachineView(sched){
+  const items=getItems();
+  const pl=getPlan();
+  const machines=[...new Set(items.map(it=>it.machine).filter(Boolean))].sort();
+  let html='';
+
+  machines.forEach(m=>{
+    const ci=mColorIdx(m);
+    const color=BAR_COLORS[ci];
+    const mItems=sched.filter(it=>it.machine===m);
+    const totHrs=mItems.reduce((a,b)=>a+b.hrs,0);
+    const ends=mItems.filter(x=>x.end).map(x=>x.end.getTime());
+    const mEnd=ends.length?new Date(Math.max(...ends)):null;
+    const mStart=(pl&&pl.machineStarts&&pl.machineStarts[m])||pl.startDate||'';
+
+    html+=`<div class="mv-card">
+      <div class="mv-header" style="background:${color}12;border-left:5px solid ${color}">
+        <div class="mh-left">
+          <span class="mh-name" style="color:${color}">${esc(m)}</span>
+          <span class="mh-stats">
+            <span>${mItems.length} items</span>
+            <span>${totHrs.toFixed(1)} hrs</span>
+            <span>Ends: ${fmtD(mEnd)}</span>
+          </span>
+        </div>
+        <div class="mh-start no-print">
+          <span class="lbl">Machine start:</span>
+          <input type="date" value="${mStart}" onchange="setMachineStart('${m}',this.value)" style="font-size:11px;padding:3px 7px;border-radius:5px;border:1px solid #cbd5e1;background:#fff">
+        </div>
+      </div>
+      <div class="mv-body">
+      <table class="mv-table">
+      <thead><tr>
+        <th style="width:24px" class="no-print"></th>
+        <th style="width:28px">#</th>
+        <th style="min-width:80px">ERP</th>
+        <th style="min-width:140px">Description</th>
+        <th style="min-width:90px">Part No.</th>
+        <th style="width:60px">Qty</th>
+        <th style="width:54px">Hrs</th>
+        <th style="width:82px">Start</th>
+        <th style="width:82px">End</th>
+        <th style="width:50px">W.days</th>
+        <th style="width:96px">Status</th>
+        <th style="width:26px" class="no-print"></th>
+      </tr></thead>
+      <tbody>`;
+
+    mItems.forEach((it,i)=>{
+      html+=`<tr draggable="true"
+        ondragstart="mvDragStart(event,'${m}',${i})"
+        ondragover="mvDragOver(event,'${m}',${i})"
+        ondrop="mvDrop(event,'${m}',${i})"
+        ondragleave="mvDragLeave(event)">
+        <td class="no-print"><div class="drag-handle">⠿</div></td>
+        <td style="text-align:center;color:#94a3b8;font-size:11px">${i+1}</td>
+        <td><input class="ei ei-mono" value="${esc(it.erp)}" onchange="upd(${it.id},'erp',this.value)" style="min-width:70px"></td>
+        <td><input class="ei" value="${esc(it.desc)}" onchange="upd(${it.id},'desc',this.value)" style="min-width:120px"></td>
+        <td><input class="ei ei-mono" value="${esc(it.pn)}" onchange="upd(${it.id},'pn',this.value)" style="min-width:80px"></td>
+        <td><input class="ei ei-c" type="number" min="0" value="${it.qty}" onchange="upd(${it.id},'qty',this.value)" style="width:52px;min-width:52px"></td>
+        <td><input class="ei ei-c" type="number" min="0" step="0.5" value="${it.hrs}" onchange="upd(${it.id},'hrs',this.value)" style="width:50px"></td>
+        <td style="white-space:nowrap;font-size:11px;text-align:center;color:#475569">${fmtShort(it.start)}</td>
+        <td style="white-space:nowrap;font-size:11px;text-align:center;color:#475569">${fmtShort(it.end)}</td>
+        <td style="text-align:center;font-size:12px;font-weight:700;color:#0d1b4b">${it.wdays||'—'}</td>
+        <td>${statusSelect(it.id,it.status||'Not Started')}</td>
+        <td class="no-print"><button class="del-btn" onclick="delItem(${it.id})">×</button></td>
+      </tr>`;
+    });
+
+    html+=`</tbody></table></div></div>`;
+  });
+
+  document.getElementById('machineCards').innerHTML=html||'<div style="padding:2rem;text-align:center;color:#94a3b8">No items yet</div>';
+}
+
+/* ══════════════════════════════════════════
+   LIVE INPUTS
+══════════════════════════════════════════ */
+document.getElementById('startDate').addEventListener('change',function(){
+  const pl=getPlan();if(!pl)return;pl.startDate=this.value;markUnsaved();render();
+});
+document.getElementById('planName').addEventListener('input',function(){
+  const pl=getPlan();if(!pl)return;pl.name=this.value;markUnsaved();renderPlanTabs();
+});
+document.getElementById('mainTitle').addEventListener('input',function(){
+  markUnsaved();
+});
+
+// close any open combo on outside click
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.combo-wrap')&&activeCombo!==null){
+    comboClose(activeCombo);
+  }
+});
+
+// Warn before leaving with unsaved changes
+window.addEventListener('beforeunload',function(e){
+  if(_unsavedChanges){
+    e.preventDefault();
+    e.returnValue='You have unsaved changes. Leave anyway?';
+  }
+});
+
+// Ctrl+S / Cmd+S shortcut
+document.addEventListener('keydown',function(e){
+  if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveData();}
+});
+
+/* ══════════════════════════════════════════
+   PRINT — scale the Gantt chart so its printed
+   width always matches the items table's width,
+   however wide the chart naturally is.
+══════════════════════════════════════════ */
+function doPrint(){
+  fitGanttToPrint();
+  setTimeout(()=>window.print(),50);
+}
+function fitGanttToPrint(){
+  const tblWrap=document.querySelector('.tbl-wrap');
+  const scrollEl=document.querySelector('.gantt-scroll');
+  const inner=document.querySelector('#gantt>div');
+  if(!tblWrap||!scrollEl||!inner)return;
+  inner.style.transform='';
+  inner.style.width='';
+  scrollEl.style.height='';
+  const targetWidth=tblWrap.getBoundingClientRect().width;
+  const naturalWidth=inner.scrollWidth;
+  const naturalHeight=inner.scrollHeight;
+  if(!targetWidth||!naturalWidth)return;
+  const scale=targetWidth/naturalWidth;
+  inner.style.transform=`scale(${scale})`;
+  scrollEl.style.height=(naturalHeight*scale)+'px';
+}
+function resetGanttPrint(){
+  const scrollEl=document.querySelector('.gantt-scroll');
+  const inner=document.querySelector('#gantt>div');
+  if(inner)inner.style.transform='';
+  if(scrollEl)scrollEl.style.height='';
+}
+window.addEventListener('beforeprint',fitGanttToPrint);
+window.addEventListener('afterprint',resetGanttPrint);
+if(window.matchMedia){
+  window.matchMedia('print').addEventListener('change',function(e){
+    if(e.matches)fitGanttToPrint();else resetGanttPrint();
+  });
+}
+
+// init — app bootstraps once Firebase Auth resolves (see onAuthStateChanged above),
+// which calls initAppData() to load this user's data from Firestore and render.
+</script>
+
+
+</body></html>
