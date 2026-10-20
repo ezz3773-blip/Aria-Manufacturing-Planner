@@ -309,6 +309,106 @@ table.rg-t{width:100%;border-collapse:collapse;font-size:12px}
 @media (max-width:1000px){.rg-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.rg-revgrid,.rg-grid2{grid-template-columns:1fr}}
 @media (max-width:640px){.rg-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.rg-search{width:100%}.rg-form{grid-template-columns:1fr}.mod-btn{flex:1;justify-content:center;padding:8px 8px}}
 @media print{.mod-nav,.rg-toolbar,.rg-pager,.rg-selbar,.rg-ov{display:none!important}.rg-tw.rg-tall{max-height:none;overflow:visible}}
+
+/* ═════ PROJECT NAME FIELD (enlarged) ═════ */
+.header-main{align-items:center}
+.header-main .hl-title{flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:3px}
+.hl .ht-cap{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7a9cc8}
+.hl textarea.ht-input{display:block;width:100%;min-width:0;font:700 24px/1.25 Arial,sans-serif;color:#fff;background:rgba(255,255,255,.06);border:none;border-bottom:2px solid rgba(255,255,255,.3);border-radius:7px 7px 0 0;padding:7px 10px;min-height:46px;max-height:140px;resize:none;overflow-y:hidden;white-space:pre-wrap;overflow-wrap:anywhere}
+.hl textarea.ht-input:focus{background:rgba(255,255,255,.1);border-bottom-color:rgba(255,255,255,.85)}
+.header-main .hdr-actions{flex:0 0 auto;flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:640px){.hl textarea.ht-input{font-size:18px;min-height:40px}.header-main .hl-title{flex-basis:auto;width:100%}}
+@media print{.hl textarea.ht-input{background:transparent!important;font-size:18px;border:none;max-height:none;overflow:visible}}
+
+/* ═════ PRODUCTION PLAN — EXCEL IMPORT / EXPORT ═════ */
+.pp-xl{display:flex;gap:6px;align-items:center}
+.pp-xbtn{padding:5px 13px;font-size:12px;font-weight:600;border:1.5px solid #378ADD;border-radius:7px;background:#fff;color:#185FA5;cursor:pointer;white-space:nowrap}
+.pp-xbtn:hover{background:#E6F1FB}
+.pp-xbtn-ok{border-color:#059669;color:#047857}.pp-xbtn-ok:hover{background:#ecfdf5}
+.pp-dd{position:relative}
+.pp-ddm{display:none;position:absolute;left:0;top:calc(100% + 4px);background:#fff;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 8px 24px rgba(13,27,75,.15);padding:5px;z-index:60;min-width:250px}
+.pp-dd.open .pp-ddm{display:block}
+.pp-ddm button{display:block;width:100%;text-align:left;padding:8px 10px;font:12px Arial,sans-serif;border:none;background:none;border-radius:5px;cursor:pointer;color:#1a1a2e}
+.pp-ddm button:hover:not(:disabled){background:#eef2fa}.pp-ddm button:disabled{color:#94a3b8;cursor:not-allowed}
+.pp-ddm hr{border:none;border-top:1px solid #e2e8f0;margin:4px 0}
+.pp-ck,.pp-ckh{text-align:center}
+.pp-ck input,.pp-ckh input{cursor:pointer;width:14px;height:14px;accent-color:#378ADD}
+table.main-tbl tr.pp-selrow td{background:#eef6ff}
+.pp-target{font-size:10.5px;line-height:1.3}.pp-target b{color:#0d1b4b}
+.pp-chg{font-size:10.5px;color:#1F3864}.pp-chg s{color:#94a3b8}
+.pp-scope{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:9px 12px;font-size:12px;margin-bottom:12px;line-height:1.5}
+
+/* ═════ PRINT PREVIEW & REVISION-CONTROLLED DOCUMENT ═════ */
+#ppPreview{position:fixed;inset:0;z-index:7000;background:#5b6478;display:none;flex-direction:column}
+#ppPreview.open{display:flex}
+.pp-bar{background:#0d1b4b;color:#fff;padding:10px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.pp-bar h2{font-size:14px;font-weight:700;letter-spacing:.04em;margin-right:6px}
+.pp-bar .pp-sp{flex:1}
+.pp-bar label{font-size:11.5px;color:#c8d8f0;display:inline-flex;align-items:center;gap:6px}
+.pp-bar select{font:12px Arial,sans-serif;padding:5px 8px;border-radius:6px;border:1px solid #3a4a7a;background:#132254;color:#fff;max-width:260px}
+.pp-bar .rg-btn{border-color:#3a4a7a}
+.pp-confirm{background:#fff;padding:10px 18px;border-bottom:1px solid #cbd5e1;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;font-size:12.5px}
+.pp-cf{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pp-cf .k{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b}
+.pp-cf .v{font-size:15px;font-weight:700;color:#0d1b4b;overflow-wrap:anywhere}
+.pp-cf .v.mono{font-family:Consolas,"SFMono-Regular",Menlo,monospace}
+.pp-cf .v.none{color:#b91c1c}
+.pp-msgs{flex:1 1 100%;display:flex;flex-direction:column;gap:6px}
+.pp-msg{border-radius:7px;padding:8px 12px;font-size:12px;line-height:1.5}
+.pp-msg.warn{background:#FCE4D6;color:#843C0C;border:1px solid #f4b183}
+.pp-msg.err{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.pp-msg.info{background:#eef4fc;color:#1F3864;border:1px solid #c7dcf5}
+.pp-msg b{font-weight:700}
+.pp-msg .rg-btn{margin:6px 6px 0 0}
+.pp-stage{flex:1;overflow:auto;padding:24px 12px}
+.pp-paper{background:#fff;width:297mm;max-width:none;margin:0 auto;padding:10mm;box-shadow:0 6px 30px rgba(0,0,0,.35)}
+.pp-doc{width:277mm;font-family:Arial,sans-serif;color:#111}
+.pp-doc table{border-collapse:collapse;width:100%}
+.pp-tb{border:1.5px solid #0d1b4b;margin-bottom:3mm}
+.pp-tb td{border:1px solid #0d1b4b;padding:1.4mm 2.2mm;vertical-align:top}
+.pp-tb .co{background:#0d1b4b!important;color:#fff;width:52mm;vertical-align:middle}
+.pp-tb .co .c1{font-size:7.5pt;letter-spacing:.18em;font-weight:700;color:#8fb8ea}
+.pp-tb .co .c2{font-size:14pt;font-weight:700;margin-top:1mm;letter-spacing:.02em}
+.pp-tb .k{display:block;font-size:6.5pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#475569}
+.pp-tb .v{display:block;font-size:10pt;font-weight:700;color:#0d1b4b;margin-top:.6mm;overflow-wrap:anywhere}
+.pp-tb .v.mono{font-family:Consolas,"Courier New",monospace;font-size:10.5pt}
+.pp-tb .v.none{color:#b91c1c}
+.pp-tb .st{text-align:center;vertical-align:middle;font-size:8pt;font-weight:700;letter-spacing:.08em;width:34mm}
+.pp-tb .st.ctl{background:#E2EFDA!important;color:#3a6b1f}
+.pp-tb .st.dft{background:#fee2e2!important;color:#991b1b}
+.pp-it>thead>tr.pp-colh th{background:#1F3864!important;color:#fff;font-size:7.5pt;font-weight:700;text-align:left;padding:1.4mm 1.6mm;border:1px solid #1F3864;white-space:nowrap}
+.pp-it>thead>tr.pp-hdr>th{padding:0;border:none;background:none;text-align:left;font-weight:400}
+.pp-it>tbody td{font-size:7.8pt;padding:1.1mm 1.6mm;border:1px solid #c9d1de;vertical-align:top}
+.pp-it>tbody tr:nth-child(even) td{background:#f5f8fc!important}
+.pp-it>tbody tr{break-inside:avoid;page-break-inside:avoid}
+.pp-it td.c,.pp-it th.c{text-align:center}.pp-it td.r,.pp-it th.r{text-align:right}
+.pp-it td.mono{font-family:Consolas,"Courier New",monospace;font-size:7.4pt}
+.pp-it tfoot td{font-size:7.8pt;font-weight:700;padding:1.3mm 1.6mm;border:1px solid #1F3864;background:#D9E1F2!important}
+.pp-sum{display:flex;gap:0;border:1px solid #c9d1de;margin-bottom:3mm}
+.pp-sum div{flex:1;padding:1.6mm 2.4mm;border-right:1px solid #c9d1de}
+.pp-sum div:last-child{border-right:none}
+.pp-sum .k{display:block;font-size:6.5pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#64748b}
+.pp-sum .v{display:block;font-size:10pt;font-weight:700;color:#0d1b4b;margin-top:.5mm}
+.pp-gsec{break-before:page;page-break-before:always}
+@media screen{.pp-gsec{margin-top:10mm;padding-top:8mm;border-top:2px dashed #cbd5e1;position:relative}.pp-gsec::before{content:"page break";position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#fff;color:#94a3b8;font-size:9px;padding:0 6px;letter-spacing:.1em;text-transform:uppercase}}
+.pp-gtbl{table-layout:fixed}
+.pp-gwrap{overflow:hidden;border:1px solid #c9d1de;position:relative;width:100%;min-height:20mm}
+.pp-gwrap>div{transform-origin:top left;position:absolute;left:0;top:0}
+.pp-gwrap .gr-lbl,.pp-gwrap .gh-lbl,.pp-gwrap .gh-month-lbl{width:230px;min-width:230px}
+.pp-glegend{display:flex;gap:10px;flex-wrap:wrap;font-size:7.5pt;color:#475569;padding:1.5mm 0}
+.pp-glegend .leg-item{display:flex;align-items:center;gap:4px}
+.pp-stamp{font-size:7pt;color:#475569;padding-top:1.5mm;display:flex;justify-content:space-between;gap:10px}
+.pp-draft-banner{border:1.5px solid #b91c1c;color:#991b1b;background:#fff5f5!important;font-size:8pt;font-weight:700;padding:1.6mm 2.4mm;margin-bottom:3mm;letter-spacing:.02em}
+@media (max-width:640px){.pp-bar{padding:8px 10px}.pp-confirm{padding:8px 10px}}
+@media print{
+  body.pp-printing{background:#fff!important}
+  body.pp-printing #appPage,body.pp-printing #authOverlay,body.pp-printing .rg-ov,body.pp-printing .rg-toast,body.pp-printing .combo-list,body.pp-printing .pp-bar,body.pp-printing .pp-confirm{display:none!important}
+  body.pp-printing #ppPreview{position:static!important;display:block!important;background:#fff!important;inset:auto}
+  body.pp-printing .pp-stage{overflow:visible!important;padding:0!important}
+  body.pp-printing .pp-paper{box-shadow:none!important;padding:0!important;margin:0!important;width:auto!important}
+  body.pp-printing .pp-it>thead{display:table-header-group}
+  body.pp-printing .pp-it>tfoot{display:table-row-group}
+}
 </style>
 </head>
 <body>
@@ -344,10 +444,11 @@ table.rg-t{width:100%;border-collapse:collapse;font-size:12px}
     <div class="hl co" style="color:#7a9cc8;font-size:9px;letter-spacing:.1em;text-transform:uppercase">Aria Technologies</div>
   </div>
   <div class="header-main">
-    <div class="hl">
-      <input class="ht-input" id="mainTitle" value="Manufacturing Planner" oninput="syncTitle()" placeholder="Project name...">
+    <div class="hl hl-title">
+      <span class="ht-cap no-print">Project</span>
+      <textarea class="ht-input" id="mainTitle" rows="1" spellcheck="false" oninput="syncTitle()" placeholder="Project name...">Manufacturing Planner</textarea>
     </div>
-    <div style="display:flex;gap:8px;align-items:center">
+    <div class="hdr-actions" style="display:flex;gap:8px;align-items:center">
       <span id="userEmailLabel" class="no-print" style="font-size:10.5px;color:#9db3d9;margin-right:2px"></span>
       <button class="hbtn btn-save no-print unsaved" id="saveBtn" onclick="saveData()"><span class="save-dot" id="saveDot"></span><span id="saveBtnText">Save</span></button>
       <button class="hbtn btn-print no-print" onclick="doPrint()">Print / Export PDF</button>
@@ -378,6 +479,18 @@ table.rg-t{width:100%;border-collapse:collapse;font-size:12px}
   <span class="lbl">Start date</span>
   <input type="date" id="startDate">
   <button class="btn-add no-print" onclick="addItem()">+ Add item</button>
+  <div class="pp-xl no-print">
+    <button class="pp-xbtn" onclick="PP.importStart()" title="Add or update production plan items from an Excel file">Import from Excel</button>
+    <div class="pp-dd" id="ppExpDD">
+      <button class="pp-xbtn pp-xbtn-ok" onclick="PP.toggleExportMenu(event)" title="Export production plan items to Excel">Export to Excel ▾</button>
+      <div class="pp-ddm" id="ppExpMenu">
+        <button onclick="PP.exportItems('all')" id="ppExpAll">All items in current view</button>
+        <button onclick="PP.exportItems('selected')" id="ppExpSel">Selected items</button>
+        <hr>
+        <button onclick="PP.exportTemplate()">Download import template</button>
+      </div>
+    </div>
+  </div>
   <div class="prio-toggle no-print">
     <label class="toggle-sw">
       <input type="checkbox" id="prioToggle" onchange="render()">
@@ -660,6 +773,7 @@ table.rg-t{width:100%;border-collapse:collapse;font-size:12px}
 </div><!-- /page -->
 <div class="rg-ov no-print" id="rgModal" onclick="if(event.target===this)REG.closeModal()"></div>
 <div class="rg-toast" id="rgToast"></div>
+<div id="ppPreview" aria-modal="true" role="dialog"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
@@ -845,6 +959,7 @@ async function saveData(){
   }));
   try{
     await userDocRef().set(payload);
+    REG.markSaved(payload.register);
     _unsavedChanges=false;
     btn.className='hbtn btn-save no-print saved';
     dot.style.animation='none';
@@ -1385,6 +1500,7 @@ function render(){
     else if(activePlanId==='all') titleEl.value=(pr?pr.name:'')+' — All Plans';
     else titleEl.value=(pr?pr.name:'')+(pl?' — '+pl.name:'');
   }
+  if(typeof PP!=='undefined')PP.fitTitle();
 }
 
 function renderProjTabs(){
@@ -1462,7 +1578,10 @@ function renderTable(sched){
   const showPrio=document.getElementById('prioToggle').checked;
   const allMode=isAllMode();
   const groupCol=activeProjId==='all'?'Project / Plan':activePlanId==='all'?'Plan':'';
+  PP.pruneSelection(sched);
+  const selAll=sched.length&&sched.every(it=>PP.isSel(it.id));
   document.getElementById('thead').innerHTML=`<tr>
+    <th style="width:26px;text-align:center" class="no-print pp-ckh"><input type="checkbox" title="Select all items in view" ${selAll?'checked':''} onchange="PP.selectAll(this.checked)"></th>
     ${allMode?'':`<th style="width:22px" class="no-print"></th>`}
     <th style="width:30px">#</th>
     ${groupCol?`<th style="min-width:110px">${groupCol}</th>`:''}
@@ -1480,7 +1599,7 @@ function renderTable(sched){
     ${allMode?'':`<th style="width:26px" class="no-print"></th>`}
   </tr>`;
   const tb=document.getElementById('tbody');
-  if(!sched.length){tb.innerHTML=`<tr><td colspan="14" style="text-align:center;padding:2rem;color:#94a3b8">No items</td></tr>`;return;}
+  if(!sched.length){tb.innerHTML=`<tr><td colspan="16" style="text-align:center;padding:2rem;color:#94a3b8">No items</td></tr>`;return;}
 
   // Group label per item
   function groupLabel(it){
@@ -1504,7 +1623,8 @@ function renderTable(sched){
     // read-only cell helper (used in all-mode)
     const ro=(val,cls)=>`<span class="${cls||'ei'}" style="display:block;padding:4px 6px;background:#f8fafc;border:1px solid #f0f3f8;border-radius:5px;font-size:${cls&&cls.includes('mono')?'10px':'11px'};${cls&&cls.includes('mono')?'font-family:monospace;':''}">${esc(String(val??''))}</span>`;
     return`
-    <tr${rowDrag}>
+    <tr${rowDrag}${PP.isSel(it.id)?' class="pp-selrow"':''}>
+      <td class="no-print pp-ck"><input type="checkbox" ${PP.isSel(it.id)?'checked':''} onchange="PP.toggleSel(${it.id},this.checked)" title="Select for export"></td>
       ${allMode?'':`<td class="no-print"><div class="drag-handle">⠿</div></td>`}
       <td style="text-align:center;color:#94a3b8;font-size:11px">${i+1}</td>
       ${groupCol?`<td>${groupLabel(it)}</td>`:''}
@@ -1708,6 +1828,7 @@ window.addEventListener('beforeunload',function(e){
 // Ctrl+S / Cmd+S shortcut
 document.addEventListener('keydown',function(e){
   if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();saveData();}
+  if((e.ctrlKey||e.metaKey)&&(e.key==='p'||e.key==='P')&&currentUser&&!document.body.classList.contains('pp-printing')){e.preventDefault();doPrint();}
 });
 
 /* ══════════════════════════════════════════
@@ -1716,6 +1837,11 @@ document.addEventListener('keydown',function(e){
    however wide the chart naturally is.
 ══════════════════════════════════════════ */
 function doPrint(){
+  // Print now always opens the revision-controlled print preview (see PP module).
+  if(typeof PP!=='undefined')return PP.openPreview();
+  legacyPrint();
+}
+function legacyPrint(){
   fitGanttToPrint();
   setTimeout(()=>window.print(),50);
 }
@@ -1809,6 +1935,25 @@ const REG=(function(){
         projectNames:Array.isArray(r.projectNames)?r.projectNames:[]};
     }else D=defaults();
     S.sel.clear();S.page=0;
+    markSaved(r);
+  }
+  /* Snapshot of the revisions exactly as last loaded from / written to the cloud.
+     Printing reads ONLY from this snapshot, so unsaved revisions never appear on paper. */
+  let SAVED_REVS=[];
+  function markSaved(reg){
+    const list=reg&&Array.isArray(reg.revisions)?reg.revisions:[];
+    SAVED_REVS=JSON.parse(JSON.stringify(list)).map(v=>({status:'Issued',machines:[],notes:'',...v}));
+  }
+  function savedRevisions(){return SAVED_REVS.slice();}
+  /* Latest saved, non-void revision for an exact (case-insensitive) project name. */
+  function latestSavedRev(project){
+    const k=String(project||'').trim().toLowerCase();if(!k)return null;
+    return SAVED_REVS.filter(r=>r.status!=='Void'&&String(r.project||'').trim().toLowerCase()===k).sort(revCmp)[0]||null;
+  }
+  /* Latest live (possibly unsaved) revision, used only to warn that a newer one is not saved yet. */
+  function latestLiveRev(project){
+    const k=String(project||'').trim().toLowerCase();if(!k||!D)return null;
+    return liveRevs().filter(r=>String(r.project||'').trim().toLowerCase()===k).sort(revCmp)[0]||null;
   }
   function data(){return D;}
 
@@ -2536,11 +2681,636 @@ const REG=(function(){
     }
   });
 
+  function prefillRevision(project){
+    showModule('revisions');
+    const i=$('rv_proj');if(i){i.value=project||'';revPreview();i.focus();}
+  }
   return Object.assign({load,data,showModule,render:renderCurrent,closeModal,machineForm,setStatus,machineHistory,typesForm,
+    markSaved,savedRevisions,latestSavedRev,latestLiveRev,prefillRevision,revCmp,openModal,toast,
+    _xl:{buildSheet,writeBook,needXLSX,stampName,xlSerial,C},
     saveRevision,editRevNotes,voidRevision,exportRegister,exportRevisions,exportTemplate,importStart,activeCodes,
     _test:{nextRev,projPrefix,genCode,parseCode,validateImport,S,patchSheetXml}},ui);
 })();
 
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCTION PLAN · EXCEL IMPORT / EXPORT, ITEM SELECTION,
+   PROJECT NAME FIELD SIZING, REVISION-CONTROLLED PRINT  (module: PP)
+   Works on the same in-memory `projects` data as the planner and on the
+   saved revision snapshot held by REG. Nothing here creates revisions.
+══════════════════════════════════════════════════════════════ */
+const PP=(function(){
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const h=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  const p2=n=>String(n).padStart(2,'0');
+  const norm=s=>String(s==null?'':s).trim().replace(/\s+/g,' ').toLowerCase();
+  const toast=(m,k)=>REG.toast(m,k);
+  const SEL=new Set();
+  let IMP=null;
+  const revChoice={};            // planner project id → chosen revision-register project ('' = none), this session only
+  const PV={includeGantt:true};
+
+  /* ── shared helpers ── */
+  function isoOf(d){if(!d)return '';return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+  function dmy(iso){if(!iso)return '';const[y,m,d]=String(iso).slice(0,10).split('-');return y?`${d}/${m}/${y}`:'';}
+  function nowStamp(){const d=new Date();return `${p2(d.getDate())}/${p2(d.getMonth()+1)}/${d.getFullYear()} ${p2(d.getHours())}:${p2(d.getMinutes())}`;}
+  function locateAll(){const m=new Map();projects.forEach(pr=>pr.plans.forEach(pl=>pl.items.forEach((it,idx)=>m.set(it.id,{pr,pl,idx,it}))));return m;}
+  function knownMachines(){
+    const s=new Set(MACHINES.map(norm));
+    try{REG.activeCodes().forEach(c=>s.add(norm(c)));}catch(e){}
+    projects.forEach(pr=>pr.plans.forEach(pl=>pl.items.forEach(it=>{if(it.machine)s.add(norm(it.machine));})));
+    return s;
+  }
+  function safeName(s){return String(s||'').replace(/[^A-Za-z0-9]+/g,'_').replace(/^_+|_+$/g,'').slice(0,40);}
+
+  /* ══ PROJECT NAME FIELD ══ */
+  function fitTitle(){
+    const t=$('mainTitle');if(!t||t.tagName!=='TEXTAREA')return;
+    t.title=t.value;
+    t.style.height='auto';
+    const sh=t.scrollHeight;if(!sh)return;
+    t.style.height=Math.min(sh+2,140)+'px';
+    t.style.overflowY=sh>140?'auto':'hidden';
+  }
+  (function wireTitle(){
+    const t=$('mainTitle');if(!t)return;
+    t.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();t.blur();}});
+    t.addEventListener('input',()=>{if(/[\r\n]/.test(t.value)){const p=t.selectionStart;t.value=t.value.replace(/[\r\n]+/g,' ');t.selectionStart=t.selectionEnd=p;}fitTitle();});
+    window.addEventListener('resize',fitTitle);
+  })();
+
+  /* ══ SELECTION (Items table) ══ */
+  function isSel(id){return SEL.has(id);}
+  function toggleSel(id,on){on?SEL.add(id):SEL.delete(id);render();}
+  function selectAll(on){computeSched().forEach(it=>on?SEL.add(it.id):SEL.delete(it.id));render();}
+  function pruneSelection(sched){const ids=new Set(sched.map(i=>i.id));[...SEL].forEach(id=>{if(!ids.has(id))SEL.delete(id);});}
+  function toggleExportMenu(e){
+    e.stopPropagation();
+    const dd=$('ppExpDD');const open=!dd.classList.contains('open');
+    if(open){
+      const n=computeSched().length,k=[...SEL].length;
+      $('ppExpAll').textContent=`All items in current view (${n})`;
+      $('ppExpSel').textContent=`Selected items (${k})`;
+      $('ppExpSel').disabled=!k;$('ppExpAll').disabled=!n;
+    }
+    dd.classList.toggle('open',open);
+  }
+  function closeMenu(){const dd=$('ppExpDD');if(dd)dd.classList.remove('open');}
+  document.addEventListener('click',e=>{if(!e.target.closest('#ppExpDD'))closeMenu();});
+
+  /* ══ EXCEL EXPORT ══ */
+  const COLS=[
+    {k:'project',h:'Project',w:20},
+    {k:'plan',h:'Plan',w:18},
+    {k:'erp',h:'Item Code (ERP)',w:16},
+    {k:'desc',h:'Description',w:34,wrap:true},
+    {k:'pn',h:'Part Number',w:26},
+    {k:'qty',h:'Qty',w:7,t:'num'},
+    {k:'hrs',h:'Hrs',w:7,t:'num'},
+    {k:'machine',h:'Machine',w:14},
+    {k:'priority',h:'Priority',w:9,t:'num'},
+    {k:'status',h:'Status',w:13},
+    {k:'actualStart',h:'Actual Start',w:12,t:'date'},
+    {k:'actualEnd',h:'Actual End',w:12,t:'date'},
+    {k:'pStart',h:'Planned Start (calc)',w:13,t:'date',calc:true},
+    {k:'pEnd',h:'Planned End (calc)',w:13,t:'date',calc:true},
+    {k:'wdays',h:'W.Days (calc)',w:9,t:'num',calc:true},
+    {k:'id',h:'Item ID',w:10,t:'num'}
+  ];
+  const sheetCols=cols=>cols.map(c=>({h:c.h,w:c.w,k:c.t,wrap:c.wrap}));
+  function scopeLabel(){
+    if(activeProjId==='all')return {project:'All projects',plan:'All plans'};
+    const pr=getProj(),pl=getPlan();
+    return {project:pr?pr.name:'',plan:activePlanId==='all'?'All plans':(pl?pl.name:'')};
+  }
+  function revInfoFor(prName){
+    const ch=resolveRevProject(prName,null);
+    const r=ch.name?REG.latestSavedRev(ch.name):null;
+    return r?`${r.revNo} (${dmy(r.revDate)})`:'No saved revision';
+  }
+  async function exportItems(scope){
+    closeMenu();
+    const X=REG._xl;if(!X.needXLSX())return;
+    const sched=computeSched();
+    const list=scope==='selected'?sched.filter(it=>SEL.has(it.id)):sched;
+    if(!list.length)return toast(scope==='selected'?'No items selected. Tick items in the table first.':'No items to export','err');
+    const loc=locateAll();
+    const rows=list.map(s=>{
+      const L=loc.get(s.id);const it=L?L.it:s;
+      return [L?L.pr.name:'',L?L.pl.name:'',it.erp,it.desc,it.pn,it.qty,it.hrs,it.machine,it.priority==null?'':it.priority,
+        it.status||'Not Started',it.actualStart||'',it.actualEnd||'',isoOf(s.start),isoOf(s.end),s.wdays||0,it.id];
+    });
+    const ws=X.buildSheet('Production Plan',sheetCols(COLS),rows,{note:'Columns marked (calc) are calculated by the planner and ignored on import. Item ID links a row to its existing item: do not edit it, leave it blank for new items.'});
+    const sc=scopeLabel();
+    const projNames=[...new Set(list.map(s=>{const L=loc.get(s.id);return L?L.pr.name:'';}).filter(Boolean))];
+    const info=[['Project scope',sc.project],['Plan scope',sc.plan],['Export scope',scope==='selected'?'Selected items':'All items in view'],['Items exported',String(list.length)]]
+      .concat(projNames.map(n=>['Latest saved revision · '+n,revInfoFor(n)]))
+      .concat([['Exported by',(currentUser&&currentUser.email)||''],['Exported at',nowStamp()],
+        ['Re-import','Edit the Production Plan sheet and import it back with "Import from Excel". Rows are matched to existing items by Item ID, then by Item Code within the plan.']]);
+    const infoWs=X.buildSheet('Export Information',[{h:'Field',w:34},{h:'Value',w:70,wrap:true}],info);delete infoWs['!autofilter'];
+    const name=`Production_Plan_${safeName(sc.project)}${sc.plan&&sc.plan!=='All plans'?'_'+safeName(sc.plan):''}${scope==='selected'?'_selected':''}_${X.stampName()}.xlsx`;
+    await X.writeBook([['Production Plan',ws],['Export Info',infoWs],['Lists',listsSheet()]],name);
+    toast(`Exported ${list.length} item${list.length>1?'s':''}`,'ok');
+  }
+  function listsSheet(){
+    const X=REG._xl;
+    const ms=[...new Set(MACHINES.concat(REG.activeCodes()))];
+    const n=Math.max(STATUS_OPTS.length,4,ms.length);
+    const rows=Array.from({length:n},(_,i)=>[STATUS_OPTS[i]||'',i<4?String(i+1):'',i<4?PRIO_LABELS[i+1]:'',ms[i]||'']);
+    const ws=X.buildSheet('Allowed Values',[{h:'Status',w:16},{h:'Priority',w:9},{h:'Priority meaning',w:16},{h:'Machines',w:18}],rows);
+    delete ws['!autofilter'];return ws;
+  }
+  async function exportTemplate(){
+    closeMenu();
+    const X=REG._xl;if(!X.needXLSX())return;
+    const cols=COLS.filter(c=>!c.calc&&c.k!=='id');
+    const blank=Array.from({length:30},()=>cols.map(()=>''));
+    const ws=X.buildSheet('Production Plan Import Template',sheetCols(cols),blank,{input:true,note:'Fill the cream rows. Required: Item Code, Description, Qty, Hrs, Machine. Leave Project and Plan blank to import into the plan that is open.'});
+    delete ws['!autofilter'];
+    const ins=[
+      ['Project','Optional','Existing project name. Blank = the project that is open in the planner.'],
+      ['Plan','Optional','Existing plan name inside that project. Blank = the plan that is open. Plans are not created by import.'],
+      ['Item Code (ERP)','Required','Unique within a plan. Used to match existing items, e.g. RM-02456.'],
+      ['Description','Required','Free text.'],
+      ['Part Number','Optional','Free text, e.g. LR340/01-X1-001.'],
+      ['Qty','Required','Number, 0 or more.'],
+      ['Hrs','Required','Machining hours, number, 0 or more.'],
+      ['Machine','Required','Machine code as used in the planner (see the Lists sheet), e.g. M1000.'],
+      ['Priority','Optional','1 Critical, 2 High, 3 Normal, 4 Low. Blank = 3 for new items, unchanged for existing items.'],
+      ['Status','Optional','Not Started, In Progress, Done or On Hold. Blank = Not Started for new items, unchanged for existing items.'],
+      ['Actual Start','Conditional','Required when Status is In Progress. Date, e.g. 2026-05-12 or 12/05/2026.'],
+      ['Actual End','Conditional','Required when Status is Done. Must not be before Actual Start.'],
+      ['Item ID','Export only','Present in exported files. Links the row to an existing item. Do not edit.']
+    ];
+    const insWs=X.buildSheet('Import Instructions',[{h:'Column',w:20},{h:'Rule',w:13},{h:'Details',w:90,wrap:true}],ins);delete insWs['!autofilter'];
+    await X.writeBook([['Import Template',ws],['Instructions',insWs],['Lists',listsSheet()]],'Production_Plan_Import_Template.xlsx');
+  }
+
+  /* ══ EXCEL IMPORT ══ */
+  const ALIAS={project:['project','project name'],plan:['plan','plan name'],
+    erp:['item code (erp)','item code','erp code','erp','code','item'],desc:['description','desc','item description'],
+    pn:['part number','part no','part no.','part #','pn'],qty:['qty','quantity'],hrs:['hrs','hours','hrs.','machining hours'],
+    machine:['machine','machine code','machine assignment'],priority:['priority','prio'],status:['status'],
+    actualStart:['actual start','actual start date'],actualEnd:['actual end','actual end date','actual finish'],id:['item id']};
+  const FIELDS=Object.keys(ALIAS);
+  const REQUIRED={erp:'Item Code',desc:'Description',qty:'Qty',hrs:'Hrs',machine:'Machine'};
+  const CMP=['erp','desc','pn','qty','hrs','machine','priority','status','actualStart','actualEnd'];
+  const LABEL={erp:'Item code',desc:'Description',pn:'Part no.',qty:'Qty',hrs:'Hrs',machine:'Machine',priority:'Priority',status:'Status',actualStart:'Actual start',actualEnd:'Actual end'};
+
+  function cellStr(v){if(v==null)return '';if(v instanceof Date)return isoOf(v);return String(v).trim();}
+  function parseNum(v){
+    if(v===''||v==null)return {blank:true};
+    if(typeof v==='number')return isFinite(v)?{v}:{bad:true};
+    const t=String(v).trim().replace(/,/g,'');if(!t)return {blank:true};
+    const n=Number(t);return isFinite(n)?{v:n}:{bad:true};
+  }
+  const MONS=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+  function validYMD(y,m,d){if(y<1900||y>2200||m<1||m>12||d<1)return null;const dt=new Date(y,m-1,d);return dt.getMonth()===m-1&&dt.getDate()===d?`${y}-${p2(m)}-${p2(d)}`:null;}
+  function parseDateCell(v){
+    if(v===''||v==null)return {blank:true};
+    if(v instanceof Date&&!isNaN(v))return {v:isoOf(v)};
+    if(typeof v==='number'){
+      if(v<1||v>2958465)return {bad:true};
+      const d=new Date(Math.round((Math.floor(v)-25569)*864e5));
+      return {v:`${d.getUTCFullYear()}-${p2(d.getUTCMonth()+1)}-${p2(d.getUTCDate())}`};
+    }
+    const t=String(v).trim();if(!t)return {blank:true};
+    let m,r=null;
+    if((m=/^(\d{4})-(\d{1,2})-(\d{1,2})(?:[T ].*)?$/.exec(t)))r=validYMD(+m[1],+m[2],+m[3]);
+    else if((m=/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2}|\d{4})$/.exec(t)))r=validYMD(m[3].length===2?2000+ +m[3]:+m[3],+m[2],+m[1]);
+    else if((m=/^(\d{1,2})[\s\-]([A-Za-z]{3})[a-z]*[\s\-,]+(\d{2}|\d{4})$/.exec(t))){const mi=MONS.indexOf(m[2].toLowerCase());if(mi>=0)r=validYMD(m[3].length===2?2000+ +m[3]:+m[3],mi+1,+m[1]);}
+    return r?{v:r}:{bad:true};
+  }
+
+  function importStart(){
+    closeMenu();
+    if(!REG._xl.needXLSX())return;
+    const sc=scopeLabel();
+    const target=activeProjId==='all'?'Every row must name its Project and Plan (All Projects is open).'
+      :activePlanId==='all'?`Rows with a blank Plan column need a Plan name (All Plans of <b>${h(sc.project)}</b> is open).`
+      :`Rows with blank Project and Plan go into <b>${h(sc.project)}</b> / <b>${h(sc.plan)}</b>.`;
+    REG.openModal(`<h2 class="rg-mh">Import production plan items from Excel</h2>
+      <div class="rg-mbody">
+        <div class="pp-scope">${target}</div>
+        <div class="rg-drop" id="ppim_drop"><input type="file" id="ppim_file" accept=".xlsx,.xls" hidden>
+          <div><b>Choose an .xlsx or .xls file</b> or drop it here</div>
+          <div class="rg-dim">Columns read: Project, Plan, Item Code (ERP), Description, Part Number, Qty, Hrs, Machine, Priority, Status, Actual Start, Actual End, Item ID</div>
+          <button class="rg-btn" onclick="document.getElementById('ppim_file').click()">Browse…</button></div>
+        <div class="rg-modes"><span class="rg-lbl">When an item already exists in the target plan</span>
+          <label class="rg-chk"><input type="radio" name="ppim_mode" value="update" checked> Add new items and update existing items (you confirm before anything is overwritten)</label>
+          <label class="rg-chk"><input type="radio" name="ppim_mode" value="new"> Add new items only (skip existing items)</label></div>
+        <p class="rg-dim">Nothing changes until you review the preview and confirm. Need a starting file? <a href="#" onclick="PP.exportTemplate();return false">Download the import template</a>, or export the current plan and edit it.</p>
+        <div class="rg-err" id="ppim_err"></div>
+      </div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.closeModal()">Cancel</button></div>`);
+    const f=$('ppim_file'),drop=$('ppim_drop');
+    f.onchange=()=>f.files[0]&&readImport(f.files[0]);
+    drop.ondragover=e=>{e.preventDefault();drop.classList.add('over');};
+    drop.ondragleave=()=>drop.classList.remove('over');
+    drop.ondrop=e=>{e.preventDefault();drop.classList.remove('over');const fl=e.dataTransfer.files[0];if(fl)readImport(fl);};
+  }
+
+  async function readImport(file){
+    const err=$('ppim_err');if(err)err.textContent='';
+    const fail=m=>{if(err)err.textContent=m;return null;};
+    if(!/\.xlsx?$/i.test(file.name))return fail('Please choose an .xlsx or .xls file.');
+    const mode=(document.querySelector('input[name=ppim_mode]:checked')||{}).value||'update';
+    let wb;
+    try{wb=XLSX.read(await file.arrayBuffer(),{type:'array'});}catch(e){return fail('Could not read this file: '+e.message);}
+    const res=parseWorkbook(wb);
+    if(res.error)return fail(res.error);
+    IMP={file:file.name,sheet:res.sheet,mode,rows:res.rows,missingCols:res.missing,errOnly:false};
+    validate();renderPreview();
+  }
+  function parseWorkbook(wb){
+    let found=null;
+    for(const sn of wb.SheetNames){
+      const aoa=XLSX.utils.sheet_to_json(wb.Sheets[sn],{header:1,defval:'',raw:true,blankrows:true});
+      for(let r=0;r<Math.min(aoa.length,30);r++){
+        const map={};
+        (aoa[r]||[]).forEach((cell,ci)=>{const k=norm(cell);if(!k)return;FIELDS.forEach(f=>{if(map[f]===undefined&&ALIAS[f].includes(k))map[f]=ci;});});
+        if(map.erp!==undefined&&map.desc!==undefined){found={sn,hr:r,map,aoa};break;}
+      }
+      if(found)break;
+    }
+    if(!found)return {error:'No header row found. The sheet needs at least the columns "Item Code (ERP)" and "Description". Download the import template for the expected layout.'};
+    const missing=Object.keys(REQUIRED).filter(f=>found.map[f]===undefined);
+    if(missing.length)return {error:`Sheet "${found.sn}" is missing required column${missing.length>1?'s':''}: ${missing.map(f=>REQUIRED[f]).join(', ')}.`};
+    const rows=[];
+    for(let r=found.hr+1;r<found.aoa.length;r++){
+      const src=found.aoa[r]||[];const o={src:r+1,include:true,raw:{},has:{}};
+      FIELDS.forEach(f=>{const ci=found.map[f];o.has[f]=ci!==undefined;o.raw[f]=ci!==undefined?(src[ci]==null?'':src[ci]):'';});
+      if(FIELDS.every(f=>cellStr(o.raw[f])===''))continue;
+      rows.push(o);
+    }
+    if(!rows.length)return {error:`Sheet "${found.sn}" has a header row but no data rows.`};
+    return {sheet:found.sn,rows,missing:[]};
+  }
+
+  function findByName(list,name){const k=norm(name);return list.filter(x=>norm(x.name)===k);}
+  function resolveTarget(r){
+    const pn=cellStr(r.raw.project),pln=cellStr(r.raw.plan);
+    let pr=null,pl=null;
+    if(pn){const m=findByName(projects,pn);if(!m.length)return {err:`Project "${pn}" was not found`};if(m.length>1)return {err:`More than one project is named "${pn}"`};pr=m[0];}
+    else{if(activeProjId==='all')return {err:'Project is required while All Projects is open'};pr=getProj();}
+    if(!pr)return {err:'No target project'};
+    if(pln){const m=findByName(pr.plans,pln);if(!m.length)return {err:`Plan "${pln}" was not found in project "${pr.name}" (create the plan first)`};if(m.length>1)return {err:`More than one plan is named "${pln}" in "${pr.name}"`};pl=m[0];}
+    else if(pr===getProj()&&activePlanId!=='all')pl=getPlan();
+    else if(pr.plans.length===1)pl=pr.plans[0];
+    else return {err:`Plan is required (project "${pr.name}" has ${pr.plans.length} plans)`};
+    return {pr,pl};
+  }
+
+  function validate(){
+    const loc=locateAll();const known=knownMachines();const seen=new Map();
+    IMP.rows.forEach(r=>{
+      r.errors=[];r.warns=[];r.action='';r.changes=[];r.vals=null;r.match=null;r.pr=null;r.pl=null;
+      const E=m=>r.errors.push(m),W=m=>r.warns.push(m);
+      const tg=resolveTarget(r);
+      if(tg.err)E(tg.err);else{r.pr=tg.pr;r.pl=tg.pl;}
+      const v={};
+      v.erp=cellStr(r.raw.erp);v.desc=cellStr(r.raw.desc);v.pn=cellStr(r.raw.pn);v.machine=cellStr(r.raw.machine);
+      if(!v.erp)E('Item Code is missing');
+      if(!v.desc)E('Description is missing');
+      if(!v.machine)E('Machine is missing');
+      const q=parseNum(r.raw.qty),hr=parseNum(r.raw.hrs);
+      if(q.blank)E('Qty is missing');else if(q.bad||q.v<0)E(`Qty must be a number of 0 or more (got "${cellStr(r.raw.qty)}")`);else v.qty=q.v;
+      if(hr.blank)E('Hrs is missing');else if(hr.bad||hr.v<0)E(`Hrs must be a number of 0 or more (got "${cellStr(r.raw.hrs)}")`);else v.hrs=hr.v;
+      if(v.machine&&!known.has(norm(v.machine)))W(`Machine "${v.machine}" is not in the machine list or the Machine Register`);
+      /* match an existing item */
+      let idNum=null;const idc=parseNum(r.raw.id);
+      if(!idc.blank){if(idc.bad||!Number.isInteger(idc.v))E(`Item ID "${cellStr(r.raw.id)}" is not valid`);else idNum=idc.v;}
+      if(r.pl&&v.erp){
+        let idProblem=false;
+        if(idNum!=null){
+          const L=loc.get(idNum);
+          if(L&&L.pl!==r.pl){E(`Item ID ${idNum} belongs to "${L.pr.name}" / "${L.pl.name}", not this plan. Moving items between plans by import is not supported`);idProblem=true;}
+          else if(L)r.match=L.it;
+          else W(`Item ID ${idNum} no longer exists; matched by Item Code instead`);
+        }
+        if(!r.match&&!idProblem){
+          const same=r.pl.items.filter(it=>norm(it.erp)===norm(v.erp));
+          if(same.length===1)r.match=same[0];
+          else if(same.length>1)E(`Item Code ${v.erp} appears ${same.length} times in plan "${r.pl.name}". Use an exported file (it carries Item ID) to choose which item to update`);
+        }
+        if(r.match&&norm(r.match.erp)!==norm(v.erp)){
+          const clash=r.pl.items.find(it=>it.id!==r.match.id&&norm(it.erp)===norm(v.erp));
+          if(clash)E(`Item Code ${v.erp} is already used by another item in plan "${r.pl.name}"`);
+        }
+        const key=r.match?'id:'+r.match.id:'new:'+r.pl.id+':'+norm(v.erp);
+        if(seen.has(key))E(r.match?`Same item as row ${seen.get(key)} (duplicate)`:`Duplicate Item Code ${v.erp} for this plan (also on row ${seen.get(key)})`);
+        else seen.set(key,r.src);
+      }
+      const ex=r.match;
+      /* priority */
+      const pRaw=cellStr(r.raw.priority);
+      if(!pRaw)v.priority=ex?ex.priority:3;
+      else{const m=/^p?\s*([1-4])(\b|\s|$)/i.exec(pRaw);if(m)v.priority=+m[1];else E(`Priority must be 1 to 4 (got "${pRaw}")`);}
+      /* status and actual dates */
+      const sRaw=cellStr(r.raw.status);
+      const as=parseDateCell(r.raw.actualStart),ae=parseDateCell(r.raw.actualEnd);
+      if(as.bad)E(`Actual Start "${cellStr(r.raw.actualStart)}" is not a valid date`);
+      if(ae.bad)E(`Actual End "${cellStr(r.raw.actualEnd)}" is not a valid date`);
+      let st=null;
+      if(sRaw){st=STATUS_OPTS.find(s=>s.toLowerCase()===sRaw.toLowerCase())||null;if(!st)E(`Status must be one of: ${STATUS_OPTS.join(', ')} (got "${sRaw}")`);}
+      if(!sRaw&&ex){
+        v.status=ex.status||'Not Started';v.actualStart=ex.actualStart||'';v.actualEnd=ex.actualEnd||'';
+        if(as.v||ae.v)W('Status is blank, so the existing status and actual dates are kept');
+      }else{
+        st=st||'Not Started';v.status=st;
+        const S=as.v||'',F=ae.v||'';
+        if(st==='Done'){
+          if(!F&&!ae.bad)E('Status Done needs an Actual End date');
+          if(!S&&F)W('Actual Start is blank, so it is set equal to Actual End');
+          v.actualStart=S||F;v.actualEnd=F;
+          if(S&&F&&S>F)E('Actual End is before Actual Start');
+        }else if(st==='In Progress'){
+          if(!S&&!as.bad)E('Status In Progress needs an Actual Start date');
+          if(F)W('Actual End is ignored while the item is In Progress');
+          v.actualStart=S;v.actualEnd='';
+        }else{
+          if(S||F)W(`Actual dates are cleared for status ${st}`);
+          v.actualStart='';v.actualEnd='';
+        }
+      }
+      if(!r.has.pn&&ex)v.pn=ex.pn||'';
+      r.vals=v;
+      if(r.errors.length){r.action='Invalid';return;}
+      if(ex){
+        if(IMP.mode==='new'){r.action='Skip';r.why='Already exists (add new only)';return;}
+        r.changes=CMP.filter(f=>{const a=ex[f],b=v[f];if(f==='qty'||f==='hrs'||f==='priority')return Number(a)!==Number(b)||(a==null)!==(b==null);return String(a==null?'':a)!==String(b==null?'':b);})
+          .map(f=>({f,from:ex[f],to:v[f]}));
+        if(!r.changes.length){r.action='Skip';r.why='No changes';return;}
+        r.action='Update';
+      }else r.action='Add';
+    });
+  }
+  function counts(){
+    const rows=IMP.rows;
+    return {
+      add:rows.filter(r=>r.action==='Add'&&r.include).length,
+      upd:rows.filter(r=>r.action==='Update'&&r.include).length,
+      skip:rows.filter(r=>r.action==='Skip'||((r.action==='Add'||r.action==='Update')&&!r.include)).length,
+      bad:rows.filter(r=>r.action==='Invalid').length};
+  }
+  const fmtV=(f,v)=>v==null||v===''?'(blank)':(f==='actualStart'||f==='actualEnd')?dmy(v):(f==='priority'?'P'+v:String(v));
+  function changeHtml(r){return r.changes.map(c=>`<div class="pp-chg">${h(LABEL[c.f])}: <s>${h(fmtV(c.f,c.from))}</s> → <b>${h(fmtV(c.f,c.to))}</b></div>`).join('');}
+  function renderPreview(){
+    if(!IMP)return;
+    const rows=IMP.rows,c=counts();
+    const vis=IMP.errOnly?rows.filter(r=>r.action==='Invalid'):rows;
+    const shown=vis.slice(0,500);
+    REG.openModal(`<h2 class="rg-mh">Import preview · <span class="rg-dim">${h(IMP.file)} → sheet "${h(IMP.sheet)}"</span></h2>
+      <div class="rg-mbody">
+        <div class="rg-impstats"><span class="s-add">${c.add} new</span><span class="s-upd">${c.upd} to update</span><span class="s-skip">${c.skip} skipped</span><span class="s-err">${c.bad} invalid</span>
+          <span class="rg-sp"></span>
+          <label class="rg-chk">Existing items: <select class="rg-sel" onchange="PP._impMode(this.value)"><option value="update"${IMP.mode==='update'?' selected':''}>Update them</option><option value="new"${IMP.mode==='new'?' selected':''}>Skip them (add new only)</option></select></label>
+          <label class="rg-chk"><input type="checkbox" ${IMP.errOnly?'checked':''} onchange="PP._impErrOnly(this.checked)"> Invalid rows only</label></div>
+        <p class="rg-dim">Invalid rows are never imported. Fix them in Excel and import again. Untick a row to leave it out. Machine assignments, revision history and project information of items you do not change stay as they are.</p>
+        <div class="rg-tw rg-tall"><table class="rg-t rg-imp"><thead><tr><th class="ck">Use</th><th>Row</th><th>Target</th><th>Item code</th><th>Description</th><th class="r">Qty</th><th class="r">Hrs</th><th>Machine</th><th>Status</th><th>Result</th></tr></thead><tbody>
+        ${shown.map(r=>{const i=rows.indexOf(r);const bad=r.action==='Invalid';const v=r.vals||{};const usable=r.action==='Add'||r.action==='Update';
+          return `<tr class="${bad?'bad':(!usable||!r.include)?'skip':''}">
+          <td class="ck"><input type="checkbox" ${usable&&r.include?'checked':''} ${usable?'':'disabled'} onchange="PP._impInc(${i},this.checked)"></td>
+          <td class="rg-dim">${r.src}</td>
+          <td class="pp-target">${r.pl?`<b>${h(r.pr.name)}</b><br>${h(r.pl.name)}`:'<span class="rg-dim">?</span>'}</td>
+          <td class="rg-mono sm nowrap">${h(v.erp)}</td><td>${h(v.desc)}</td><td class="r">${h(v.qty==null?cellStr(r.raw.qty):v.qty)}</td><td class="r">${h(v.hrs==null?cellStr(r.raw.hrs):v.hrs)}</td>
+          <td class="rg-mono sm">${h(v.machine)}</td><td class="nowrap">${h(v.status||'')}</td>
+          <td class="rg-res">${bad?r.errors.map(e=>`<div class="e">✕ ${h(e)}</div>`).join('')
+            :r.action==='Add'?`<div class="o">${r.include?'✓ Add new item':'Excluded'}</div>`
+            :r.action==='Update'?`<div class="o">${r.include?'✓ Update':'Excluded'}</div>${changeHtml(r)}`
+            :`<div class="rg-dim">Skip: ${h(r.why||'')}</div>`}${r.warns.map(w=>`<div class="w">${h(w)}</div>`).join('')}</td></tr>`;}).join('')}
+        ${vis.length>500?`<tr><td colspan="10" class="rg-empty">Showing the first 500 of ${vis.length} rows. All rows are validated and imported.</td></tr>`:''}
+        ${!vis.length?'<tr><td colspan="10" class="rg-empty">No invalid rows.</td></tr>':''}
+        </tbody></table></div>
+      </div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="PP.importStart()">‹ Choose another file</button><span class="rg-sp"></span><button class="rg-btn" onclick="PP._impCancel()">Cancel</button>
+        <button class="rg-btn pri" ${c.add+c.upd?'':'disabled'} onclick="PP._impApply()">Import ${c.add+c.upd} row${c.add+c.upd===1?'':'s'}</button></div>`,true);
+  }
+  function confirmOverwrite(list){
+    return new Promise(res=>{
+      const rows=list.slice(0,25);
+      REG.openModal(`<h2 class="rg-mh">Overwrite ${list.length} existing item${list.length>1?'s':''}?</h2>
+        <div class="rg-mbody"><p>These items already exist and will be changed as shown. Fields that are not listed stay as they are. Nothing is stored in the cloud until you press <b>Save</b>.</p>
+        <div class="rg-tw rg-tall"><table class="rg-t"><thead><tr><th>Row</th><th>Plan</th><th>Item code</th><th>Changes</th></tr></thead><tbody>
+        ${rows.map(r=>`<tr><td class="rg-dim">${r.src}</td><td class="pp-target"><b>${h(r.pr.name)}</b><br>${h(r.pl.name)}</td><td class="rg-mono sm nowrap">${h(r.match.erp)}</td><td>${changeHtml(r)}</td></tr>`).join('')}
+        </tbody></table></div>${list.length>25?`<p class="rg-dim">…and ${list.length-25} more.</p>`:''}</div>
+        <div class="rg-mfoot"><button class="rg-btn" id="ppow_no">Back to preview</button><button class="rg-btn dangerf" id="ppow_ok">Overwrite and import</button></div>`,true);
+      $('ppow_no').onclick=()=>res(false);
+      $('ppow_ok').onclick=()=>res(true);
+    });
+  }
+  async function applyImport(){
+    if(!IMP)return;
+    validate();
+    const upd=IMP.rows.filter(r=>r.action==='Update'&&r.include);
+    if(upd.length){const ok=await confirmOverwrite(upd);if(!ok){renderPreview();return;}}
+    validate(); // data may not change in between, but re-check before writing
+    let added=0,updated=0;
+    const skipped=IMP.rows.filter(r=>r.action==='Skip'||((r.action==='Add'||r.action==='Update')&&!r.include)).length;
+    const invalid=IMP.rows.filter(r=>r.action==='Invalid');
+    IMP.rows.forEach(r=>{
+      if(!r.include)return;
+      const v=r.vals;
+      if(r.action==='Add'){
+        const it={id:nid++,erp:v.erp,desc:v.desc,pn:v.pn||'',qty:v.qty,hrs:v.hrs,machine:v.machine,priority:v.priority,status:v.status};
+        if(v.actualStart)it.actualStart=v.actualStart;
+        if(v.actualEnd)it.actualEnd=v.actualEnd;
+        r.pl.items.push(it);added++;
+      }else if(r.action==='Update'){
+        const idx=r.pl.items.findIndex(it=>it.id===r.match.id);if(idx<0)return;
+        const next={...r.pl.items[idx]};
+        r.changes.forEach(c=>{next[c.f]=c.to;});
+        r.pl.items[idx]=next;updated++;
+      }
+    });
+    const file=IMP.file;IMP=null;
+    if(added||updated){markUnsaved();render();REG.render();}
+    const errList=invalid.slice(0,50);
+    REG.openModal(`<h2 class="rg-mh">Import complete</h2>
+      <div class="rg-mbody"><p class="rg-dim">${h(file)}</p>
+      <div class="rg-impstats big"><span class="s-add">${added} imported</span><span class="s-upd">${updated} updated</span><span class="s-skip">${skipped} skipped</span><span class="s-err">${invalid.length} invalid</span></div>
+      ${added||updated?'<p>The changes are on screen now. Press <b>Save</b> to store them in the cloud.</p>':'<p>No items were changed.</p>'}
+      ${invalid.length?`<h4 class="rg-h4">Rows not imported</h4><div class="rg-tw"><table class="rg-t"><thead><tr><th>Row</th><th>Item code</th><th>Problem</th></tr></thead><tbody>${errList.map(r=>`<tr><td>${r.src}</td><td class="rg-mono">${h(cellStr(r.raw.erp))}</td><td class="rg-res">${r.errors.map(e=>`<div class="e">${h(e)}</div>`).join('')}</td></tr>`).join('')}</tbody></table></div>${invalid.length>50?`<p class="rg-dim">…and ${invalid.length-50} more.</p>`:''}`:''}
+      </div><div class="rg-mfoot">${added||updated?'<button class="rg-btn ok" onclick="REG.closeModal();saveData()">Save now</button>':''}<button class="rg-btn pri" onclick="REG.closeModal()">Done</button></div>`);
+    if(added||updated)toast(`Imported ${added} new, updated ${updated}`,'ok');
+  }
+
+  /* ══ PRINT PREVIEW · REVISION CONTROL ══ */
+  function savedRevProjects(){
+    const m=new Map();REG.savedRevisions().filter(r=>r.status!=='Void').forEach(r=>{const k=norm(r.project);if(k&&!m.has(k))m.set(k,r.project);});
+    return [...m.values()].sort((a,b)=>a.localeCompare(b));
+  }
+  function prefixMatch(a,b){
+    const A=norm(a),B=norm(b);if(!A||!B)return false;
+    const [s,l]=A.length<=B.length?[A,B]:[B,A];
+    if(s.length<2||!l.startsWith(s))return false;
+    return l.length===s.length||/[^a-z0-9]/.test(l[s.length]);
+  }
+  /* Which revision-register project belongs to this planner project? exact name first, then an unambiguous name-prefix match. */
+  function resolveRevProject(prName,prId){
+    if(prId!=null&&Object.prototype.hasOwnProperty.call(revChoice,prId))return {name:revChoice[prId],how:'chosen'};
+    const names=savedRevProjects();
+    const ex=names.find(n=>norm(n)===norm(prName));if(ex)return {name:ex,how:'exact'};
+    const c=names.filter(n=>prefixMatch(n,prName));
+    if(c.length===1)return {name:c[0],how:'prefix'};
+    return {name:'',how:c.length>1?'ambiguous':'none',cands:c};
+  }
+  function previewCtx(){
+    const pr=activeProjId==='all'?null:getProj();
+    const pl=getPlan();const allPlans=activeProjId!=='all'&&activePlanId==='all';
+    const sched=computeSched();
+    let rp={name:'',how:'none'};
+    if(pr)rp=resolveRevProject(pr.name,pr.id);
+    const rev=rp.name?REG.latestSavedRev(rp.name):null;
+    const live=pr?REG.latestLiveRev(rp.name||pr.name):null;
+    const pendingNewer=live&&(!rev||live.id!==rev.id)?live:null;
+    return {pr,pl,allPlans,sched,rp,rev,pendingNewer};
+  }
+  function docHeader(x){
+    const {pr,pl,allPlans,sched,rev}=x;
+    const starts=sched.filter(s=>s.start).map(s=>s.start.getTime()),ends=sched.filter(s=>s.end).map(s=>s.end.getTime());
+    const sStart=starts.length?new Date(Math.min(...starts)):null,sEnd=ends.length?new Date(Math.max(...ends)):null;
+    const projName=pr?pr.name:'All projects';
+    const planName=activeProjId==='all'?'All plans':allPlans?`All plans (${pr.plans.length})`:(pl?pl.name:'');
+    const regNote=rev&&norm(rev.project)!==norm(projName)?`<span class="rg-dim" style="font-size:6.5pt;display:block">Register project: ${h(rev.project)}</span>`:'';
+    return `<table class="pp-tb"><tr>
+        <td class="co" rowspan="2"><div class="c1">ARIA TECHNOLOGIES</div><div class="c2">PRODUCTION PLAN</div></td>
+        <td style="width:34%"><span class="k">Project</span><span class="v">${h(projName)}</span></td>
+        <td><span class="k">Revision No.</span><span class="v mono${rev?'':' none'}">${rev?h(rev.revNo):'NONE SAVED'}</span>${regNote}</td>
+        <td><span class="k">Revision Date</span><span class="v${rev?'':' none'}">${rev?h(dmy(rev.revDate)):'N/A'}</span></td>
+        <td class="st ${rev?'ctl':'dft'}" rowspan="2">${rev?'CONTROLLED<br>COPY':'UNCONTROLLED<br>DRAFT'}</td>
+      </tr><tr>
+        <td><span class="k">Plan</span><span class="v">${h(planName)}</span></td>
+        <td><span class="k">Schedule</span><span class="v">${sStart?h(dmy(isoOf(sStart))):'N/A'} to ${sEnd?h(dmy(isoOf(sEnd))):'N/A'}</span></td>
+        <td><span class="k">Printed</span><span class="v">${h(nowStamp())}${currentUser&&currentUser.email?`<span style="display:block;font-size:7pt;font-weight:400;color:#475569">${h(currentUser.email)}</span>`:''}</span></td>
+      </tr></table>
+      ${rev?'':`<div class="pp-draft-banner">UNCONTROLLED DRAFT: no saved revision exists for this project, so no revision number is shown. Create and save a revision before issuing this plan as a revision-controlled document.</div>`}`;
+  }
+  function docHtml(x){
+    const showPrio=$('prioToggle')&&$('prioToggle').checked;
+    const multi=activeProjId==='all'||x.allPlans;
+    const loc=locateAll();
+    const cols=[['#','c'],multi?[activeProjId==='all'?'Project / Plan':'Plan','']:null,['Item Code',''],['Description',''],['Part Number',''],['Qty','r'],['Hrs','r'],['Machine',''],showPrio?['Priority','']:null,['Start','c'],['End','c'],['W.Days','c'],['Status','']].filter(Boolean);
+    const hdr=docHeader(x);
+    const body=x.sched.map((s,i)=>{const L=loc.get(s.id);
+      const grp=multi?`<td>${activeProjId==='all'&&L?`<b>${h(L.pr.name)}</b><br>`:''}${h(L?L.pl.name:s._planName||'')}</td>`:'';
+      return `<tr><td class="c">${i+1}</td>${grp}<td class="mono">${h(s.erp)}</td><td>${h(s.desc)}</td><td class="mono">${h(s.pn)}</td><td class="r">${h(s.qty)}</td><td class="r">${h(s.hrs)}</td><td>${h(s.machine)}</td>${showPrio?`<td>${h(PRIO_LABELS[s.priority]||'')}</td>`:''}<td class="c">${h(s.start?dmy(isoOf(s.start)):'')}</td><td class="c">${h(s.end?dmy(isoOf(s.end)):'')}</td><td class="c">${h(s.wdays||'')}</td><td>${h(s.status||'Not Started')}</td></tr>`;}).join('');
+    const qty=x.sched.reduce((a,b)=>a+(Number(b.qty)||0),0),hrs=x.sched.reduce((a,b)=>a+(Number(b.hrs)||0),0);
+    const lead=multi?5:4;
+    const tail=cols.length-lead-2;
+    let html=`<table class="pp-it"><thead><tr class="pp-hdr"><th colspan="${cols.length}">${hdr}</th></tr>
+      <tr class="pp-colh">${cols.map(c=>`<th class="${c[1]}">${c[0]}</th>`).join('')}</tr></thead>
+      <tbody>${body||`<tr><td colspan="${cols.length}" class="c">No items</td></tr>`}</tbody>
+      <tfoot><tr><td colspan="${lead}">Total: ${x.sched.length} item${x.sched.length===1?'':'s'}</td><td class="r">${h(+qty.toFixed(2))}</td><td class="r">${h(+hrs.toFixed(2))}</td><td colspan="${tail}"></td></tr></tfoot></table>`;
+    if(PV.includeGantt&&x.sched.length){
+      html+=`<div class="pp-gsec"><table class="pp-it pp-gtbl"><thead><tr class="pp-hdr"><th>${hdr}</th></tr><tr class="pp-colh"><th>Gantt chart</th></tr></thead>
+        <tbody><tr><td style="padding:2mm;border:none"><div class="pp-gwrap" id="ppGantt"></div><div class="pp-glegend" id="ppLegend"></div></td></tr></tbody></table></div>`;
+    }
+    return html;
+  }
+  function revOptions(x){
+    const names=savedRevProjects();
+    const cur=x.rp.name;
+    return `<option value=""${cur?'':' selected'}>No revision (uncontrolled draft)</option>`+names.map(n=>{const r=REG.latestSavedRev(n);return `<option value="${h(n)}"${n===cur?' selected':''}>${h(n)}${r?' · '+h(r.revNo):''}</option>`;}).join('');
+  }
+  function messages(x){
+    const m=[];
+    if(!x.pr)m.push(`<div class="pp-msg err"><b>All Projects is open.</b> Select a single project to print a revision-controlled document. This printout can only be an uncontrolled draft.</div>`);
+    else if(!x.rev){
+      m.push(`<div class="pp-msg err"><b>No saved revision for "${h(x.pr.name)}".</b> A revision must be created in Revisions and saved before this plan can be printed as an officially revision-controlled document. No revision number has been generated or assigned for this printout; it will be marked UNCONTROLLED DRAFT.
+        <div><button class="rg-btn" onclick="PP.createRevision()">Create a revision for this project</button>${x.rp.how==='ambiguous'?'':''}</div></div>`);
+      if(x.rp.how==='ambiguous')m.push(`<div class="pp-msg warn">Several revision-register projects could belong to this project (${x.rp.cands.map(h).join(', ')}). Choose the correct one in <b>Revision project</b> above.</div>`);
+    }
+    if(x.rev&&x.rp.how==='prefix')m.push(`<div class="pp-msg warn"><b>Please confirm:</b> revisions registered under "${h(x.rp.name)}" were matched to planner project "${h(x.pr.name)}" by name. If this is wrong, choose another <b>Revision project</b> above.</div>`);
+    if(x.pendingNewer)m.push(`<div class="pp-msg warn">Revision <b>${h(x.pendingNewer.revNo)}</b> exists on screen but has not been saved yet, so it is not used. Save, then reopen this preview to print with it. <div><button class="rg-btn" onclick="PP.saveAndRefresh()">Save now</button></div></div>`);
+    if(typeof _unsavedChanges!=='undefined'&&_unsavedChanges)m.push(`<div class="pp-msg warn">The plan has unsaved changes. The printout shows what is on screen. Save first so the stored plan matches the printed revision. <div><button class="rg-btn" onclick="PP.saveAndRefresh()">Save now</button></div></div>`);
+    if(x.rev)m.push(`<div class="pp-msg info">Latest saved revision for <b>${h(x.rp.name)}</b>: <b>${h(x.rev.revNo)}</b> dated ${h(dmy(x.rev.revDate))}. Printing does not create or change any revision.</div>`);
+    return m.join('');
+  }
+  function buildPreview(){
+    const x=previewCtx();PV.ctx=x;
+    if(PV.includeGantt&&x.sched.length){try{renderGantt(x.sched);}catch(e){}}
+    const items=x.sched.length,hrs=x.sched.reduce((a,b)=>a+(Number(b.hrs)||0),0);
+    const planLbl=activeProjId==='all'?'All plans':x.allPlans?'All plans':(x.pl?x.pl.name:'');
+    $('ppPreview').innerHTML=`
+      <div class="pp-bar">
+        <h2>Print preview</h2>
+        ${x.pr?`<label>Revision project <select onchange="PP._revProj(this.value)">${revOptions(x)}</select></label>`:''}
+        <label><input type="checkbox" ${PV.includeGantt?'checked':''} onchange="PP._gantt(this.checked)"> Include Gantt chart</label>
+        <span class="pp-sp"></span>
+        <button class="rg-btn" onclick="PP.closePreview()">Cancel</button>
+        <button class="rg-btn ${x.rev?'pri':'dangerf'}" id="ppPrintBtn" onclick="PP.printNow()">${x.rev?'Print '+h(x.rev.revNo):'Print uncontrolled draft'}</button>
+      </div>
+      <div class="pp-confirm">
+        <div class="pp-cf"><span class="k">Project</span><span class="v">${h(x.pr?x.pr.name:'All projects')}</span></div>
+        <div class="pp-cf"><span class="k">Plan</span><span class="v">${h(planLbl)}</span></div>
+        <div class="pp-cf"><span class="k">Revision No.</span><span class="v mono${x.rev?'':' none'}">${x.rev?h(x.rev.revNo):'None saved'}</span></div>
+        <div class="pp-cf"><span class="k">Revision Date</span><span class="v${x.rev?'':' none'}">${x.rev?h(dmy(x.rev.revDate)):'N/A'}</span></div>
+        <div class="pp-cf"><span class="k">Items</span><span class="v">${items}</span></div>
+        <div class="pp-cf"><span class="k">Total hrs</span><span class="v">${h(+hrs.toFixed(2))}</span></div>
+        <div class="pp-msgs">${messages(x)}</div>
+      </div>
+      <div class="pp-stage"><div class="pp-paper"><div class="pp-doc" id="ppDoc">${docHtml(x)}</div></div></div>`;
+    const gw=$('ppGantt');
+    if(gw){
+      const src=document.querySelector('#gantt>div');
+      if(src){
+        const inner=src.cloneNode(true);inner.style.transform='';inner.style.width='';
+        gw.appendChild(inner);
+        const lg=$('ganttLegend');if(lg)$('ppLegend').innerHTML=lg.innerHTML;
+        requestAnimationFrame(()=>scaleGantt());scaleGantt();
+      }else gw.innerHTML='<div style="padding:6mm;text-align:center;font-size:8pt;color:#64748b">No Gantt chart available (set a start date).</div>';
+    }
+  }
+  function scaleGantt(){
+    const gw=$('ppGantt');if(!gw||!gw.firstElementChild)return;
+    const inner=gw.firstElementChild;inner.style.transform='';
+    const nat=inner.scrollWidth,avail=gw.clientWidth;if(!nat||!avail)return;
+    const sc=Math.min(1,avail/nat);
+    inner.style.transform=`scale(${sc})`;
+    gw.style.height=Math.ceil(inner.scrollHeight*sc)+'px';
+  }
+  function openPreview(){
+    closeMenu();
+    if(typeof activeCombo!=='undefined'&&activeCombo!==null)comboClose(activeCombo);
+    buildPreview();
+    $('ppPreview').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function closePreview(){
+    const el=$('ppPreview');el.classList.remove('open');el.innerHTML='';
+    document.body.style.overflow='';
+    if(currentView==='table')render();
+  }
+  function cssStr(s){return '"'+String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"').replace(/[\r\n]+/g,' ')+'"';}
+  function printNow(){
+    const x=PV.ctx;if(!x)return;
+    const revTxt=x.rev?`Rev. ${x.rev.revNo} · ${dmy(x.rev.revDate)}`:'UNCONTROLLED DRAFT · no saved revision';
+    const left=`ARIA Technologies · Production Plan · ${x.pr?x.pr.name:'All projects'}`;
+    let st=$('ppPageStyle');if(!st){st=document.createElement('style');st.id='ppPageStyle';document.head.appendChild(st);}
+    st.textContent=`@page{size:A4 landscape;margin:9mm 10mm 11mm 10mm;
+      @bottom-left{content:${cssStr(left)};font-family:Arial,sans-serif;font-size:7pt;color:#475569}
+      @bottom-right{content:${cssStr(revTxt+'  ·  Page ')} counter(page) " of " counter(pages);font-family:Arial,sans-serif;font-size:7pt;color:#475569}}`;
+    document.body.classList.add('pp-printing');
+    const done=()=>{window.removeEventListener('afterprint',done);document.body.classList.remove('pp-printing');const s=$('ppPageStyle');if(s)s.remove();closePreview();};
+    window.addEventListener('afterprint',done);
+    setTimeout(()=>{scaleGantt();window.print();},60);
+  }
+  async function saveAndRefresh(){await saveData();if($('ppPreview').classList.contains('open'))buildPreview();}
+  function createRevision(){const x=PV.ctx;closePreview();REG.prefillRevision(x&&x.pr?x.pr.name:'');}
+
+  return {fitTitle,isSel,toggleSel,selectAll,pruneSelection,toggleExportMenu,exportItems,exportTemplate,importStart,
+    openPreview,closePreview,printNow,saveAndRefresh,createRevision,
+    _impMode(v){IMP.mode=v;validate();renderPreview();},
+    _impErrOnly(v){IMP.errOnly=v;renderPreview();},
+    _impInc(i,on){IMP.rows[i].include=on;renderPreview();},
+    _impCancel(){IMP=null;REG.closeModal();},
+    _impApply:applyImport,
+    _revProj(v){const x=PV.ctx;if(x&&x.pr)revChoice[x.pr.id]=v;buildPreview();},
+    _gantt(on){PV.includeGantt=on;buildPreview();},
+    _test:{parseWorkbook,parseDateCell,parseNum,resolveRevProject,prefixMatch,get IMP(){return IMP;},SEL}};
+})();
 
 // init — app bootstraps once Firebase Auth resolves (see onAuthStateChanged above),
 // which calls initAppData() to load this user's data from Firestore and render.
