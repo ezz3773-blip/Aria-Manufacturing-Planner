@@ -200,6 +200,115 @@ select.ei{cursor:pointer}
   .gc.we,.gh-day.we{background:#fff5f5!important}
   .mv-card{overflow:visible!important;box-shadow:none;border:1px solid #ccc}
 }
+/* ═════ MACHINE REGISTER & REVISIONS ═════ */
+.mod-nav{display:flex;gap:4px;background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:5px;margin-bottom:10px;flex-wrap:wrap;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.mod-btn{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;font:700 12px Arial,sans-serif;border:none;border-radius:7px;background:transparent;color:#475569;cursor:pointer;letter-spacing:.02em}
+.mod-btn:hover:not(.active){background:#eef2fa;color:#0d1b4b}
+.mod-btn.active{background:#0d1b4b;color:#fff}
+.mod-btn .mb-n{font-size:10px;font-weight:700;padding:1px 7px;border-radius:9px;background:#e2e8f0;color:#475569}
+.mod-btn.active .mb-n{background:#378ADD;color:#fff}
+.rg-card{background:#fff;border:1px solid #e2e8f0;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);padding:14px 16px;margin-bottom:12px;min-width:0}
+.rg-card h3{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0d1b4b;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.rg-card h3::after{content:"";flex:1;height:1px;background:#e2e8f0}
+.rg-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:12px}
+.rg-kpi{background:#fff;border:1px solid #e2e8f0;border-top:3px solid #378ADD;border-radius:10px;padding:12px 14px;min-width:0}
+.rg-kpi.k-g{border-top-color:#059669}.rg-kpi.k-n{border-top-color:#94a3b8}.rg-kpi.k-p{border-top-color:#2E5496}.rg-kpi.k-o{border-top-color:#d97706}
+.rg-kpi .k{font-size:9.5px;color:#64748b;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
+.rg-kpi .v{font-size:26px;font-weight:700;color:#0d1b4b;margin-top:4px;line-height:1.15;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rg-kpi .v.sm{font-size:17px;padding:5px 0 2px}
+.rg-kpi .s{font-size:11px;color:#64748b;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rg-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rg-revgrid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:12px;align-items:start}
+.rg-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.rg-sp{flex:1}
+.rg-in,.rg-sel{font:13px Arial,sans-serif;padding:7px 10px;border:1px solid #cbd5e1;border-radius:7px;background:#f8fafc;color:#1a1a2e;min-width:0}
+.rg-in:focus,.rg-sel:focus{outline:none;border-color:#378ADD;background:#fff;box-shadow:0 0 0 3px rgba(55,138,221,.15)}
+.rg-in[readonly]{background:#eef2fa;color:#0d1b4b}
+.rg-in.full{width:100%}
+textarea.rg-in{resize:vertical;font-family:Arial,sans-serif}
+.rg-search{width:250px}
+.rg-btn{font:700 12px Arial,sans-serif;padding:7px 13px;border-radius:7px;border:1px solid #cbd5e1;background:#fff;color:#0d1b4b;cursor:pointer;white-space:nowrap}
+.rg-btn:hover{background:#eef2fa}
+.rg-btn.pri{background:#378ADD;border-color:#378ADD;color:#fff}.rg-btn.pri:hover{background:#185FA5;border-color:#185FA5}
+.rg-btn.ok{background:#059669;border-color:#059669;color:#fff}.rg-btn.ok:hover{background:#047857}
+.rg-btn.danger{color:#b91c1c;border-color:#fecaca}.rg-btn.danger:hover{background:#fef2f2}
+.rg-btn.dangerf{background:#dc2626;border-color:#dc2626;color:#fff}.rg-btn.dangerf:hover{background:#b91c1c}
+.rg-btn.ghost{border-color:transparent;background:transparent}
+.rg-btn.sm{padding:4px 9px;font-size:11px;margin-left:3px}
+.rg-btn.full{width:100%;padding:10px}
+.rg-btn:disabled{opacity:.45;cursor:not-allowed;background:#fff;color:#64748b;border-color:#cbd5e1}
+.rg-dd{position:relative}
+.rg-ddm{display:none;position:absolute;right:0;top:calc(100% + 4px);background:#fff;border:1px solid #e2e8f0;border-radius:8px;box-shadow:0 8px 24px rgba(13,27,75,.15);padding:5px;z-index:50;min-width:230px}
+.rg-dd.open .rg-ddm{display:block}
+.rg-ddm button{display:block;width:100%;text-align:left;padding:8px 10px;font:12px Arial,sans-serif;border:none;background:none;border-radius:5px;cursor:pointer;color:#1a1a2e}
+.rg-ddm button:hover:not(:disabled){background:#eef2fa}.rg-ddm button:disabled{color:#94a3b8;cursor:not-allowed}
+.rg-ddm hr{border:none;border-top:1px solid #e2e8f0;margin:4px 0}
+.rg-tw{overflow-x:auto;border:1px solid #e2e8f0;border-radius:8px}
+.rg-tw.rg-tall{max-height:62vh;overflow-y:auto}
+table.rg-t{width:100%;border-collapse:collapse;font-size:12px}
+.rg-t th{background:#1F3864;color:#fff;font-size:10.5px;font-weight:700;text-align:left;padding:8px 10px;white-space:nowrap;position:sticky;top:0;z-index:1;cursor:default;user-select:none}
+#rgTable th{cursor:pointer}
+.rg-t td{padding:7px 10px;border-bottom:1px solid #eef1f6;vertical-align:middle}
+.rg-t tbody tr:hover td{background:#f6f9ff}
+.rg-t tr.inactive td{color:#94a3b8}
+.rg-t tr.inactive .rg-code{color:#94a3b8;text-decoration:line-through;text-decoration-color:#cbd5e1}
+.rg-t .r{text-align:right}.rg-t .ck{width:30px;text-align:center}
+.nowrap{white-space:nowrap}
+.rg-mono,.rg-code{font-family:Consolas,"SFMono-Regular",Menlo,monospace}
+.rg-code{font-weight:700;color:#0d1b4b;white-space:nowrap}
+.rg-mono.sm{font-size:11px}
+.rg-dim{color:#64748b;font-size:11.5px}
+.rg-notes{max-width:340px;white-space:pre-wrap;color:#334155}
+.rg-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;letter-spacing:.02em;vertical-align:middle;font-family:Arial,sans-serif}
+.rg-pill.act{background:#E2EFDA;color:#3a6b1f}.rg-pill.ina{background:#f1f5f9;color:#64748b}.rg-pill.void{background:#fee2e2;color:#991b1b}.rg-pill.latest{background:#F8CBAD;color:#843C0C}
+.rg-empty{color:#94a3b8;text-align:center;padding:22px!important;font-size:12px}
+.rg-empty a{color:#185FA5}
+.rg-selbar{display:none;align-items:center;gap:8px;background:#eef4fc;border:1px solid #c7dcf5;border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:12px;color:#0d1b4b}
+.rg-pager{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11.5px;color:#64748b}
+.rg-revbox{background:#0d1b4b;border-radius:10px;padding:14px 16px;margin:12px 0;color:#c8d8f0}
+.rg-revlbl{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#7a9cc8}
+.rg-revno{font-family:Consolas,"SFMono-Regular",Menlo,monospace;font-size:27px;font-weight:700;color:#fff;margin:6px 0 6px;letter-spacing:.03em;word-break:break-all}
+.rg-revinfo{font-size:11.5px;line-height:1.5}
+.rg-revinfo b{color:#fff}
+.rg-warn{margin-top:6px;font-size:11.5px;color:#843C0C;background:#FCE4D6;border-radius:6px;padding:5px 8px}
+.rg-form{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.rg-form.one{grid-template-columns:1fr;margin-bottom:10px}
+.rg-form label,.rg-lbl{display:flex;flex-direction:column;gap:5px;font-size:11px;font-weight:700;color:#475569}
+.rg-form .span2{grid-column:1/-1}
+.rg-opt{font-weight:400;color:#94a3b8}
+.rg-coderow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.rg-coderow .rg-in{flex:1;min-width:140px}
+.rg-chk{display:inline-flex!important;flex-direction:row!important;align-items:center;gap:6px;font-size:12px!important;font-weight:400!important;color:#334155!important;cursor:pointer}
+.rg-hint{font-size:11px;font-weight:400;color:#64748b}.rg-hint a{color:#185FA5}
+.rg-err{color:#b91c1c;font-size:12px;min-height:16px;margin-top:8px;font-weight:700}
+.rg-chips{display:flex;gap:5px;flex-wrap:wrap}
+.rg-chip{display:inline-flex;align-items:center;gap:4px;background:#D9E1F2;color:#1F3864;font:700 11px Consolas,monospace;padding:3px 4px 3px 9px;border-radius:12px}
+.rg-chip button{border:none;background:none;cursor:pointer;color:#2E5496;font-size:14px;line-height:1;padding:0 4px}
+.rg-ov{position:fixed;inset:0;background:rgba(7,16,46,.55);display:none;align-items:flex-start;justify-content:center;z-index:5000;overflow:auto;padding:48px 12px}
+.rg-modal{background:#fff;border-radius:12px;width:600px;max-width:100%;box-shadow:0 18px 50px rgba(0,0,0,.35);padding:20px 22px}
+.rg-modal.wide{width:1180px}
+.rg-mh{font-size:16px;color:#0d1b4b;margin-bottom:14px}
+.rg-h4{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#0d1b4b;margin:16px 0 8px}
+.rg-mbody p{margin-bottom:8px;font-size:13px;line-height:1.5}
+.rg-mfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid #eef1f6}
+.rg-drop{border:2px dashed #cbd5e1;border-radius:10px;padding:26px;text-align:center;display:flex;flex-direction:column;gap:8px;align-items:center;background:#f8fafc;margin-bottom:14px}
+.rg-drop.over{border-color:#378ADD;background:#eef4fc}
+.rg-modes{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.rg-impstats{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px;font-size:12px;font-weight:700}
+.rg-impstats>span[class^=s-]{padding:4px 10px;border-radius:12px}
+.rg-impstats.big>span{font-size:14px;padding:7px 14px}
+.s-add{background:#E2EFDA;color:#3a6b1f}.s-upd{background:#D9E1F2;color:#1F3864}.s-skip{background:#f1f5f9;color:#475569}.s-err{background:#fee2e2;color:#991b1b}
+.rg-imp td{padding:4px 6px;vertical-align:top}
+.rg-imp tr.bad td{background:#fff7f7}.rg-imp tr.skip td{opacity:.6}
+.rg-cin{font:12px Arial,sans-serif;padding:4px 6px;border:1px solid transparent;border-radius:5px;background:transparent;max-width:100%}
+.rg-cin:hover{border-color:#cbd5e1}.rg-cin:focus{outline:none;border-color:#378ADD;background:#fff}
+.rg-imp tr.bad .rg-cin{background:#fff;border-color:#fecaca}
+.rg-auto{font:10.5px Consolas,monospace;color:#059669;padding-left:6px}
+.rg-res{font-size:11px;min-width:200px}.rg-res .e{color:#b91c1c;font-weight:700}.rg-res .o{color:#059669;font-weight:700}.rg-res .w{color:#9a6b00}
+.rg-toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#0d1b4b;color:#fff;padding:10px 18px;border-radius:8px;font-size:12.5px;font-weight:700;opacity:0;pointer-events:none;transition:all .2s;z-index:6000;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.rg-toast.show{opacity:1;transform:translate(-50%,0)}.rg-toast.ok{background:#059669}.rg-toast.err{background:#dc2626}
+@media (max-width:1000px){.rg-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.rg-revgrid,.rg-grid2{grid-template-columns:1fr}}
+@media (max-width:640px){.rg-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.rg-search{width:100%}.rg-form{grid-template-columns:1fr}.mod-btn{flex:1;justify-content:center;padding:8px 8px}}
+@media print{.mod-nav,.rg-toolbar,.rg-pager,.rg-selbar,.rg-ov{display:none!important}.rg-tw.rg-tall{max-height:none;overflow:visible}}
 </style>
 </head>
 <body>
@@ -247,6 +356,19 @@ select.ei{cursor:pointer}
   </div>
 </div>
 
+<!-- MODULE NAV -->
+<div class="mod-nav no-print">
+  <button class="mod-btn active" id="modbtn-planner" onclick="REG.showModule('planner')">Production Planner</button>
+  <button class="mod-btn" id="modbtn-dashboard" onclick="REG.showModule('dashboard')">Dashboard</button>
+  <button class="mod-btn" id="modbtn-register" onclick="REG.showModule('register')">Machine Register <span class="mb-n">0</span></button>
+  <button class="mod-btn" id="modbtn-revisions" onclick="REG.showModule('revisions')">Revisions <span class="mb-n">0</span></button>
+</div>
+<div id="mod-dashboard" style="display:none"></div>
+<div id="mod-register" style="display:none"></div>
+<div id="mod-revisions" style="display:none"></div>
+<datalist id="rg_projlist"></datalist><datalist id="rg_machlist"></datalist>
+
+<div id="mod-planner">
 <div class="proj-tabs-wrap no-print" id="projTabs"><button class="tab-btn view-all" onclick="switchProject('all')">🌐 All Projects</button><button class="tab-btn active" onclick="switchProject(1)">LR-340</button><button class="tab-x" onclick="delProject(1,event)">×</button><button class="tab-add" onclick="addProject()">+ Project</button></div>
 <div class="plan-tabs-wrap no-print" id="planTabs"><button class="plan-tab view-all-plans" onclick="switchPlan('all')">📋 All Plans</button><button class="plan-tab active" onclick="switchPlan(1)">C-Axis Machining</button><button class="plan-x" onclick="delPlan(1,event)">×</button><button class="plan-tab" onclick="switchPlan(2)">EOA Machining</button><button class="plan-x" onclick="delPlan(2,event)">×</button><button class="plan-add" onclick="addPlan()">+ Plan</button></div>
 
@@ -533,8 +655,14 @@ select.ei{cursor:pointer}
   <div id="machineCards"></div>
 </div>
 
-</div><!-- /page -->
+</div><!-- /mod-planner -->
 
+</div><!-- /page -->
+<div class="rg-ov no-print" id="rgModal" onclick="if(event.target===this)REG.closeModal()"></div>
+<div class="rg-toast" id="rgToast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -695,6 +823,7 @@ async function initAppData(){
   const hadSaved=await loadDataCloud();
   setView('table');
   render();
+  REG.showModule('planner');
   if(!hadSaved)markUnsaved();
 }
 
@@ -709,6 +838,7 @@ async function saveData(){
   const txt=document.getElementById('saveBtnText');
   const payload=JSON.parse(JSON.stringify({
     projects,activeProjId,activePlanId,nid,
+    register:REG.data(),
     mainTitle:document.getElementById('mainTitle').value,
     ownerEmail:currentUser.email,
     updatedAt:new Date().toISOString()
@@ -739,15 +869,16 @@ async function loadDataCloud(){
   if(!currentUser)return false;
   try{
     const doc=await userDocRef().get();
-    if(!doc.exists)return false;
+    if(!doc.exists){REG.load(null);return false;}
     const p=doc.data();
+    REG.load(p.register);
     if(p.projects)projects=p.projects;
     if(p.activeProjId)activeProjId=p.activeProjId;
     if(p.activePlanId)activePlanId=p.activePlanId;
     if(p.nid)nid=p.nid;
     if(p.mainTitle){const el=document.getElementById('mainTitle');if(el)el.value=p.mainTitle;}
     return true;
-  }catch(e){console.error('Load failed:',e);return false;}
+  }catch(e){console.error('Load failed:',e);REG.load(null);return false;}
 }
 
 function markUnsaved(){
@@ -805,7 +936,7 @@ function fmtD(d){if(!d)return'—';return d.toLocaleDateString('en-GB',{day:'2-d
 function fmtShort(d){if(!d)return'—';return d.toLocaleDateString('en-GB',{day:'2-digit',month:'short'});}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 function parseDate(s){if(!s)return null;const[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d);}
-function mColorIdx(m){return MCOLOR_IDX[m]!==undefined?MCOLOR_IDX[m]:0;}
+function mColorIdx(m){if(MCOLOR_IDX[m]!==undefined)return MCOLOR_IDX[m];let s=0;for(const ch of String(m||''))s=(s*31+ch.charCodeAt(0))>>>0;return s%BAR_COLORS.length;}
 
 function getBase(){
   const pl=getPlan();
@@ -1057,7 +1188,8 @@ function comboFilter(itemId,q){
 function populateComboList(itemId,q){
   const list=document.getElementById('cl_'+itemId);
   if(!list)return;
-  const filtered=MACHINES.filter(m=>m.toLowerCase().includes((q||'').toLowerCase()));
+  const pool=MACHINES.concat(REG.activeCodes().filter(c=>!MACHINES.includes(c)));
+  const filtered=pool.filter(m=>m.toLowerCase().includes((q||'').toLowerCase()));
   list.innerHTML=filtered.map(m=>`<div class="combo-opt" onmousedown="comboPickOpt(${itemId},'${m}')">${m}</div>`).join('');
 }
 
@@ -1616,6 +1748,799 @@ if(window.matchMedia){
     if(e.matches)fitGanttToPrint();else resetGanttPrint();
   });
 }
+
+/* ══════════════════════════════════════════════════════════════
+   MACHINE REGISTER & REVISION TRACKING  (module: REG)
+   Data lives in the same Firestore document as the planner,
+   under the key "register". Saved with the header Save button.
+══════════════════════════════════════════════════════════════ */
+const REG=(function(){
+  'use strict';
+  const DEFAULT_TYPES=[
+    {prefix:'MC',name:'CNC Milling Machine'},
+    {prefix:'WC',name:'Wire Cut Machine'},
+    {prefix:'RT',name:'CNC Router'}
+  ];
+  const SEED=[['MC','2500','CNC Milling Machine – 2500'],['MC','1000','CNC Milling Machine – 1000'],['WC','250','Wire Cut Machine – 250'],['RT','2500','CNC Router – 2500']];
+  const PAGE=100;
+  const CODE_RE=/^([A-Z]{1,4})-([A-Z0-9.]+)-(\d{1,4})$/;
+  const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  let D=null;
+  const S={mod:'planner',q:'',fType:'',fCap:'',fStatus:'',sort:'code',dir:1,page:0,sel:new Set(),
+           revQ:'',revProj:'',revShowVoid:true,revChips:[],imp:null};
+
+  /* ── helpers ── */
+  const p2=n=>String(n).padStart(2,'0');
+  const h=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  const $=id=>document.getElementById(id);
+  const nowISO=()=>new Date().toISOString();
+  function localToday(){const d=new Date();return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate());}
+  function newId(p){
+    const r=(window.crypto&&crypto.randomUUID)?crypto.randomUUID().replace(/-/g,'').slice(0,16):(Date.now().toString(36)+Math.random().toString(36).slice(2,10));
+    return p+'_'+r;
+  }
+  function fd(iso){if(!iso)return '';const[y,m,d]=String(iso).slice(0,10).split('-').map(Number);if(!y)return '';return p2(d)+'-'+MON[m-1]+'-'+String(y).slice(2);}
+  function fdt(iso){if(!iso)return '';const d=new Date(iso);if(isNaN(d))return '';return fd(d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate()))+' '+p2(d.getHours())+':'+p2(d.getMinutes());}
+  const normCode=c=>String(c==null?'':c).trim().toUpperCase();
+  const normCap=c=>String(c==null?'':c).trim().toUpperCase().replace(/\s+/g,'');
+  function parseCode(c){const m=CODE_RE.exec(normCode(c));return m?{prefix:m[1],capacity:m[2],seq:+m[3]}:null;}
+  const fmtCode=(p,c,s)=>p+'-'+c+'-'+p2(s);
+  function dirty(){if(typeof markUnsaved==='function')markUnsaved();}
+  function autosave(){if(typeof saveData==='function')saveData();}
+
+  /* ── data lifecycle ── */
+  function mkMachine(o,t){
+    return {id:newId('m'),code:o.code||fmtCode(o.type,o.capacity,o.seq),type:o.type,capacity:o.capacity,
+      name:o.name||'',status:o.status||'Active',project:o.project||'',location:o.location||'',notes:o.notes||'',
+      createdAt:t,updatedAt:t,log:[{at:t,action:'Created',detail:o.logDetail||''}]};
+  }
+  function defaults(){
+    const t=nowISO();
+    return {version:1,types:DEFAULT_TYPES.map(x=>({...x})),
+      machines:SEED.map(([ty,cap,name])=>mkMachine({type:ty,capacity:cap,seq:1,name,logDetail:'Initial register'},t)),
+      revisions:[],projectNames:[]};
+  }
+  function load(r){
+    if(r&&Array.isArray(r.machines)){
+      D={version:1,types:Array.isArray(r.types)&&r.types.length?r.types:DEFAULT_TYPES.map(x=>({...x})),
+        machines:r.machines.map(m=>({log:[],status:'Active',project:'',location:'',notes:'',...m})),
+        revisions:Array.isArray(r.revisions)?r.revisions.map(v=>({status:'Issued',machines:[],notes:'',...v})):[],
+        projectNames:Array.isArray(r.projectNames)?r.projectNames:[]};
+    }else D=defaults();
+    S.sel.clear();S.page=0;
+  }
+  function data(){return D;}
+
+  /* ── lookups ── */
+  const getM=id=>D.machines.find(m=>m.id===id);
+  function typeByKey(v){
+    const k=String(v==null?'':v).trim();if(!k)return null;
+    const u=k.toUpperCase();
+    return D.types.find(t=>t.prefix===u)||D.types.find(t=>t.name.toLowerCase()===k.toLowerCase())||null;
+  }
+  const typeName=p=>{const t=D.types.find(t=>t.prefix===p);return t?t.name:p;};
+  function codeTaken(code,exceptId){const k=normCode(code);return D.machines.some(m=>m.id!==exceptId&&normCode(m.code)===k);}
+  function nextSeq(prefix,cap,extra){
+    let mx=0;
+    const scan=c=>{const p=parseCode(c);if(p&&p.prefix===prefix&&p.capacity===cap)mx=Math.max(mx,p.seq);};
+    D.machines.forEach(m=>scan(m.code));
+    if(extra)extra.forEach(scan);
+    return mx+1;
+  }
+  function genCode(prefix,cap,extra){return fmtCode(prefix,cap,nextSeq(prefix,cap,extra));}
+  function activeCodes(){return D?D.machines.filter(m=>m.status==='Active').map(m=>m.code):[];}
+
+  /* ── projects & revision numbering ── */
+  function plannerProjects(){try{return (typeof projects!=='undefined'&&Array.isArray(projects))?projects.map(p=>p.name).filter(Boolean):[];}catch(e){return [];}}
+  function allProjects(){
+    const set=new Map();
+    const add=n=>{n=String(n||'').trim();if(n&&!set.has(n.toLowerCase()))set.set(n.toLowerCase(),n);};
+    plannerProjects().forEach(add);D.projectNames.forEach(add);D.revisions.forEach(r=>add(r.project));D.machines.forEach(m=>add(m.project));
+    return [...set.values()].sort((a,b)=>a.localeCompare(b));
+  }
+  function projPrefix(name){return String(name||'').replace(/[^A-Za-z0-9]/g,'').slice(0,3).toUpperCase();}
+  function nextRev(project,dateISO){
+    const prefix=projPrefix(project);
+    if(prefix.length<2||!/^\d{4}-\d{2}-\d{2}$/.test(dateISO||''))return null;
+    const[,m,d]=dateISO.split('-');const ddmm=d+m;
+    const prior=D.revisions.filter(r=>r.prefix===prefix&&r.ddmm===ddmm);
+    let seq=prior.reduce((a,r)=>Math.max(a,r.seq||0),0)+1;
+    let revNo=prefix+'-'+ddmm+'-REV'+p2(seq);
+    while(D.revisions.some(r=>r.revNo===revNo)){seq++;revNo=prefix+'-'+ddmm+'-REV'+p2(seq);}
+    return {prefix,ddmm,seq,revNo,prior};
+  }
+  const revCmp=(a,b)=>(b.revDate||'').localeCompare(a.revDate||'')||(b.createdAt||'').localeCompare(a.createdAt||'');
+  function liveRevs(){return D.revisions.filter(r=>r.status!=='Void');}
+  function latestRev(){return liveRevs().slice().sort(revCmp)[0]||null;}
+  function latestByProject(){
+    const map={};liveRevs().slice().sort(revCmp).forEach(r=>{const k=r.project.toLowerCase();if(!map[k])map[k]=r;});return map;
+  }
+  function latestForMachine(m,lbp){
+    const own=liveRevs().filter(r=>(r.machines||[]).some(x=>x.id===m.id)).sort(revCmp)[0];
+    if(own)return own;
+    return m.project?(lbp||latestByProject())[m.project.toLowerCase()]||null:null;
+  }
+
+  /* ══ UI shell ══ */
+  function showModule(mod){
+    S.mod=mod;
+    ['planner','dashboard','register','revisions'].forEach(m=>{
+      const el=$('mod-'+m);if(el)el.style.display=m===mod?'':'none';
+      const b=$('modbtn-'+m);if(b)b.classList.toggle('active',m===mod);
+    });
+    renderCurrent();
+  }
+  function renderCurrent(){
+    if(!D)return;
+    refreshDatalists();
+    const c=$('modbtn-register');if(c)c.querySelector('.mb-n').textContent=D.machines.filter(m=>m.status==='Active').length;
+    const r=$('modbtn-revisions');if(r)r.querySelector('.mb-n').textContent=liveRevs().length;
+    if(S.mod==='dashboard')renderDashboard();
+    else if(S.mod==='register')renderRegister();
+    else if(S.mod==='revisions')renderRevisions();
+  }
+  function refreshDatalists(){
+    const pl=$('rg_projlist');if(pl)pl.innerHTML=allProjects().map(p=>`<option value="${h(p)}">`).join('');
+    const ml=$('rg_machlist');if(ml)ml.innerHTML=D.machines.filter(m=>m.status==='Active').map(m=>`<option value="${h(m.code)}">${h(m.name)}</option>`).join('');
+  }
+  function toast(msg,kind){
+    const t=$('rgToast');if(!t)return;
+    t.textContent=msg;t.className='rg-toast show '+(kind||'');
+    clearTimeout(toast._t);toast._t=setTimeout(()=>t.className='rg-toast',2600);
+  }
+  function openModal(html,wide){
+    const ov=$('rgModal');ov.innerHTML=`<div class="rg-modal${wide?' wide':''}" role="dialog" aria-modal="true">${html}</div>`;
+    ov.style.display='flex';ov.scrollTop=0;
+    const f=ov.querySelector('[autofocus]');if(f)setTimeout(()=>f.focus(),30);
+  }
+  function closeModal(){const ov=$('rgModal');ov.style.display='none';ov.innerHTML='';S.imp=null;}
+  function confirmBox(title,msg,okLabel,danger){
+    return new Promise(res=>{
+      openModal(`<h2 class="rg-mh">${h(title)}</h2><div class="rg-mbody">${msg}</div>
+        <div class="rg-mfoot"><button class="rg-btn" id="rgCfNo">Cancel</button><button class="rg-btn ${danger?'dangerf':'pri'}" id="rgCfOk" autofocus>${h(okLabel||'OK')}</button></div>`);
+      $('rgCfNo').onclick=()=>{closeModal();res(false);};
+      $('rgCfOk').onclick=()=>{closeModal();res(true);};
+    });
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){const ov=$('rgModal');if(ov&&ov.style.display==='flex')closeModal();}});
+
+  /* ══ DASHBOARD ══ */
+  function renderDashboard(){
+    const el=$('mod-dashboard');
+    const tot=D.machines.length,act=D.machines.filter(m=>m.status==='Active').length;
+    const lr=latestRev();
+    const byType=D.types.map(t=>{const ms=D.machines.filter(m=>m.type===t.prefix);return{t,a:ms.filter(m=>m.status==='Active').length,i:ms.filter(m=>m.status!=='Active').length};});
+    const recent=D.revisions.slice().sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||'')).slice(0,8);
+    const lbp=latestByProject();
+    el.innerHTML=`
+    <div class="rg-kpis">
+      <div class="rg-kpi"><div class="k">Total machines</div><div class="v">${tot}</div><div class="s">${D.types.length} machine types</div></div>
+      <div class="rg-kpi k-g"><div class="k">Active</div><div class="v">${act}</div><div class="s">${tot?Math.round(act/tot*100):0}% of register</div></div>
+      <div class="rg-kpi k-n"><div class="k">Inactive</div><div class="v">${tot-act}</div><div class="s">History preserved</div></div>
+      <div class="rg-kpi k-p"><div class="k">Total revisions</div><div class="v">${liveRevs().length}</div><div class="s">${D.revisions.length-liveRevs().length} void</div></div>
+      <div class="rg-kpi k-o"><div class="k">Latest revision</div><div class="v rg-mono sm">${lr?h(lr.revNo):'—'}</div><div class="s">${lr?h(lr.project)+' · '+fd(lr.revDate):'No revisions yet'}</div></div>
+    </div>
+    <div class="rg-grid2">
+      <div class="rg-card"><h3>Machines by type</h3>
+        <div class="rg-tw"><table class="rg-t"><thead><tr><th>Prefix</th><th>Machine type</th><th class="r">Active</th><th class="r">Inactive</th><th class="r">Total</th></tr></thead><tbody>
+        ${byType.map(x=>`<tr><td class="rg-code">${h(x.t.prefix)}</td><td>${h(x.t.name)}</td><td class="r">${x.a}</td><td class="r">${x.i}</td><td class="r"><b>${x.a+x.i}</b></td></tr>`).join('')}
+        </tbody></table></div>
+      </div>
+      <div class="rg-card"><h3>Latest revision per project</h3>
+        ${Object.keys(lbp).length?`<div class="rg-tw"><table class="rg-t"><thead><tr><th>Project</th><th>Revision</th><th>Date</th></tr></thead><tbody>
+        ${Object.values(lbp).sort((a,b)=>a.project.localeCompare(b.project)).map(r=>`<tr><td>${h(r.project)}</td><td class="rg-code">${h(r.revNo)}</td><td>${fd(r.revDate)}</td></tr>`).join('')}
+        </tbody></table></div>`:`<div class="rg-empty">No revisions issued yet. <a href="#" onclick="REG.showModule('revisions');return false">Create the first revision →</a></div>`}
+      </div>
+    </div>
+    <div class="rg-card"><h3>Recently issued revisions</h3>
+      ${recent.length?`<div class="rg-tw"><table class="rg-t"><thead><tr><th>Revision no.</th><th>Project</th><th>Revision date</th><th>Created</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+      ${recent.map(r=>`<tr class="${r.status==='Void'?'inactive':''}"><td class="rg-code">${h(r.revNo)}</td><td>${h(r.project)}</td><td>${fd(r.revDate)}</td><td>${fdt(r.createdAt)}</td><td>${r.status==='Void'?'<span class="rg-pill void">Void</span>':'<span class="rg-pill act">Issued</span>'}</td><td class="rg-notes">${h(r.notes)}</td></tr>`).join('')}
+      </tbody></table></div>`:`<div class="rg-empty">Nothing yet.</div>`}
+    </div>`;
+  }
+
+  /* ══ MACHINE REGISTER ══ */
+  function filtered(){
+    const q=S.q.trim().toLowerCase();
+    let list=D.machines.filter(m=>(!q||m.code.toLowerCase().includes(q)||m.name.toLowerCase().includes(q))
+      &&(!S.fType||m.type===S.fType)&&(!S.fCap||m.capacity===S.fCap)&&(!S.fStatus||m.status===S.fStatus));
+    const k=S.sort,dir=S.dir;
+    list.sort((a,b)=>{
+      let x=a[k]||'',y=b[k]||'';
+      if(k==='capacity'){const nx=parseFloat(x),ny=parseFloat(y);if(!isNaN(nx)&&!isNaN(ny))return (nx-ny)*dir;}
+      return String(x).localeCompare(String(y),undefined,{numeric:true})*dir;
+    });
+    return list;
+  }
+  function renderRegister(){
+    const el=$('mod-register');
+    if(!el.dataset.built){
+      el.innerHTML=`
+      <div class="rg-card">
+        <div class="rg-toolbar">
+          <input class="rg-in rg-search" id="rgQ" placeholder="Search machine code or name…" oninput="REG._q(this.value)">
+          <select class="rg-sel" id="rgFType" onchange="REG._f('fType',this.value)"></select>
+          <select class="rg-sel" id="rgFCap" onchange="REG._f('fCap',this.value)"></select>
+          <select class="rg-sel" id="rgFStatus" onchange="REG._f('fStatus',this.value)"><option value="">All status</option><option>Active</option><option>Inactive</option></select>
+          <span class="rg-sp"></span>
+          <button class="rg-btn pri" onclick="REG.machineForm()">+ Add machine</button>
+          <button class="rg-btn" onclick="REG.typesForm()">Machine types</button>
+          <button class="rg-btn" onclick="REG.importStart()">Import from Excel</button>
+          <div class="rg-dd"><button class="rg-btn ok" onclick="REG._dd(this)">Export to Excel ▾</button>
+            <div class="rg-ddm">
+              <button onclick="REG.exportRegister('all')">All machines</button>
+              <button onclick="REG.exportRegister('filtered')">Current filtered view</button>
+              <button id="rgExpSel" onclick="REG.exportRegister('selected')">Selected machines</button>
+              <hr><button onclick="REG.exportTemplate()">Download import template</button>
+            </div></div>
+        </div>
+        <div id="rgSelBar" class="rg-selbar"></div>
+        <div class="rg-tw rg-tall"><table class="rg-t" id="rgTable"></table></div>
+        <div class="rg-pager" id="rgPager"></div>
+      </div>`;
+      el.dataset.built='1';
+    }
+    $('rgFType').innerHTML='<option value="">All types</option>'+D.types.map(t=>`<option value="${h(t.prefix)}"${S.fType===t.prefix?' selected':''}>${h(t.prefix)} — ${h(t.name)}</option>`).join('');
+    const caps=[...new Set(D.machines.filter(m=>!S.fType||m.type===S.fType).map(m=>m.capacity))].sort((a,b)=>String(a).localeCompare(String(b),undefined,{numeric:true}));
+    if(S.fCap&&!caps.includes(S.fCap))S.fCap='';
+    $('rgFCap').innerHTML='<option value="">All capacities</option>'+caps.map(c=>`<option${S.fCap===c?' selected':''}>${h(c)}</option>`).join('');
+    $('rgFStatus').value=S.fStatus;
+    renderRegTable();
+  }
+  function renderRegTable(){
+    const list=filtered();
+    const pages=Math.max(1,Math.ceil(list.length/PAGE));if(S.page>=pages)S.page=pages-1;
+    const rows=list.slice(S.page*PAGE,(S.page+1)*PAGE);
+    const lbp=latestByProject();
+    const allSel=list.length&&list.every(m=>S.sel.has(m.id));
+    const th=(k,l,cls)=>`<th class="${cls||''}" onclick="REG._sort('${k}')">${l}${S.sort===k?(S.dir>0?' ▲':' ▼'):''}</th>`;
+    $('rgTable').innerHTML=`<thead><tr><th class="ck"><input type="checkbox" ${allSel?'checked':''} onclick="REG._selAll(this.checked)" title="Select all in filter"></th>
+      ${th('code','Machine code')}${th('name','Machine name')}${th('type','Type')}${th('capacity','Capacity')}${th('project','Project')}${th('status','Status')}<th>Latest revision</th>${th('updatedAt','Updated')}<th class="r">Actions</th></tr></thead>
+      <tbody>${rows.length?rows.map(m=>{const lr=latestForMachine(m,lbp);return `<tr class="${m.status!=='Active'?'inactive':''}">
+        <td class="ck"><input type="checkbox" ${S.sel.has(m.id)?'checked':''} onclick="REG._sel('${m.id}',this.checked)"></td>
+        <td class="rg-code">${h(m.code)}</td><td>${h(m.name)}</td><td title="${h(typeName(m.type))}">${h(m.type)}</td><td>${h(m.capacity)}</td>
+        <td>${h(m.project)}</td><td>${m.status==='Active'?'<span class="rg-pill act">Active</span>':'<span class="rg-pill ina">Inactive</span>'}</td>
+        <td class="rg-mono">${lr?h(lr.revNo):'<span class="rg-dim">—</span>'}</td><td class="rg-dim">${fd((m.updatedAt||'').slice(0,10))}</td>
+        <td class="r nowrap"><button class="rg-btn sm" onclick="REG.machineForm('${m.id}')">Edit</button>
+          ${m.status==='Active'?`<button class="rg-btn sm danger" onclick="REG.setStatus('${m.id}','Inactive')">Deactivate</button>`:`<button class="rg-btn sm" onclick="REG.setStatus('${m.id}','Active')">Reactivate</button>`}
+          <button class="rg-btn sm ghost" onclick="REG.machineHistory('${m.id}')" title="Change log">⟲</button></td></tr>`;}).join('')
+      :`<tr><td colspan="10" class="rg-empty">No machines match the current search or filters.</td></tr>`}</tbody>`;
+    $('rgPager').innerHTML=`<span>${list.length} of ${D.machines.length} machine${D.machines.length===1?'':'s'}</span>`+(pages>1?`<span class="rg-sp"></span>
+      <button class="rg-btn sm" ${S.page===0?'disabled':''} onclick="REG._page(-1)">‹ Prev</button><span>Page ${S.page+1} / ${pages}</span>
+      <button class="rg-btn sm" ${S.page>=pages-1?'disabled':''} onclick="REG._page(1)">Next ›</button>`:'');
+    const n=S.sel.size;
+    $('rgSelBar').innerHTML=n?`<b>${n}</b> selected <button class="rg-btn sm ok" onclick="REG.exportRegister('selected')">Export selected</button><button class="rg-btn sm ghost" onclick="REG._selAll(false,true)">Clear selection</button>`:'';
+    $('rgSelBar').style.display=n?'flex':'none';
+    $('rgExpSel').disabled=!n;$('rgExpSel').textContent=`Selected machines (${n})`;
+  }
+  let _qt;
+  const ui={
+    _q(v){clearTimeout(_qt);_qt=setTimeout(()=>{S.q=v;S.page=0;renderRegTable();},150);},
+    _f(k,v){S[k]=v;S.page=0;renderRegister();},
+    _sort(k){if(S.sort===k)S.dir*=-1;else{S.sort=k;S.dir=1;}renderRegTable();},
+    _page(d){S.page+=d;renderRegTable();$('rgTable').scrollIntoView({block:'nearest'});},
+    _sel(id,on){on?S.sel.add(id):S.sel.delete(id);renderRegTable();},
+    _selAll(on,clearAll){if(clearAll){S.sel.clear();}else filtered().forEach(m=>on?S.sel.add(m.id):S.sel.delete(m.id));renderRegTable();},
+    _dd(btn){const dd=btn.parentElement;const open=!dd.classList.contains('open');document.querySelectorAll('.rg-dd.open').forEach(x=>x.classList.remove('open'));if(open)dd.classList.add('open');}
+  };
+  document.addEventListener('click',e=>{if(!e.target.closest('.rg-dd'))document.querySelectorAll('.rg-dd.open').forEach(x=>x.classList.remove('open'));else if(e.target.closest('.rg-ddm button'))e.target.closest('.rg-dd').classList.remove('open');});
+
+  /* ── add / edit machine ── */
+  function typeOpts(sel){return D.types.map(t=>`<option value="${h(t.prefix)}"${t.prefix===sel?' selected':''}>${h(t.prefix)} — ${h(t.name)}</option>`).join('');}
+  function machineForm(id){
+    const m=id?getM(id):null;
+    if(!D.types.length){toast('Add a machine type first','err');return typesForm();}
+    openModal(`<h2 class="rg-mh">${m?'Edit machine':'Add machine'}</h2>
+      <div class="rg-form">
+        <label>Machine type<select class="rg-sel" id="mf_type">${typeOpts(m?m.type:(S.fType||D.types[0].prefix))}</select></label>
+        <label>Capacity<input class="rg-in" id="mf_cap" value="${h(m?m.capacity:(S.fCap||''))}" placeholder="e.g. 2500" ${m?'':'autofocus'}></label>
+        <label class="span2">Machine code
+          <div class="rg-coderow"><input class="rg-in rg-mono" id="mf_code" value="${h(m?m.code:'')}" readonly>
+          <label class="rg-chk"><input type="checkbox" id="mf_manual"> ${m?'Change code manually':'Enter code manually'}</label></div>
+          <div class="rg-hint" id="mf_hint"></div></label>
+        <label class="span2">Machine name<input class="rg-in" id="mf_name" value="${h(m?m.name:'')}" ${m?'autofocus':''}></label>
+        <label>Project <span class="rg-opt">optional</span><input class="rg-in" id="mf_proj" list="rg_projlist" value="${h(m?m.project:'')}"></label>
+        <label>Location <span class="rg-opt">optional</span><input class="rg-in" id="mf_loc" value="${h(m?m.location:'')}"></label>
+        <label class="span2">Notes <span class="rg-opt">optional</span><textarea class="rg-in" id="mf_notes" rows="2">${h(m?m.notes:'')}</textarea></label>
+      </div>
+      <div class="rg-err" id="mf_err"></div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.closeModal()">Cancel</button><button class="rg-btn pri" id="mf_save">${m?'Save changes':'Add machine'}</button></div>`);
+    let nameTouched=!!m;
+    const fType=$('mf_type'),fCap=$('mf_cap'),fCode=$('mf_code'),fMan=$('mf_manual'),fName=$('mf_name'),hint=$('mf_hint');
+    const sugName=()=>{const c=normCap(fCap.value);return typeName(fType.value)+(c?' – '+c:'');};
+    function upd(){
+      const cap=normCap(fCap.value);
+      fCode.readOnly=!fMan.checked;
+      if(!m){
+        if(!fMan.checked)fCode.value=cap?genCode(fType.value,cap):'';
+        hint.innerHTML=fMan.checked?'Manual code — checked for duplicates on save.':(cap?`Next free sequence for <b>${h(fType.value)}-${h(cap)}</b>.`:'Enter a capacity to generate the code.');
+      }else{
+        const pc=parseCode(m.code);
+        const mismatch=pc&&(pc.prefix!==fType.value||pc.capacity!==cap);
+        hint.innerHTML=fMan.checked?'Manual code — checked for duplicates on save.':
+          (mismatch&&cap?`Type/capacity changed — the code stays <b>${h(m.code)}</b> unless you change it. <a href="#" id="mf_regen">Use next code ${h(genCode(fType.value,cap))}</a>`:'Existing codes are never changed automatically.');
+        const rg=$('mf_regen');if(rg)rg.onclick=e=>{e.preventDefault();fMan.checked=true;fCode.readOnly=false;fCode.value=genCode(fType.value,cap);hint.innerHTML='New code will be applied on save.';};
+      }
+      if(!nameTouched)fName.value=sugName();
+    }
+    fType.onchange=upd;fCap.oninput=upd;fMan.onchange=()=>{if(!fMan.checked&&m)fCode.value=m.code;upd();if(fMan.checked)fCode.focus();};
+    fName.oninput=()=>{nameTouched=fName.value.trim()!=='';};
+    upd();
+    $('mf_save').onclick=()=>{
+      const err=$('mf_err');
+      const type=fType.value,cap=normCap(fCap.value);
+      let code=normCode(fMan.checked?fCode.value:(m?m.code:genCode(type,cap)));
+      const name=fName.value.trim()||sugName();
+      if(!cap)return err.textContent='Capacity is required.';
+      if(!/^[A-Z0-9.]+$/.test(cap))return err.textContent='Capacity may contain only letters, digits and “.” (no spaces or hyphens).';
+      if(!code)return err.textContent='Machine code is required.';
+      if(!/^[A-Z0-9][A-Z0-9._\-\/]*$/.test(code))return err.textContent='Code may contain letters, digits, “-”, “_”, “.” and “/”.';
+      if(codeTaken(code,m&&m.id))return err.textContent=`Code ${code} already exists in the register (active or inactive).`;
+      const t=nowISO();
+      const vals={type,capacity:cap,name,project:$('mf_proj').value.trim(),location:$('mf_loc').value.trim(),notes:$('mf_notes').value.trim()};
+      if(m){
+        const ch=[];
+        if(m.code!==code)ch.push(`code ${m.code} → ${code}`);
+        Object.keys(vals).forEach(k=>{if((m[k]||'')!==vals[k])ch.push(`${k}: “${m[k]||''}” → “${vals[k]}”`);});
+        if(!ch.length){closeModal();return;}
+        Object.assign(m,vals,{code,updatedAt:t});m.log=(m.log||[]).concat({at:t,action:'Edited',detail:ch.join('; ')});
+        toast('Machine updated');
+      }else{
+        const nm=mkMachine({...vals,code},t);D.machines.push(nm);
+        toast(`Added ${code}`);
+      }
+      dirty();closeModal();renderCurrent();
+    };
+  }
+  async function setStatus(id,st){
+    const m=getM(id);if(!m)return;
+    if(st==='Inactive'){
+      const ok=await confirmBox('Deactivate machine?',`<p><b class="rg-mono">${h(m.code)}</b> — ${h(m.name)} will be marked <b>Inactive</b>.</p><p class="rg-dim">It stays in the register, its code stays reserved and all revision history is kept. You can reactivate it at any time.</p>`,'Deactivate',true);
+      if(!ok)return;
+    }
+    const t=nowISO();m.status=st;m.updatedAt=t;m.log=(m.log||[]).concat({at:t,action:st==='Active'?'Reactivated':'Deactivated',detail:''});
+    dirty();renderCurrent();toast(`${m.code} ${st==='Active'?'reactivated':'deactivated'}`);
+  }
+  function machineHistory(id){
+    const m=getM(id);if(!m)return;
+    const revs=D.revisions.filter(r=>(r.machines||[]).some(x=>x.id===id)).sort(revCmp);
+    openModal(`<h2 class="rg-mh"><span class="rg-mono">${h(m.code)}</span> · history</h2>
+      <div class="rg-mbody"><p class="rg-dim">Internal ID ${h(m.id)} · created ${fdt(m.createdAt)}</p>
+      <h4 class="rg-h4">Change log</h4>
+      <div class="rg-tw"><table class="rg-t"><thead><tr><th>When</th><th>Action</th><th>Detail</th></tr></thead><tbody>
+      ${(m.log||[]).slice().reverse().map(l=>`<tr><td class="nowrap">${fdt(l.at)}</td><td>${h(l.action)}</td><td class="rg-notes">${h(l.detail)}</td></tr>`).join('')||'<tr><td colspan="3" class="rg-empty">No entries</td></tr>'}
+      </tbody></table></div>
+      <h4 class="rg-h4">Linked revisions</h4>
+      ${revs.length?`<div class="rg-tw"><table class="rg-t"><thead><tr><th>Revision</th><th>Project</th><th>Date</th><th>Status</th></tr></thead><tbody>${revs.map(r=>`<tr><td class="rg-code">${h(r.revNo)}</td><td>${h(r.project)}</td><td>${fd(r.revDate)}</td><td>${h(r.status)}</td></tr>`).join('')}</tbody></table></div>`:'<p class="rg-dim">Not linked to any revision.</p>'}
+      </div><div class="rg-mfoot"><button class="rg-btn pri" onclick="REG.closeModal()">Close</button></div>`);
+  }
+
+  /* ── machine types ── */
+  function typesForm(){
+    const cnt=p=>D.machines.filter(m=>m.type===p).length;
+    openModal(`<h2 class="rg-mh">Machine types &amp; prefixes</h2>
+      <div class="rg-mbody"><div class="rg-tw"><table class="rg-t"><thead><tr><th>Prefix</th><th>Machine type name</th><th class="r">Machines</th><th></th></tr></thead><tbody>
+      ${D.types.map((t,i)=>`<tr><td class="rg-code">${h(t.prefix)}</td><td><input class="rg-in full" value="${h(t.name)}" onchange="REG._typeName(${i},this.value)"></td><td class="r">${cnt(t.prefix)}</td>
+        <td class="r">${cnt(t.prefix)?'':`<button class="rg-btn sm danger" onclick="REG._typeDel(${i})">Remove</button>`}</td></tr>`).join('')}
+      </tbody></table></div>
+      <h4 class="rg-h4">Add a type</h4>
+      <div class="rg-toolbar"><input class="rg-in rg-mono" id="nt_p" placeholder="Prefix e.g. LS" maxlength="4" style="width:120px" autofocus>
+      <input class="rg-in" id="nt_n" placeholder="Name e.g. Laser Cutting Machine" style="flex:1;min-width:200px">
+      <button class="rg-btn pri" onclick="REG._typeAdd()">Add type</button></div>
+      <div class="rg-err" id="nt_err"></div>
+      <p class="rg-dim">Prefixes are 1–4 letters and cannot be changed once used, because they are part of existing machine codes.</p></div>
+      <div class="rg-mfoot"><button class="rg-btn pri" onclick="REG.closeModal();REG.render()">Done</button></div>`);
+  }
+  Object.assign(ui,{
+    _typeName(i,v){v=v.trim();if(!v)return typesForm();D.types[i].name=v;dirty();},
+    _typeDel(i){D.types.splice(i,1);dirty();typesForm();},
+    _typeAdd(){
+      const p=normCode($('nt_p').value),n=$('nt_n').value.trim(),e=$('nt_err');
+      if(!/^[A-Z]{1,4}$/.test(p))return e.textContent='Prefix must be 1–4 letters.';
+      if(D.types.some(t=>t.prefix===p))return e.textContent=`Prefix ${p} already exists.`;
+      if(!n)return e.textContent='Enter a type name.';
+      D.types.push({prefix:p,name:n});dirty();typesForm();toast(`Type ${p} added`);
+    }
+  });
+
+  /* ══ REVISIONS ══ */
+  function renderRevisions(){
+    const el=$('mod-revisions');
+    if(!el.dataset.built){
+      el.innerHTML=`<div class="rg-revgrid">
+        <div class="rg-card rg-newrev"><h3>New revision</h3>
+          <div class="rg-form one">
+            <label>Project name<input class="rg-in" id="rv_proj" list="rg_projlist" placeholder="e.g. MAFI" oninput="REG._revPrev()"></label>
+            <label>Revision date<input class="rg-in" type="date" id="rv_date" onchange="REG._revPrev()"></label>
+          </div>
+          <div class="rg-revbox"><div class="rg-revlbl">Revision number</div><div class="rg-revno" id="rv_no">—</div><div class="rg-revinfo" id="rv_info"></div></div>
+          <div class="rg-form one">
+            <label>Linked machines <span class="rg-opt">optional</span>
+              <div class="rg-coderow"><input class="rg-in rg-mono" id="rv_mach" list="rg_machlist" placeholder="Machine code" onkeydown="if(event.key==='Enter'){event.preventDefault();REG._revAddM()}"><button class="rg-btn" onclick="REG._revAddM()">Add</button></div>
+              <div class="rg-chips" id="rv_chips"></div></label>
+            <label>Revision notes<textarea class="rg-in" id="rv_notes" rows="3" placeholder="What changed in this revision?"></textarea></label>
+          </div>
+          <div class="rg-err" id="rv_err"></div>
+          <button class="rg-btn pri full" onclick="REG.saveRevision()">Save revision</button>
+        </div>
+        <div class="rg-card"><h3>Revision history</h3>
+          <div class="rg-toolbar">
+            <input class="rg-in rg-search" placeholder="Search revision no. or notes…" oninput="REG._revQ(this.value)">
+            <select class="rg-sel" id="rv_fproj" onchange="REG._revF(this.value)"></select>
+            <label class="rg-chk"><input type="checkbox" checked onchange="REG._revVoid(this.checked)"> Show void</label>
+            <span class="rg-sp"></span>
+            <button class="rg-btn ok" onclick="REG.exportRevisions()">Export history to Excel</button>
+          </div>
+          <div class="rg-tw rg-tall"><table class="rg-t" id="rv_table"></table></div>
+        </div></div>`;
+      el.dataset.built='1';
+      $('rv_date').value=localToday();
+    }
+    const projs=[...new Set(D.revisions.map(r=>r.project))].sort();
+    if(S.revProj&&!projs.includes(S.revProj))S.revProj='';
+    $('rv_fproj').innerHTML='<option value="">All projects</option>'+projs.map(p=>`<option${p===S.revProj?' selected':''}>${h(p)}</option>`).join('');
+    revPreview();renderRevChips();renderRevTable();
+  }
+  function revPreview(){
+    const proj=$('rv_proj').value.trim(),date=$('rv_date').value;
+    const nr=proj?nextRev(proj,date):null;
+    $('rv_no').textContent=nr?nr.revNo:'—';
+    let info='';
+    if(!proj)info='Select or type a project name.';
+    else if(!nr)info=projPrefix(proj).length<2?'Project name needs at least 2 letters or digits.':'Select a valid revision date.';
+    else{
+      const yrs=[...new Set(nr.prior.map(r=>(r.revDate||'').slice(0,4)))].sort();
+      info=`Prefix <b>${h(nr.prefix)}</b> · day/month <b>${nr.ddmm.slice(0,2)}/${nr.ddmm.slice(2)}</b> · `+(nr.prior.length?`continues ${nr.prior.length} earlier revision${nr.prior.length>1?'s':''} (${yrs.join(', ')})`:'first revision for this day/month');
+      const others=allProjects().filter(p=>projPrefix(p)===nr.prefix&&p.toLowerCase()!==proj.toLowerCase());
+      if(others.length)info+=`<div class="rg-warn">Prefix ${h(nr.prefix)} is shared with ${others.map(h).join(', ')} — they use one common sequence.</div>`;
+    }
+    $('rv_info').innerHTML=info;
+  }
+  function renderRevChips(){
+    $('rv_chips').innerHTML=S.revChips.map((id,i)=>{const m=getM(id);return m?`<span class="rg-chip">${h(m.code)}<button onclick="REG._revDelM(${i})" aria-label="Remove">×</button></span>`:'';}).join('');
+  }
+  function renderRevTable(){
+    const q=S.revQ.trim().toLowerCase();
+    const lbp=latestByProject();const latestIds=new Set(Object.values(lbp).map(r=>r.id));
+    const list=D.revisions.filter(r=>(S.revShowVoid||r.status!=='Void')&&(!S.revProj||r.project===S.revProj)
+      &&(!q||r.revNo.toLowerCase().includes(q)||(r.notes||'').toLowerCase().includes(q)||r.project.toLowerCase().includes(q))).sort(revCmp);
+    $('rv_table').innerHTML=`<thead><tr><th>Revision no.</th><th>Project</th><th>Revision date</th><th>Created</th><th>Machines</th><th>Notes</th><th>Status</th><th></th></tr></thead><tbody>
+      ${list.length?list.map(r=>`<tr class="${r.status==='Void'?'inactive':''}">
+        <td class="rg-code nowrap">${h(r.revNo)} ${latestIds.has(r.id)?'<span class="rg-pill latest">Latest</span>':''}</td>
+        <td>${h(r.project)}</td><td class="nowrap">${fd(r.revDate)}</td><td class="nowrap rg-dim">${fdt(r.createdAt)}</td>
+        <td class="rg-mono sm">${(r.machines||[]).map(x=>h(x.code)).join(', ')}</td><td class="rg-notes">${h(r.notes)}${r.voidReason?`<div class="rg-warn">Void: ${h(r.voidReason)}</div>`:''}</td>
+        <td>${r.status==='Void'?'<span class="rg-pill void">Void</span>':'<span class="rg-pill act">Issued</span>'}</td>
+        <td class="r nowrap"><button class="rg-btn sm" onclick="REG.editRevNotes('${r.id}')">Notes</button>${r.status!=='Void'?`<button class="rg-btn sm danger" onclick="REG.voidRevision('${r.id}')">Void</button>`:''}</td></tr>`).join('')
+      :`<tr><td colspan="8" class="rg-empty">${D.revisions.length?'No revisions match.':'No revisions yet — create one on the left.'}</td></tr>`}</tbody>`;
+  }
+  Object.assign(ui,{
+    _revPrev:revPreview,
+    _revQ(v){S.revQ=v;renderRevTable();},
+    _revF(v){S.revProj=v;renderRevTable();},
+    _revVoid(v){S.revShowVoid=v;renderRevTable();},
+    _revAddM(){
+      const inp=$('rv_mach'),code=normCode(inp.value),err=$('rv_err');err.textContent='';
+      if(!code)return;
+      const m=D.machines.find(x=>normCode(x.code)===code);
+      if(!m)return err.textContent=`Machine ${code} is not in the register.`;
+      if(!S.revChips.includes(m.id))S.revChips.push(m.id);
+      inp.value='';renderRevChips();
+    },
+    _revDelM(i){S.revChips.splice(i,1);renderRevChips();}
+  });
+  function saveRevision(){
+    const err=$('rv_err');err.textContent='';
+    const proj=$('rv_proj').value.trim(),date=$('rv_date').value,notes=$('rv_notes').value.trim();
+    if(!proj)return err.textContent='Project name is required.';
+    const nr=nextRev(proj,date);
+    if(!nr)return err.textContent=projPrefix(proj).length<2?'Project name needs at least 2 letters or digits.':'Select a valid revision date.';
+    if(D.revisions.some(r=>r.revNo===nr.revNo))return err.textContent='Duplicate revision number — please retry.';
+    const known=allProjects().find(p=>p.toLowerCase()===proj.toLowerCase());
+    const pname=known||proj;
+    if(!known&&!D.projectNames.includes(pname))D.projectNames.push(pname);
+    const rev={id:newId('r'),revNo:nr.revNo,project:pname,prefix:nr.prefix,ddmm:nr.ddmm,seq:nr.seq,revDate:date,createdAt:nowISO(),
+      createdBy:(typeof currentUser!=='undefined'&&currentUser&&currentUser.email)||'',notes,status:'Issued',
+      machines:S.revChips.map(id=>{const m=getM(id);return m?{id:m.id,code:m.code}:null;}).filter(Boolean)};
+    D.revisions.push(rev);
+    S.revChips=[];$('rv_notes').value='';
+    dirty();autosave();renderCurrent();
+    toast(`Revision ${rev.revNo} saved`,'ok');
+  }
+  function editRevNotes(id){
+    const r=D.revisions.find(x=>x.id===id);if(!r)return;
+    openModal(`<h2 class="rg-mh">Notes · <span class="rg-mono">${h(r.revNo)}</span></h2>
+      <div class="rg-mbody"><p class="rg-dim">The revision number, project and date are locked once issued.</p>
+      <textarea class="rg-in full" id="rn_txt" rows="5" autofocus>${h(r.notes)}</textarea></div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.closeModal()">Cancel</button><button class="rg-btn pri" id="rn_ok">Save notes</button></div>`);
+    $('rn_ok').onclick=()=>{r.notes=$('rn_txt').value.trim();r.updatedAt=nowISO();dirty();closeModal();renderCurrent();};
+  }
+  function voidRevision(id){
+    const r=D.revisions.find(x=>x.id===id);if(!r)return;
+    openModal(`<h2 class="rg-mh">Void revision <span class="rg-mono">${h(r.revNo)}</span>?</h2>
+      <div class="rg-mbody"><p>The record is kept in the history and its number is never reused. The next revision for this project and day continues the sequence.</p>
+      <label class="rg-form one"><span class="rg-lbl">Reason</span><input class="rg-in full" id="vr_r" autofocus placeholder="e.g. issued by mistake"></label></div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.closeModal()">Cancel</button><button class="rg-btn dangerf" id="vr_ok">Void revision</button></div>`);
+    $('vr_ok').onclick=()=>{r.status='Void';r.voidReason=$('vr_r').value.trim();r.updatedAt=nowISO();dirty();closeModal();renderCurrent();toast(`${r.revNo} voided`);};
+  }
+
+  /* ══ EXCEL — shared styling (ARIA–OBM MSNS standard) ══ */
+  const C={navy:'1F3864',band:'2E5496',sub:'D9E1F2',cream:'FFF2CC',hiTxt:'843C0C',hiFill:'F8CBAD',grey:'808080',line:'BFBFBF'};
+  const bd={top:{style:'thin',color:{rgb:C.line}},bottom:{style:'thin',color:{rgb:C.line}},left:{style:'thin',color:{rgb:C.line}},right:{style:'thin',color:{rgb:C.line}}};
+  const font=(o)=>({name:'Arial',sz:10,...o});
+  function xlSerial(iso){if(!iso)return null;const[y,m,d]=String(iso).slice(0,10).split('-').map(Number);if(!y)return null;return (Date.UTC(y,m-1,d)-Date.UTC(1899,11,30))/864e5;}
+  function xlStamp(iso){if(!iso)return null;const d=new Date(iso);if(isNaN(d))return null;return (Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),d.getHours(),d.getMinutes())-Date.UTC(1899,11,30))/864e5;}
+  function needXLSX(){if(typeof XLSX==='undefined'){alert('The Excel library did not load. Check your internet connection and reload the page.');return false;}return true;}
+  /* cols: [{h:'Header',w:14,k:'date'|'stamp'|'num'|'text'}] ; rows: arrays of values */
+  function buildSheet(report,cols,rows,opt){
+    opt=opt||{};
+    const HR=5; // header row index (0-based) → Excel row 6
+    const ws={};const enc=(r,c)=>XLSX.utils.encode_cell({r,c});
+    const idn=[['Company','Aria'],['Dep','OBM'],['Report',report],['Date',null]];
+    idn.forEach(([l,v],r)=>{
+      ws[enc(r,0)]={t:'s',v:l,s:{font:font({sz:12,bold:true,color:{rgb:'FFFFFF'}}),fill:{fgColor:{rgb:C.navy}},border:bd,alignment:{vertical:'center'}}};
+      ws[enc(r,1)]=r===3?{t:'n',v:xlSerial(localToday()),s:{font:font({sz:12,bold:true}),numFmt:'d-mmm-yy',border:bd,alignment:{horizontal:'left'}}}
+                        :{t:'s',v:v,s:{font:font({sz:12,bold:true}),border:bd}};
+    });
+    if(opt.note)ws[enc(4,0)]={t:'s',v:opt.note,s:{font:font({sz:9,italic:true,color:{rgb:C.grey}})}};
+    cols.forEach((c,ci)=>{ws[enc(HR,ci)]={t:'s',v:c.h,s:{font:font({bold:true,color:{rgb:'FFFFFF'}}),fill:{fgColor:{rgb:C.navy}},border:bd,alignment:{vertical:'center',wrapText:true}}};});
+    rows.forEach((row,ri)=>{
+      const r=HR+1+ri;const rs=opt.rowStyle?opt.rowStyle(ri):null;
+      cols.forEach((c,ci)=>{
+        let v=row[ci];const s={font:font(rs&&rs.font||{}),border:bd,alignment:{vertical:'top',wrapText:!!c.wrap}};
+        if(rs&&rs.fill)s.fill={fgColor:{rgb:rs.fill}};
+        if(opt.input)s.fill={fgColor:{rgb:C.cream}};
+        let cell;
+        if(c.k==='date'||c.k==='stamp'){const n=c.k==='date'?xlSerial(v):xlStamp(v);s.numFmt=c.k==='date'?'d-mmm-yy':'d-mmm-yy hh:mm';s.alignment.horizontal='left';cell=n==null?{t:'s',v:'',s}:{t:'n',v:n,s};}
+        else if(c.k==='num'){cell=(v===''||v==null||isNaN(+v))?{t:'s',v:v==null?'':String(v),s}:{t:'n',v:+v,s};}
+        else cell={t:'s',v:v==null?'':String(v),s};
+        ws[enc(r,ci)]=cell;
+      });
+    });
+    const lastR=HR+Math.max(rows.length,1);
+    ws['!ref']=XLSX.utils.encode_range({s:{r:0,c:0},e:{r:lastR,c:Math.max(cols.length-1,1)}});
+    ws['!cols']=cols.map((c,i)=>({wch:i===1?Math.max(c.w||12,22):(c.w||12)}));
+    ws['!rows']=[];ws['!rows'][HR]={hpt:22};
+    if(rows.length)ws['!autofilter']={ref:XLSX.utils.encode_range({s:{r:HR,c:0},e:{r:lastR,c:cols.length-1}})};
+    ws.__freeze=HR+1;
+    return ws;
+  }
+  function patchSheetXml(x,ySplit){
+    const pane=ySplit?`<pane ySplit="${ySplit}" topLeftCell="A${ySplit+1}" activePane="bottomLeft" state="frozen"/><selection pane="bottomLeft" activeCell="A${ySplit+1}" sqref="A${ySplit+1}"/>`:'';
+    x=x.replace(/<sheetView\b[^>]*?(\/>|>[\s\S]*?<\/sheetView>)/,`<sheetView showGridLines="0" workbookViewId="0">${pane}</sheetView>`);
+    if(/<sheetPr\b[^>]*\/>/.test(x))x=x.replace(/<sheetPr\b([^>]*)\/>/,'<sheetPr$1><pageSetUpPr fitToPage="1"/></sheetPr>');
+    else if(!/<sheetPr\b/.test(x))x=x.replace(/(<worksheet\b[^>]*>)/,'$1<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>');
+    x=x.replace(/<pageMargins\b[^>]*\/>/,'');
+    const tail='<pageMargins left="0.4" right="0.4" top="0.7" bottom="0.5" header="0.3" footer="0.3"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/><headerFooter><oddHeader>&amp;C&amp;K00B050public access</oddHeader></headerFooter>';
+    const anchor=x.search(/<(rowBreaks|colBreaks|ignoredErrors|drawing|legacyDrawing|tableParts|extLst)\b/);
+    return anchor>=0?x.slice(0,anchor)+tail+x.slice(anchor):x.replace('</worksheet>',tail+'</worksheet>');
+  }
+  async function writeBook(sheets,filename){
+    const wb=XLSX.utils.book_new();
+    sheets.forEach(([name,ws])=>XLSX.utils.book_append_sheet(wb,ws,name));
+    const buf=XLSX.write(wb,{bookType:'xlsx',type:'array',cellStyles:true});
+    let blob=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+    if(typeof JSZip!=='undefined'){
+      try{
+        const zip=await JSZip.loadAsync(buf);
+        for(let i=0;i<sheets.length;i++){
+          const p=`xl/worksheets/sheet${i+1}.xml`;const f=zip.file(p);if(!f)continue;
+          zip.file(p,patchSheetXml(await f.async('string'),sheets[i][1].__freeze));
+        }
+        blob=await zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',compression:'DEFLATE'});
+      }catch(e){console.warn('Sheet view patch skipped',e);}
+    }
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);
+  }
+  const stampName=()=>{const d=new Date();return p2(d.getDate())+MON[d.getMonth()]+String(d.getFullYear()).slice(2);};
+  const inactiveStyle=list=>i=>list[i].status!=='Active'?{font:{color:{rgb:C.grey}}}:null;
+
+  function machineSheet(list){
+    const lbp=latestByProject();
+    const cols=[{h:'#',w:5,k:'num'},{h:'Machine Code',w:16},{h:'Machine Name',w:30,wrap:true},{h:'Machine Type',w:22},{h:'Type Prefix',w:8},{h:'Capacity',w:10},{h:'Status',w:10},
+      {h:'Project',w:18},{h:'Location',w:14},{h:'Latest Revision',w:18},{h:'Revision Date',w:12,k:'date'},{h:'Notes',w:32,wrap:true},{h:'Created',w:12,k:'date'},{h:'Updated',w:12,k:'date'},{h:'Internal ID',w:20}];
+    const rows=list.map((m,i)=>{const lr=latestForMachine(m,lbp);return [i+1,m.code,m.name,typeName(m.type),m.type,m.capacity,m.status,m.project,m.location,lr?lr.revNo:'',lr?lr.revDate:'',m.notes,(m.createdAt||'').slice(0,10),(m.updatedAt||'').slice(0,10),m.id];});
+    return buildSheet('Machine Register',cols,rows,{rowStyle:inactiveStyle(list)});
+  }
+  function revisionSheet(revs){
+    const lbp=latestByProject();const latestIds=new Set(Object.values(lbp).map(r=>r.id));
+    const cols=[{h:'#',w:5,k:'num'},{h:'Revision No',w:18},{h:'Project',w:20},{h:'Prefix',w:8},{h:'DDMM',w:8},{h:'Seq',w:6,k:'num'},{h:'Revision Date',w:13,k:'date'},
+      {h:'Created',w:17,k:'stamp'},{h:'Created By',w:22},{h:'Status',w:9},{h:'Latest',w:8},{h:'Machines',w:24,wrap:true},{h:'Notes',w:40,wrap:true},{h:'Void Reason',w:22,wrap:true}];
+    const list=revs.slice().sort(revCmp);
+    const rows=list.map((r,i)=>[i+1,r.revNo,r.project,r.prefix,r.ddmm,r.seq,r.revDate,r.createdAt,r.createdBy||'',r.status,latestIds.has(r.id)?'Yes':'',(r.machines||[]).map(x=>x.code).join(', '),r.notes||'',r.voidReason||'']);
+    return buildSheet('Revision History',cols,rows,{rowStyle:i=>list[i].status==='Void'?{font:{color:{rgb:C.grey},strike:true}}:latestIds.has(list[i].id)?{font:{bold:true,color:{rgb:C.hiTxt}},fill:C.hiFill}:null});
+  }
+  function typesSheet(){
+    const cols=[{h:'Type Prefix',w:12},{h:'Machine Type',w:30},{h:'Active',w:9,k:'num'},{h:'Inactive',w:9,k:'num'}];
+    const rows=D.types.map(t=>[t.prefix,t.name,D.machines.filter(m=>m.type===t.prefix&&m.status==='Active').length,D.machines.filter(m=>m.type===t.prefix&&m.status!=='Active').length]);
+    return buildSheet('Machine Types',cols,rows);
+  }
+  async function exportRegister(scope){
+    if(!needXLSX())return;
+    let list=scope==='selected'?D.machines.filter(m=>S.sel.has(m.id)):scope==='filtered'?filtered():D.machines.slice();
+    if(!list.length)return toast('Nothing to export','err');
+    list.sort((a,b)=>a.code.localeCompare(b.code,undefined,{numeric:true}));
+    const ids=new Set(list.map(m=>m.id));
+    const revs=scope==='all'?D.revisions:D.revisions.filter(r=>(r.machines||[]).some(x=>ids.has(x.id))||list.some(m=>m.project&&m.project.toLowerCase()===r.project.toLowerCase()));
+    await writeBook([['Machine Register',machineSheet(list)],['Revision History',revisionSheet(revs)],['Machine Types',typesSheet()]],`Machine_Register_${scope==='all'?'':scope+'_'}${stampName()}.xlsx`);
+    toast(`Exported ${list.length} machine${list.length>1?'s':''}`,'ok');
+  }
+  async function exportRevisions(){
+    if(!needXLSX())return;
+    const revs=D.revisions.filter(r=>!S.revProj||r.project===S.revProj);
+    if(!revs.length)return toast('No revisions to export','err');
+    await writeBook([['Revision History',revisionSheet(revs)]],`Revision_History_${S.revProj?projPrefix(S.revProj)+'_':''}${stampName()}.xlsx`);
+  }
+  async function exportTemplate(){
+    if(!needXLSX())return;
+    const cols=[{h:'Machine Code',w:16},{h:'Machine Name',w:32},{h:'Machine Type',w:22},{h:'Capacity',w:11},{h:'Status',w:10},{h:'Project',w:18},{h:'Location',w:14},{h:'Notes',w:32}];
+    const blank=Array.from({length:30},()=>cols.map(()=>''));
+    const ws=buildSheet('Machine Import Template',cols,blank,{input:true,note:'Fill the cream rows. Required: Machine Type + Capacity. Leave Machine Code blank to auto-generate.'});
+    delete ws['!autofilter'];
+    const ins=[['Field','Required','Rule / example']].concat([
+      ['Machine Code','No','Leave blank to auto-generate (e.g. MC-2500-02). If entered it must be unique and match the type & capacity.'],
+      ['Machine Name','No','Blank → “<Type name> – <Capacity>”.'],
+      ['Machine Type','Yes','Prefix (MC) or full name (CNC Milling Machine). Must exist in the Machine Types sheet.'],
+      ['Capacity','Yes','Letters, digits and “.” only, e.g. 2500, 250.'],
+      ['Status','No','Active or Inactive. Blank → Active.'],
+      ['Project / Location / Notes','No','Free text.']]);
+    const insWs=buildSheet('Import Instructions',[{h:ins[0][0],w:24},{h:ins[0][1],w:10},{h:ins[0][2],w:90,wrap:true}],ins.slice(1));
+    delete insWs['!autofilter'];
+    await writeBook([['Import Template',ws],['Machine Types',typesSheet()],['Instructions',insWs]],'Machine_Import_Template.xlsx');
+  }
+
+  /* ══ EXCEL IMPORT ══ */
+  const ALIASES={code:['machine code','code','machine no','machine number'],name:['machine name','name','description'],type:['machine type','type','type prefix','prefix'],
+    capacity:['capacity','cap'],status:['status','state'],project:['project','project name'],location:['location'],notes:['notes','note','remarks']};
+  const FIELDS=['code','name','type','capacity','status','project','location','notes'];
+  function importStart(){
+    if(!needXLSX())return;
+    openModal(`<h2 class="rg-mh">Import machines from Excel</h2>
+      <div class="rg-mbody">
+        <div class="rg-drop" id="im_drop"><input type="file" id="im_file" accept=".xlsx,.xls" hidden>
+          <div><b>Choose an .xlsx or .xls file</b> or drop it here</div><div class="rg-dim">Columns read: Machine Code, Machine Name, Machine Type, Capacity, Status, Project, Location, Notes</div>
+          <button class="rg-btn" onclick="document.getElementById('im_file').click()">Browse…</button></div>
+        <div class="rg-modes"><span class="rg-lbl">When a machine code already exists</span>
+          <label class="rg-chk"><input type="radio" name="im_mode" value="new" checked> Add only new machines (skip existing)</label>
+          <label class="rg-chk"><input type="radio" name="im_mode" value="update"> Update existing records (code is never changed)</label></div>
+        <p class="rg-dim">No template yet? <a href="#" onclick="REG.exportTemplate();return false">Download the import template</a>.</p>
+        <div class="rg-err" id="im_err"></div>
+      </div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.closeModal()">Cancel</button></div>`);
+    const f=$('im_file'),drop=$('im_drop');
+    f.onchange=()=>f.files[0]&&readImport(f.files[0]);
+    drop.ondragover=e=>{e.preventDefault();drop.classList.add('over');};
+    drop.ondragleave=()=>drop.classList.remove('over');
+    drop.ondrop=e=>{e.preventDefault();drop.classList.remove('over');const fl=e.dataTransfer.files[0];if(fl)readImport(fl);};
+  }
+  async function readImport(file){
+    const err=$('im_err');err.textContent='';
+    if(!/\.xlsx?$/i.test(file.name))return err.textContent='Please choose an .xlsx or .xls file.';
+    const mode=(document.querySelector('input[name=im_mode]:checked')||{}).value||'new';
+    let wb;
+    try{wb=XLSX.read(await file.arrayBuffer(),{type:'array'});}catch(e){return err.textContent='Could not read this file: '+e.message;}
+    let found=null;
+    for(const sn of wb.SheetNames){
+      const aoa=XLSX.utils.sheet_to_json(wb.Sheets[sn],{header:1,defval:'',raw:false,blankrows:true});
+      for(let r=0;r<Math.min(aoa.length,30);r++){
+        const map={};
+        aoa[r].forEach((cell,ci)=>{const k=String(cell).trim().toLowerCase();if(!k)return;
+          FIELDS.forEach(f=>{if(map[f]===undefined&&ALIASES[f].includes(k))map[f]=ci;});});
+        if((map.code!==undefined||map.type!==undefined)&&Object.keys(map).length>=2){found={sn,hr:r,map,aoa};break;}
+      }
+      if(found)break;
+    }
+    if(!found)return err.textContent='No header row found. The sheet needs columns such as “Machine Code”, “Machine Type” and “Capacity”.';
+    const rows=[];
+    for(let r=found.hr+1;r<found.aoa.length;r++){
+      const src=found.aoa[r];const o={src:r+1,include:true};
+      FIELDS.forEach(f=>{o[f]=found.map[f]!==undefined?String(src[found.map[f]]==null?'':src[found.map[f]]).trim():'';});
+      if(FIELDS.every(f=>!o[f]))continue;
+      rows.push(o);
+    }
+    if(!rows.length)return err.textContent=`Sheet “${found.sn}” has a header row but no data rows.`;
+    S.imp={file:file.name,sheet:found.sn,mode,rows,errOnly:false};
+    validateImport();renderImport();
+  }
+  function validateImport(){
+    const imp=S.imp;const explicit=new Set();
+    imp.rows.forEach(r=>{const c=normCode(r.code);if(c)explicit.add(c);});
+    const seen=new Map();const alloc=[...explicit];
+    imp.rows.forEach(r=>{
+      r.errors=[];r.warns=[];r.action='';r.final='';r.auto=false;r.existingId=null;
+      const code=normCode(r.code);const pc=code?parseCode(code):null;
+      let t=r.type?typeByKey(r.type):(pc?typeByKey(pc.prefix):null);
+      if(r.type&&!t)r.errors.push(`Unknown machine type “${r.type}” — add it under Machine types first`);
+      if(!r.type&&!t)r.errors.push(pc?`Type prefix ${pc.prefix} from the code is not defined`:'Machine type is required');
+      const cap=normCap(r.capacity)||(pc?pc.capacity:'');
+      if(!cap)r.errors.push('Capacity is required');
+      else if(!/^[A-Z0-9.]+$/.test(cap))r.errors.push('Capacity may contain only letters, digits and “.”');
+      const st=String(r.status||'').trim().toLowerCase();
+      if(st&&st!=='active'&&st!=='inactive')r.errors.push(`Status must be Active or Inactive (got “${r.status}”)`);
+      r._t=t;r._cap=cap;r._st=st==='inactive'?'Inactive':'Active';
+      if(code){
+        if(!/^[A-Z0-9][A-Z0-9._\-\/]*$/.test(code))r.errors.push('Code contains invalid characters');
+        if(pc&&t&&cap&&(pc.prefix!==t.prefix||pc.capacity!==cap))r.errors.push(`Code ${code} does not match type ${t.prefix} / capacity ${cap}`);
+        if(!pc)r.warns.push('Non-standard code format');
+        if(seen.has(code))r.errors.push(`Duplicate code — also on row ${seen.get(code)}`);else seen.set(code,r.src);
+        const ex=D.machines.find(m=>normCode(m.code)===code);
+        if(ex){r.existingId=ex.id;r.action=imp.mode==='update'?'Update':'Skip';if(imp.mode!=='update')r.warns.push('Already in register — skipped');}
+        else r.action='Add';
+        r.final=code;
+      }else if(!r.errors.length){
+        r.final=genCode(t.prefix,cap,alloc);alloc.push(r.final);r.auto=true;r.action='Add';
+      }
+      if(!r.name&&r.action==='Add')r.warns.push('Name will be auto-generated');
+    });
+  }
+  function renderImport(){
+    const imp=S.imp;if(!imp)return;
+    const rows=imp.rows;
+    const nErr=rows.filter(r=>r.errors.length).length,nAdd=rows.filter(r=>!r.errors.length&&r.include&&r.action==='Add').length,
+      nUpd=rows.filter(r=>!r.errors.length&&r.include&&r.action==='Update').length,nSkip=rows.filter(r=>!r.errors.length&&(r.action==='Skip'||!r.include)).length;
+    const vis=(imp.errOnly?rows.filter(r=>r.errors.length):rows);
+    const shown=vis.slice(0,500);
+    const cell=(r,f,w)=>`<input class="rg-cin${f==='code'?' rg-mono':''}" style="width:${w}px" value="${h(r[f])}" onchange="REG._impSet(${rows.indexOf(r)},'${f}',this.value)">`;
+    openModal(`<h2 class="rg-mh">Import preview · <span class="rg-dim">${h(imp.file)} → ${h(imp.sheet)}</span></h2>
+      <div class="rg-mbody">
+        <div class="rg-impstats"><span class="s-add">${nAdd} to add</span><span class="s-upd">${nUpd} to update</span><span class="s-skip">${nSkip} skipped</span><span class="s-err">${nErr} with errors</span>
+          <span class="rg-sp"></span>
+          <label class="rg-chk">Existing codes: <select class="rg-sel" onchange="REG._impMode(this.value)"><option value="new"${imp.mode==='new'?' selected':''}>Skip (add only new)</option><option value="update"${imp.mode==='update'?' selected':''}>Update existing</option></select></label>
+          <label class="rg-chk"><input type="checkbox" ${imp.errOnly?'checked':''} onchange="REG._impErrOnly(this.checked)"> Errors only</label></div>
+        <p class="rg-dim">Edit any cell to fix an error — rows are re-checked immediately. Rows with errors are not imported; untick a row to skip it.</p>
+        <div class="rg-tw rg-tall"><table class="rg-t rg-imp"><thead><tr><th class="ck">Use</th><th>Row</th><th>Machine code</th><th>Machine name</th><th>Type</th><th>Capacity</th><th>Status</th><th>Project</th><th>Result</th></tr></thead><tbody>
+        ${shown.map(r=>{const i=rows.indexOf(r);const bad=r.errors.length;return `<tr class="${bad?'bad':(!r.include||r.action==='Skip')?'skip':''}">
+          <td class="ck"><input type="checkbox" ${r.include&&!bad?'checked':''} ${bad?'disabled':''} onchange="REG._impInc(${i},this.checked)"></td>
+          <td class="rg-dim">${r.src}</td>
+          <td>${cell(r,'code',120)}${r.auto?`<div class="rg-auto">auto → ${h(r.final)}</div>`:''}</td><td>${cell(r,'name',190)}</td><td>${cell(r,'type',90)}</td><td>${cell(r,'capacity',70)}</td><td>${cell(r,'status',70)}</td><td>${cell(r,'project',110)}</td>
+          <td class="rg-res">${bad?r.errors.map(e=>`<div class="e">✕ ${h(e)}</div>`).join(''):`<div class="o">${r.action==='Skip'?'Skip':r.include?(r.action==='Update'?'✓ Update':'✓ Add'):'Excluded'}</div>`}${r.warns.filter(w=>!bad||true).map(w=>`<div class="w">${h(w)}</div>`).join('')}</td></tr>`;}).join('')}
+        ${vis.length>500?`<tr><td colspan="9" class="rg-empty">Showing first 500 of ${vis.length} rows — all rows are validated and imported.</td></tr>`:''}
+        ${!vis.length?'<tr><td colspan="9" class="rg-empty">No rows with errors.</td></tr>':''}
+        </tbody></table></div>
+      </div>
+      <div class="rg-mfoot"><button class="rg-btn" onclick="REG.importStart()">‹ Choose another file</button><span class="rg-sp"></span><button class="rg-btn" onclick="REG.closeModal()">Cancel</button>
+        <button class="rg-btn pri" ${nAdd+nUpd?'':'disabled'} onclick="REG._impApply()">Import ${nAdd+nUpd} row${nAdd+nUpd===1?'':'s'}</button></div>`,true);
+  }
+  Object.assign(ui,{
+    _impSet(i,f,v){S.imp.rows[i][f]=v;validateImport();renderImport();},
+    _impInc(i,on){S.imp.rows[i].include=on;renderImport();},
+    _impMode(v){S.imp.mode=v;validateImport();renderImport();},
+    _impErrOnly(v){S.imp.errOnly=v;renderImport();},
+    _impApply(){
+      const imp=S.imp;validateImport();
+      const t=nowISO();let added=0,updated=0,unchanged=0;
+      const skipped=imp.rows.filter(r=>!r.errors.length&&(r.action==='Skip'||!r.include)).length;
+      const errors=imp.rows.filter(r=>r.errors.length);
+      imp.rows.forEach(r=>{
+        if(r.errors.length||!r.include)return;
+        const vals={type:r._t.prefix,capacity:r._cap,status:r._st};
+        if(r.action==='Add'){
+          if(codeTaken(r.final))return;
+          D.machines.push(mkMachine({...vals,code:r.final,name:r.name||typeName(vals.type)+' – '+vals.capacity,project:r.project,location:r.location,notes:r.notes,logDetail:`Imported from ${imp.file} row ${r.src}`},t));added++;
+        }else if(r.action==='Update'){
+          const m=getM(r.existingId);if(!m)return;
+          const nv={...vals};['name','project','location','notes'].forEach(f=>{if(r[f])nv[f]=r[f];});
+          const ch=Object.keys(nv).filter(k=>(m[k]||'')!==nv[k]).map(k=>`${k}: “${m[k]||''}” → “${nv[k]}”`);
+          if(!ch.length){unchanged++;return;}
+          Object.assign(m,nv,{updatedAt:t});m.log=(m.log||[]).concat({at:t,action:'Updated by import',detail:`${imp.file} row ${r.src}: `+ch.join('; ')});updated++;
+        }
+      });
+      const errList=errors.slice(0,50);
+      if(added||updated){dirty();autosave();}
+      openModal(`<h2 class="rg-mh">Import complete</h2>
+        <div class="rg-mbody"><div class="rg-impstats big"><span class="s-add">${added} added</span><span class="s-upd">${updated} updated</span><span class="s-skip">${skipped+unchanged} skipped${unchanged?` (${unchanged} unchanged)`:''}</span><span class="s-err">${errors.length} errors</span></div>
+        ${errors.length?`<h4 class="rg-h4">Rows not imported</h4><div class="rg-tw"><table class="rg-t"><thead><tr><th>Row</th><th>Code</th><th>Error</th></tr></thead><tbody>${errList.map(r=>`<tr><td>${r.src}</td><td class="rg-mono">${h(r.code)}</td><td class="rg-res">${r.errors.map(e=>`<div class="e">${h(e)}</div>`).join('')}</td></tr>`).join('')}</tbody></table></div>${errors.length>50?`<p class="rg-dim">…and ${errors.length-50} more.</p>`:''}`:''}
+        </div><div class="rg-mfoot"><button class="rg-btn pri" onclick="REG.closeModal()">Done</button></div>`);
+      S.imp=null;renderCurrent();
+    }
+  });
+
+  return Object.assign({load,data,showModule,render:renderCurrent,closeModal,machineForm,setStatus,machineHistory,typesForm,
+    saveRevision,editRevNotes,voidRevision,exportRegister,exportRevisions,exportTemplate,importStart,activeCodes,
+    _test:{nextRev,projPrefix,genCode,parseCode,validateImport,S,patchSheetXml}},ui);
+})();
+
 
 // init — app bootstraps once Firebase Auth resolves (see onAuthStateChanged above),
 // which calls initAppData() to load this user's data from Firestore and render.
